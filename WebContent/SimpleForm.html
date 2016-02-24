@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style>
+
+#form{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 30px;
+	width: 310px;
+	font-size: 15px;
+	font-family: Verdana;
+	line-height: 30px;
+	display:inline-block; 
+	vertical-align:middle;
+}
+</style>
+</head>
+
+<body>
+	<div id="form">
+		<form method="POST" action="xmlServletPath">
+			UserName:<input placeholder="User Name" name="username" />
+			Another Name:<input placeholder="Surname" name="surname" />
+			Age:<input placeholder="Age" name="age" />
+			<br>
+			Profession:<br><input type="radio" name="prof" value="Developer">Developer</input>
+			<br>
+			<input type="radio" name="prof" value="Architect">Architect</input>
+			<br>
+			<select name="location" multiple size=6>
+				<option value="galway">galway</option>
+				<option value="mayo">mayo</option>
+				<option value="sligo">sligo</option>
+				<option value="dublin">dublin</option>
+				<option value="donegal">donegal</option>
+				<option value="down">down</option>
+			</select>
+			<br><input type="submit" />
+		</form>
+	</div>
+</body>
+</html>
