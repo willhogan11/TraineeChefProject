@@ -25,13 +25,13 @@ import com.mysql.jdbc.Statement;
 public class UserEntryServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private String url;
+/*	private String url;
 	
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.url = getServletContext().getInitParameter("");
-	}
+	}*/
 
 
 	/**
