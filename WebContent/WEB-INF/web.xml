@@ -2,31 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>TraineeChefProject</display-name>
   <welcome-file-list>
-  	<welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>DB_HOST_NAME</param-name>
-  	<param-value>127.0.0.1</param-value>
+    <param-name>DB_HOST_NAME</param-name>
+    <param-value>127.0.0.1</param-value>
   </context-param>
-   <context-param>
-  	<param-name>JDBC_DRIVER</param-name>
-  	<param-value>com.mysql.jdbc.Driver</param-value>
+  <context-param>
+    <param-name>JDBC_DRIVER</param-name>
+    <param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
-  
-<!--   <servlet>
-    <servlet-name>xmlServlet</servlet-name>
-    <servlet-class>ie.gmit.sw.XmlServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>xmlServlet</servlet-name>
-    <url-pattern>/xmlServletPath</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>DBconnection</servlet-name>
-    <servlet-class>ie.gmit.sw.DBconnection</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DBconnection</servlet-name>
-    <url-pattern>/DBconnection</url-pattern>
-  </servlet-mapping> -->
 </web-app>

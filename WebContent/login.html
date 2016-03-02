@@ -3,6 +3,30 @@
 <head>
 <title>Login Page</title>
 <meta charset="UTF-8">
+<style>
+	.login {
+		border: solid blue 3px; 
+		margin: auto;
+		text-align: center;
+		padding: 100px;
+		width: 400px;
+        border-radius: 10px;
+	}
+    
+	.login, p{
+		font-family: Arial, Helvetica, sans-serif;
+	}
+    
+    .statusText{
+        padding: 15px;
+    }
+    
+    .image{
+        margin: auto;
+        display: block;
+        padding-top: 30px;
+    }
+</style>
 </head>
 <body>
 <script>
@@ -23,7 +47,7 @@
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log into Facebook.';
+      document.getElementById('status').innerHTML = 'Please log into Facebook to Access the Trainee Chef Recipe Application.';
     }
   }
 
@@ -77,11 +101,12 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-		// window.location.replace("http://stackoverflow.com");
+      document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
+      
     });
+    // document.getElementById('internalLink').innerHTML = window.location.replace("http://www.localhost.com/TestFaceBookLogin/home.html");
   }
+  // window.location.replace("http://www.localhost.com/TestFaceBookLogin/home.html");
 </script>
 
 <!--
@@ -89,11 +114,13 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-
-<fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div id="status">
+<div class="login">
+	<fb:login-button data-max-rows="1" data-size="xlarge" data-show-faces="false" autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
+	</fb:login-button>
+	
+	<div class="statusText" id="status"></div>
+    <button id="internalLink" type='button'>Continue</button>
+    <img class="image" src="images/gmitLogo.jpg" style="float:">
 </div>
 
 </body>
