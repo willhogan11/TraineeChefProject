@@ -41,6 +41,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      window.location.replace("http://localhost:8081/TraineeChefProject/index.jsp");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
@@ -106,7 +107,6 @@
     });
     // document.getElementById('internalLink').innerHTML = window.location.replace("http://www.localhost.com/TestFaceBookLogin/home.html");
   }
-  // window.location.replace("http://www.localhost.com/TestFaceBookLogin/home.html");
 </script>
 
 <!--
