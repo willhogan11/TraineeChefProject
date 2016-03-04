@@ -1,3 +1,8 @@
+<%@page import="com.mysql.jdbc.Connection"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="ie.gmit.sw.*" %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +35,8 @@
 </head>
 <body>
 <script>
+  
+  var name = "";
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -41,7 +48,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      // window.location.replace("http://www.localhost.com:8081/TraineeChefProject/index.jsp");
+      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/index.jsp");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
@@ -103,6 +110,8 @@
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
+      name = response.name;
+      console.log(name);
     });
   }
 </script>
@@ -113,11 +122,13 @@
   the FB.login() function when clicked.
 -->
 <div class="login">
-	<fb:login-button name="fbLogin" method="POST"  data-max-rows="1" data-size="xlarge" data-show-faces="false" 
-	autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-	<p><%=request.getAttribute("Message")%></p>
-	<div class="statusText" id="status"></div>
-    <img class="image" src="images/gmitLogo.jpg" style="float:">
+	<form name="fbLogin" method="POST" action="ChefDatabaseEntry">
+		<fb:login-button data-max-rows="1" data-size="xlarge" data-show-faces="false" 
+		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+		
+		<div class="statusText" id="loginname"></div>
+	    <img class="image" src="images/gmitLogo.jpg" style="float:">
+    </form>
 </div>
 
 </body>

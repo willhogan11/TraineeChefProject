@@ -157,6 +157,7 @@ public class UserEntryServlet extends HttpServlet {
 			session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
 			 // forwards to the message page
             getServletContext().getRequestDispatcher("/Success.jsp").forward(request, response);
+            getServletContext().getAttribute(name);
 			// response.sendRedirect("Success.jsp");
             if(request.getAttribute("logout") != null){
             	session.invalidate();

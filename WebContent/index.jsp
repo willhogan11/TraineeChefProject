@@ -1,6 +1,5 @@
 <%@page import="com.mysql.jdbc.Connection"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="ie.gmit.sw.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,6 +45,7 @@
 	<div class="formDiv">
 		<form name="submitForm" method="POST" action="UserEntryServlet" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<table>
+				<p><%=request.getAttribute("Name")%></p>
 			    <tr>
 			        <td>Name: </td>
 			        <td><input type="text" name="name" required=""></td>
