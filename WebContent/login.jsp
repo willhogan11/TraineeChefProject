@@ -126,7 +126,9 @@
 		<fb:login-button data-max-rows="1" data-size="xlarge" data-show-faces="false" 
 		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
-		<div class="statusText" id="loginname"></div>
+		<div class="statusText" id="status" name="status">
+			<input type="text" name="fbusername" value="hiddenValue"></input>
+		</div>
 	    <img class="image" src="images/gmitLogo.jpg" style="float:">
     </form>
 </div>

@@ -38,14 +38,29 @@
 	        return false;
 	    }
 	}
+	
+	function product(a,b){
+	      return a*b;
+	}
+	
+	document.getElementById()
+	
+	
 </script>
 <title>Insert Data into Database</title>
 </head>
 <body>
 	<div class="formDiv">
 		<form name="submitForm" method="POST" action="UserEntryServlet" enctype="multipart/form-data" onsubmit="return validateForm()" >
+		
+		<table>
+			<tr>
+				<td><input type="hidden" id=hiddenField 	name="testdata" value=""></td>
+			</tr>
+		</table>
+		
+		
 			<table>
-				<p><%=request.getAttribute("Name")%></p>
 			    <tr>
 			        <td>Name: </td>
 			        <td><input type="text" name="name" required=""></td>

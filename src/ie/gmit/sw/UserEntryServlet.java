@@ -126,6 +126,7 @@ public class UserEntryServlet extends HttpServlet {
 	    String name = request.getParameter("name");
 	    String surname = request.getParameter("surname");
 		String age = request.getParameter("age");
+		String testdata = request.getParameter("testdata");
 	    
 	    try {
 	    	Class.forName("com.mysql.jdbc.Driver");
@@ -155,9 +156,16 @@ public class UserEntryServlet extends HttpServlet {
             request.setAttribute("Message", message);
 			session.setAttribute("msg", "You Successfully Created a User!");
 			session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
-			 // forwards to the message page
+			
+			String fbUser = name + "<br>" + surname;
+			request.setAttribute("fbUser", fbUser);
+			request.setAttribute("testData", testdata);
+			
+			// forwards to the message page
             getServletContext().getRequestDispatcher("/Success.jsp").forward(request, response);
             getServletContext().getAttribute(name);
+            getServletContext().getAttribute(fbUser);
+            getServletContext().getAttribute(testdata);
 			// response.sendRedirect("Success.jsp");
             if(request.getAttribute("logout") != null){
             	session.invalidate();

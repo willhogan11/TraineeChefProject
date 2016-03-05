@@ -35,11 +35,14 @@ public class ChefDatabaseEntry extends HttpServlet {
 		
 		response.setContentType("text/html");
 		
-		String name = request.getParameter("name");
-		request.setAttribute("Name", name);
+		String fbUsername = request.getParameter("fbusername");
+		String status = request.getParameter("status");
+		
+		request.setAttribute("fbusername", fbUsername);
+		
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-		getServletContext().getAttribute(name);
-		System.out.println(name);
+		getServletContext().getAttribute(fbUsername);
+		System.out.println(fbUsername);
 		
 	}
 

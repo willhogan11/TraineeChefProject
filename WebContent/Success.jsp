@@ -10,6 +10,9 @@
 	<p>${msg}</p>
 	<p>${SavedInsert}</p>
 	<p><%=request.getAttribute("Message")%></p>
+	<p><%=request.getAttribute("fbUser")%></p>
+	<p><%=request.getAttribute("testData")%></p>
+	
 	<a href="index.jsp">Return</a>
 	
 	<a href="index.jsp"><input type="submit" name="logout" value="Logout" method="POST"></a>
