@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="ie.gmit.sw.*" %>
     
-    
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <title>Login Page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- <style>
@@ -48,7 +48,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/index.jsp");
+      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/jsp/RecipeEntry.jsp");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
@@ -129,7 +129,7 @@
 		<div class="statusText" id="status" name="status">
 			<input type="text" name="fbusername" value="hiddenValue"></input>
 		</div>
-	    <img class="image" src="images/gmitLogo.jpg" style="float:">
+	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>
 </div>
 

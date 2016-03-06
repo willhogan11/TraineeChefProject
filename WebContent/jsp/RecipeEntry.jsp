@@ -4,8 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <link type="text/css" rel="stylesheet" href="/TraineeChefProject/WebContent/css/style.css"> -->
-<!-- <link type="text/css" rel="stylesheet" href="../css/style.css"> -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <title>Recipe Entry</title>
 </head>
@@ -14,11 +12,11 @@
 	<div class="recipeEntryForm">
 		<form name="submitForm" method="POST" action="RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 		
-		<table>
-			<tr>
-				<td><input type="hidden" id=hiddenField name="testdata" value=""></td>
-			</tr>
-		</table>
+			<table>
+				<tr>
+					<td><input type="hidden" id=hiddenField name="testdata" value=""></td>
+				</tr>
+			</table>
 		
 			<table>
 			    <tr>
