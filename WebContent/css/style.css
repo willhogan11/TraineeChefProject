@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+
+.recipeEntryForm {
+	border: solid black 2px;
+	margin: auto;
+	width: 320px;
+	padding: 30px;
+	font-family: arial;
+}
+
+.recipeEntryForm, {
+	
+}
+	
+	
+.login {
+	border: solid blue 3px; 
+	margin: auto;
+	text-align: center;
+	padding: 100px;
+	width: 400px;
+    border-radius: 10px;
+}
+   
+.login, p{
+	font-family: Arial, Helvetica, sans-serif;
+}
+   
+.statusText{
+    padding: 15px;
+}
+
+.image{
+    margin: auto;
+    display: block;
+    padding-top: 30px;
+}

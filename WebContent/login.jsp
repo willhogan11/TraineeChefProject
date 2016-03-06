@@ -8,7 +8,7 @@
 <head>
 <title>Login Page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style>
+<!-- <style>
 	.login {
 		border: solid blue 3px; 
 		margin: auto;
@@ -31,7 +31,7 @@
         display: block;
         padding-top: 30px;
     }
-</style>
+</style> -->
 </head>
 <body>
 <script>

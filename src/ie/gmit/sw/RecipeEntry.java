@@ -22,7 +22,7 @@ import com.mysql.jdbc.Statement;
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/UserEntryServlet" })
 @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
-public class UserEntryServlet extends HttpServlet {
+public class RecipeEntry extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 /*	private String url;
@@ -101,7 +101,7 @@ public class UserEntryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "jdbc:mysql://localhost/users";
+		String url = "jdbc:mysql://localhost/traineechefdb";
 	    String user = "root";
 	    String password = null;
 	    Connection conn = null;
@@ -123,8 +123,8 @@ public class UserEntryServlet extends HttpServlet {
             inputStream = filePart.getInputStream();
         }
 	    
-	    String name = request.getParameter("name");
-	    String surname = request.getParameter("surname");
+	    /*String name = request.getParameter("name");
+	    String surname = request.getParameter("surname");*/
 		String age = request.getParameter("age");
 		String testdata = request.getParameter("testdata");
 	    
@@ -135,8 +135,8 @@ public class UserEntryServlet extends HttpServlet {
 	    	
 			String sql = "INSERT INTO USERTABLE(NAME, SURNAME, AGE, IMAGE) VALUES(?, ?, ?, ?)";
 			java.sql.PreparedStatement prest = conn.prepareStatement(sql);
-			prest.setString(1, name);
-			prest.setString(2, surname);
+			/*prest.setString(1, name);
+			prest.setString(2, surname);*/
 			prest.setString(3, age);
 			
 			// fetches input stream of the upload file for the blob column

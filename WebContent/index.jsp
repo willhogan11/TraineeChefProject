@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
+<!-- <style type="text/css">
 	.formDiv{
 		border: solid black 2px;
 		margin: auto;
@@ -14,7 +14,7 @@
 		padding: 20px;
 		font-family: arial;
 	}
-</style>
+</style> -->
 <!-- <script src="WebContent/script.js"></script> -->
 <script>
 	// Function to Check if Input is Valid
