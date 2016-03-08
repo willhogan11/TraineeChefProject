@@ -8,8 +8,10 @@
 	font-family: arial;
 }
 
-.recipeEntryForm form table tr td{
-	padding: 10px;
+.recipeEntryForm form table tr td, h1{
+	padding: 8px;
+	font-family: Arial;
+	
 }
 	
 	

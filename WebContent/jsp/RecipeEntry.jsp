@@ -9,9 +9,10 @@
 </head>
 <body>
 	
+	
 	<div class="recipeEntryForm">
 		<form name="submitForm" method="POST" action="RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
-		
+			<h3>Enter your Menu</h3>
 			<table>
 				<tr>
 					<td><input type="hidden" id=hiddenField name="testdata" value=""></td>
@@ -27,6 +28,27 @@
 			        <td>Surname: </td>
 			        <td><input type="text" name="surname" required=""></td>
 			    </tr>  
+			    <tr>
+			        <td>Food Origin </td>
+			        <td>
+			        	<select id="foodOrigin" name="foodOrigin">
+			        		<option>Italian</option>
+			        		<option>Spanish</option>
+			        		<option>Chinese</option>
+			        	</select>
+		        	</td>
+			    </tr>  
+			     <tr>
+			        <td>Food Type </td>
+			        <td>
+			        	<select id="foodType" name="foodType">
+			        		<option>Starter</option>
+			        		<option>Main Course</option>
+			        		<option>Dessert</option>
+			        		<option>Salad</option>
+			        	</select>
+			        </td>
+			    </tr>   
 			    <tr>
 			        <td>Description </td>
 			        <td><input id="description" type="text" name="description" required=""></td>
