@@ -6,6 +6,9 @@ import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -32,12 +35,11 @@ public class RecipeEntry extends HttpServlet {
 		super.init();
 		this.url = getServletContext().getInitParameter("");
 	}*/
+	
+	
 
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
+	
+	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		
 		String url = "jdbc:mysql://localhost/users";
 	    String driver = "com.mysql.jdbc.Driver";
@@ -77,7 +79,7 @@ public class RecipeEntry extends HttpServlet {
 		
 		
 		
-	/*	// System.out.println("XML Servlet Call"); // Check on console that this executed
+		// System.out.println("XML Servlet Call"); // Check on console that this executed
 		response.setContentType("text/html");
 		String username = request.getParameter("username");
 		
@@ -92,13 +94,44 @@ public class RecipeEntry extends HttpServlet {
 		
 		// response.getWriter().print("Hello from the GET method" + userName);
 		response.getWriter().print("Request parameter has username as " + username);
-		response.getWriter().print("<br><br> Session parameter has username as " + (String) session.getAttribute("savedUserName"));*/
+		response.getWriter().print("<br><br> Session parameter has username as " + (String) session.getAttribute("savedUserName"));
+	}*/
+		
+	public List<FoodOrigin>list() throws Exception{
+		String url = "jdbc:mysql://localhost/users";
+	    String driver = "com.mysql.jdbc.Driver";
+	    String user = "root";
+	    String password = null;
+	    List<FoodOrigin> result = new ArrayList<FoodOrigin>();
+	    
+        
+    	try {
+			Class.forName(driver).newInstance();
+			Connection conn = (Connection) DriverManager.getConnection(url, user, password);
+			System.out.println("Connection Established");		
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Statement stmt = (Statement) conn.createStatement();
+			String sql = "SELECT * FROM USERTABLE";
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				FoodOrigin fo = new FoodOrigin();
+				fo.setOrigin(rs.getString("foodOrigin"));
+				result.add(fo);
+			}
+			rs.close();
+	        stmt.close();
+	        conn.close();
+			
+		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace(); 
+		}
+    	return result;
 	}
 	
 	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "jdbc:mysql://localhost/traineechefdb";
@@ -123,8 +156,8 @@ public class RecipeEntry extends HttpServlet {
             inputStream = filePart.getInputStream();
         }
 	    
-	    /*String name = request.getParameter("name");
-	    String surname = request.getParameter("surname");*/
+	    String name = request.getParameter("name");
+	    String surname = request.getParameter("surname");
 		String age = request.getParameter("age");
 		String testdata = request.getParameter("testdata");
 	    
