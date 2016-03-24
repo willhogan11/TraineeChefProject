@@ -52,7 +52,7 @@ public class DataSource extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			// Connection connection = ds.
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
