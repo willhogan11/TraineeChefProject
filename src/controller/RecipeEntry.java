@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +21,8 @@ import javax.servlet.http.Part;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+
+import beans.FoodOrigin;
 
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/UserEntryServlet" })

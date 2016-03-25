@@ -1,4 +1,4 @@
-package ie.gmit.sw.beans;
+package beans;
 
 public class Person {
 	

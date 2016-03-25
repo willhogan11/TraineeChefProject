@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package beans;
 
 // Recipe Bean Class
 public class Recipe {

@@ -1,4 +1,4 @@
-package ie.gmit.sw.controllers;
+package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ie.gmit.sw.beans.Person;
+import beans.Person;
 
 /**
  * Servlet implementation class PassObjects
@@ -33,14 +33,15 @@ public class PassObjects extends HttpServlet {
 		list1.add(new Person("Will"));
 		list1.add(new Person("John"));
 		list1.add(new Person("Frank"));
-		list1.add(new Person("Wally"));
+		list1.add(new Person("Wally"));	
+		list1.add(new Person("Fred"));
+		list1.add(new Person("Mark"));
+		list1.add(new Person("Jake"));
+		list1.add(new Person("Charlie"));
 		
 		request.setAttribute("list1", list1);
 		
-		request.getRequestDispatcher("/receiveObjects.jsp").forward(request, response);
-		
-		/*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/receiveObjects.jsp");
-		dispatcher.forward(request, response);*/
+		request.getRequestDispatcher("jsp/receiveObjects.jsp").forward(request, response);
 	}
 	
 	
