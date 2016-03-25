@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.*" %>
-<%@ page import="ie.gmit.sw.beans.*" %>
+<%@ page import="beans.*" %>
+<%@ page import="controller.*" %>
 
 <%-- <%
 	List<Person> list1 = new ArrayList<Person>();
