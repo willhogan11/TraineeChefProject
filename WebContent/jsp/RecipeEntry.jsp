@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="beans.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,48 +18,8 @@
 	
 	
 	<div class="recipeEntryForm">
-		
-		<!-- <form name="submitFoodOrigin" method="GET"> -->
-		
-		<%-- 	<table>
-				<tr>
-			        <td>Food Origin </td>
-			        <td>
-			        	<td>${.name}</td>
-			        
-			        	<select id="foodOrigin" name="foodOrigin">
-			        	<c:forEach var="fo" items="${RecipeEntry.list}">
-			        		<option></option>
-		        		</c:forEach>
-			        	</select>
-		        	</td>
-			    </tr>  
-			</table> --%>
-			
-		 <!-- </form> -->
-		 
-		 
-		 <form name="submitFoodOrigin" method="POST" action="RecipeEntry">
-			 <table>
-			  <c:forEach var="foodOrigin" items="${RecipeEntry.list}">
-			  	<option value="${foodOrigin.origin}">${foodOrigin.origin}</option>
-			  </c:forEach>
-			 </table>
-		 </form>
-		 
-		
-	
 		<form name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Menu</h3>
-			<table>
-				<tr>
-					<td><input type="hidden" id=hiddenField name="testdata" value=""></td>
-				</tr>
-			</table>
-			
-			
-			
-		
 			<table>
 			    <tr>
 			        <td>Name: </td>
@@ -79,6 +41,18 @@
 			        	</select>
 			        </td>
 			    </tr>   
+			    
+			     <tr>
+			        <td>Menu Origin</td>
+			        <td>
+			        	<select>
+			        		<c:forEach items="${result}" var="items">
+								<option>${items.origin}</option>
+							</c:forEach>
+			        	</select>
+			        </td>
+			    </tr>   
+			    
 			    <tr>
 			        <td>Description </td>
 			        <td><input id="description" type="text" name="description" required=""></td>

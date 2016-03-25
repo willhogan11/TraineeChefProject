@@ -7,30 +7,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <title>Login Page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <style>
-	.login {
-		border: solid blue 3px; 
-		margin: auto;
-		text-align: center;
-		padding: 100px;
-		width: 400px;
-        border-radius: 10px;
-	}
-    
-	.login, p{
-		font-family: Arial, Helvetica, sans-serif;
-	}
-    
-    .statusText{
-        padding: 15px;
-    }
-    
-    .image{
-        margin: auto;
-        display: block;
-        padding-top: 30px;
-    }
-</style> -->
 </head>
 <body>
 <script>
@@ -48,6 +24,7 @@
       // Logged into your app and Facebook.
       testAPI();
       // window.location.replace("http://www.localhost.com:8081/TraineeChefProject/jsp/RecipeEntry.jsp");
+      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/RecipeEntry");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';

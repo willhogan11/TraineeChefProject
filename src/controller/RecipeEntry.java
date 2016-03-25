@@ -25,7 +25,7 @@ import com.mysql.jdbc.Statement;
 import beans.FoodOrigin;
 
 
-@WebServlet(asyncSupported = true, urlPatterns = { "/UserEntryServlet" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/RecipeEntry" })
 @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
 public class RecipeEntry extends HttpServlet {
 	
@@ -41,16 +41,13 @@ public class RecipeEntry extends HttpServlet {
 	
 
 	
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		
-		String url = "jdbc:mysql://localhost/users";
+		String url = "jdbc:mysql://localhost/traineechefdb";
 	    String driver = "com.mysql.jdbc.Driver";
 	    String user = "root";
 	    String password = null;
-	    
-		// Set response content type, in this case HTML
-		response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+	    List<FoodOrigin> result = new ArrayList<FoodOrigin>();
         
     	try {
 			Class.forName(driver).newInstance();
@@ -59,30 +56,31 @@ public class RecipeEntry extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			Statement stmt = (Statement) conn.createStatement();
-			String sql = "SELECT * FROM USERTABLE";
+			String sql = "SELECT * FROM FOOD_ORIGIN";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int id = rs.getInt("ID");
-				String name = rs.getString("NAME");
-				int age = rs.getInt("AGE");
-				
-				out.println("ID: " + id);
-				out.println(" NAME: " + name);
-				out.println(" AGE: " + age + "<br>");
+				FoodOrigin fOrigin = new FoodOrigin();
+				fOrigin.setOrigin(rs.getString("ORIGIN"));
+				result.add(fOrigin);
 			}
 			rs.close();
 	        stmt.close();
 	        conn.close();
 			
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
+    	//return result;
+		
+		request.setAttribute("result", result);
+		request.getRequestDispatcher("jsp/RecipeEntry.jsp").forward(request, response);
+		
 		
 		
 		
 		// System.out.println("XML Servlet Call"); // Check on console that this executed
-		response.setContentType("text/html");
+/*		response.setContentType("text/html");
 		String username = request.getParameter("username");
 		
 		// 1. Create a session object to hold the userName overcome Statelessness 
@@ -96,15 +94,20 @@ public class RecipeEntry extends HttpServlet {
 		
 		// response.getWriter().print("Hello from the GET method" + userName);
 		response.getWriter().print("Request parameter has username as " + username);
-		response.getWriter().print("<br><br> Session parameter has username as " + (String) session.getAttribute("savedUserName"));
-	}*/
-		
+		response.getWriter().print("<br><br> Session parameter has username as " + (String) session.getAttribute("savedUserName"));*/
+	
+	} // End doGet
+	
+	
+	
+	
+/*		
 	public List<FoodOrigin>list() throws Exception{
-		String url = "jdbc:mysql://localhost/users";
+		String url = "jdbc:mysql://localhost/traineechefdb";
 	    String driver = "com.mysql.jdbc.Driver";
 	    String user = "root";
 	    String password = null;
-	    List<FoodOrigin> result = new ArrayList<FoodOrigin>();
+	    List<FoodOrigin> foodOriginList = new ArrayList<FoodOrigin>();
 	    
         
     	try {
@@ -114,13 +117,13 @@ public class RecipeEntry extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			Statement stmt = (Statement) conn.createStatement();
-			String sql = "SELECT * FROM USERTABLE";
+			String sql = "SELECT * FROM FOOD_ORIGIN";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
 				FoodOrigin fo = new FoodOrigin();
 				fo.setOrigin(rs.getString("foodOrigin"));
-				result.add(fo);
+				foodOriginList.add(fo);
 			}
 			rs.close();
 	        stmt.close();
@@ -129,8 +132,11 @@ public class RecipeEntry extends HttpServlet {
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace(); 
 		}
-    	return result;
+    	return foodOriginList;
 	}
+	
+	
+	*/
 	
 	
 	
