@@ -30,24 +30,14 @@ import beans.FoodOrigin;
 public class RecipeEntry extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-/*	private String url;
-	
-	@Override
-	public void init() throws ServletException {
-		super.init();
-		this.url = getServletContext().getInitParameter("");
-	}*/
-	
-	
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		
 		String url = "jdbc:mysql://localhost/traineechefdb";
 	    String driver = "com.mysql.jdbc.Driver";
 	    String user = "root";
 	    String password = null;
-	    List<FoodOrigin> result = new ArrayList<FoodOrigin>();
+	    List<FoodOrigin> foodOriginResult = new ArrayList<FoodOrigin>();
         
     	try {
 			Class.forName(driver).newInstance();
@@ -62,7 +52,7 @@ public class RecipeEntry extends HttpServlet {
 			while(rs.next()){
 				FoodOrigin fOrigin = new FoodOrigin();
 				fOrigin.setOrigin(rs.getString("ORIGIN"));
-				result.add(fOrigin);
+				foodOriginResult.add(fOrigin);
 			}
 			rs.close();
 	        stmt.close();
@@ -71,30 +61,9 @@ public class RecipeEntry extends HttpServlet {
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace(); 
 		}
-    	//return result;
 		
-		request.setAttribute("result", result);
+		request.setAttribute("foodOriginResult", foodOriginResult);
 		request.getRequestDispatcher("jsp/RecipeEntry.jsp").forward(request, response);
-		
-		
-		
-		
-		// System.out.println("XML Servlet Call"); // Check on console that this executed
-/*		response.setContentType("text/html");
-		String username = request.getParameter("username");
-		
-		// 1. Create a session object to hold the userName overcome Statelessness 
-		// 2. Set the new session object attribute with a 'savedUserName' to remember the user in the session
-		HttpSession session = request.getSession();
-		
-		// Null check
-		if(username != "" && username != null){
-			session.setAttribute("savedUserName", username);
-		}
-		
-		// response.getWriter().print("Hello from the GET method" + userName);
-		response.getWriter().print("Request parameter has username as " + username);
-		response.getWriter().print("<br><br> Session parameter has username as " + (String) session.getAttribute("savedUserName"));*/
 	
 	} // End doGet
 	
@@ -217,25 +186,5 @@ public class RecipeEntry extends HttpServlet {
 	    }catch (Exception e) {
             e.printStackTrace();
 	    }
-		
-		
-	    
-	    
-		
-		// System.out.println("XML Servlet Call"); // Check on console that this executed
-		/*response.setContentType("text/html");
-		String username = request.getParameter("username");
-		String surname = request.getParameter("surname");
-		String age = request.getParameter("age");
-		String prof = request.getParameter("prof");
-		// String location = request.getParameter("location"); // Fine if one item to be selected
-		
-		String[] location = request.getParameterValues("location"); // Need this for multiple
-		response.getWriter().print("Hello from POST method. Your details are: " + username + " " + surname + " " + age);
-		response.getWriter().print("You are a " + prof + " and your locations / places are " + location.length);
-		
-		for (int i = 0; i < location.length; i++) {
-			response.getWriter().print(" " + location[i] + " ");
-		}*/
 	}
 }

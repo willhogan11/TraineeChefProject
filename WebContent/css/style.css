@@ -3,7 +3,7 @@
 .recipeEntryForm {
 	border: solid black 2px;
 	margin: auto;
-	width: 320px;
+	width: 475px;
 	padding: 30px;
 	font-family: arial;
 }
@@ -11,9 +11,18 @@
 .recipeEntryForm form table tr td, h1{
 	padding: 8px;
 	font-family: Arial;
-	
 }
-	
+
+/* Ensures that all textboxes are said width */
+.recipeEntryForm form table tr td, input{
+	width: 250px;
+}
+
+/* Dimensions class for any textarea */	
+.description{
+	width: 250px;
+	height: 60px;
+}
 	
 .login {
 	border: solid blue 3px; 
