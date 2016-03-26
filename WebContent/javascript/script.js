@@ -1,3 +1,16 @@
+// Pop up window code that triggers the launch of the 'AddIngredients.html' page
+function popup(mylink, windowname) { 
+	if (! window.focus)
+		return true; 
+		var href; 
+	if (typeof(mylink) == 'string') 
+		href = mylink; 
+	else 
+		href = mylink.href; 
+	window.open(href, windowname, 'width=800, height=500, scrollbars=yes'); 
+	return false; 
+}
+
 
 // Function to Check if Input is Valid
 function validateFunc(){
@@ -19,4 +32,14 @@ function validateForm() {
         alert("Form Must be Filled out Correctly");
         return false;
     }
+}
+
+// Testing Purposes. 
+/*function testPopUp(){
+	alert("Test Pop Up!");
+}*/
+
+// Return result of page to main page (W.I.P)
+function HandlePopupResult(result) {
+    alert("result of popup is: " + result);
 }
