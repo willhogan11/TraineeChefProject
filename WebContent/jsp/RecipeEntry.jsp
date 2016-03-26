@@ -16,16 +16,16 @@
 <body>
 	<div class="recipeEntryForm">
 		<form name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
-			<h3>Enter your Menu</h3>
+			<h3>Enter your Recipe</h3>
 			<table>
 			    <tr>
-			        <td>Your Name: </td>
+			        <td>Your Name</td>
 			        <td>
 			        	<input type="text" name="name" required="">
 			        </td>
 			    </tr>
 			     <tr>
-			        <td>Your Surname: </td>
+			        <td>Your Surname</td>
 			        <td>
 						<input type="text" name="surname" required="">
 			        </td>
@@ -35,10 +35,10 @@
 			        <td>Food Type </td>
 			        <td>
 			        	<select id="foodType" name="foodType">
-			        		<option>Starter</option>
-			        		<option>Main Course</option>
-			        		<option>Dessert</option>
-			        		<option>Salad</option>
+			        		<option selected="selected">-Select-</option>
+			        		<c:forEach items="${foodTypeResult}" var="items">
+								<option>${items.type}</option>
+							</c:forEach>
 			        	</select>
 			        </td>
 			    </tr>   
@@ -47,6 +47,7 @@
 			        <td>Menu Origin</td>
 			        <td>
 			        	<select id="menuOrigin" name="menuOrigin">
+				        	<option selected="selected">-Select-</option>
 			        		<c:forEach items="${foodOriginResult}" var="items">
 								<option>${items.origin}</option>
 							</c:forEach>
@@ -64,39 +65,19 @@
 			    	<td>Prep/Cooking Time[Hours|Mins]</td>
 			    	<td>
 			    		<select>
-			    			<option>15</option>
-			    			<option>30</option>
-			    			<option>45</option>
-			    			<option>1.00</option>
-			    			<option>1.15</option>
-			    			<option>1.30</option>
-			    			<option>1.45</option>
-			    			<option>2.00</option>
-			    			<option>2.15</option>
-			    			<option>2.30</option>
-			    			<option>2.45</option>
-			    			<option>3.00</option>
-			    			<option>3.15</option>
-			    			<option>3.30</option>
-		    				<option>3.45</option>
-		    				<option>4.00</option>
-		    				<option>4.15</option>
-		    				<option>4.30</option>
-		    				<option>4.45</option>
-		    				<option>5.00</option>
-		    				<option>5.15</option>
-		    				<option>5.30</option>
-		    				<option>5.45</option>
+			    			<option selected="selected">-Select-</option>
+			        		<c:forEach items="${prepTime}" var="items">
+								<option>${items}</option>
+							</c:forEach>
 			    		</select>
 		    		</td>
 			    </tr> 
 			    <tr>
 			    	<td>Ingredients</td>
 			    	<td>
-				    	<a href="html/AddIngredients.html" onClick="return popup(this, 'notes')">
-				    		<button id="addIngredients" onClick="testPopUp()" 
-				    			   type="button" name="addIngredients" required="">Add Ingredients</button>
-	    			    </a>
+			    	<a href="html/AddIngredients.html" onClick="return popup(this, 'notes')">
+			    		<button id="addIngredients" type="button" name="addIngredients" required="">Add Ingredients</button>
+    			    </a>
 			    	</td>
 			    </tr>   
 			    <tr>

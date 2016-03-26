@@ -23,6 +23,7 @@ import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
 import beans.FoodOrigin;
+import beans.FoodType;
 
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/RecipeEntry" })
@@ -38,7 +39,9 @@ public class RecipeEntry extends HttpServlet {
 	    String user = "root";
 	    String password = null;
 	    List<FoodOrigin> foodOriginResult = new ArrayList<FoodOrigin>();
-        
+	    List<FoodType> foodTypeResult = new ArrayList<FoodType>();
+	    List<Double> prepTime = new ArrayList<Double>();
+	    
     	try {
 			Class.forName(driver).newInstance();
 			Connection conn = (Connection) DriverManager.getConnection(url, user, password);
@@ -46,23 +49,66 @@ public class RecipeEntry extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			Statement stmt = (Statement) conn.createStatement();
-			String sql = "SELECT * FROM FOOD_ORIGIN";
-			ResultSet rs = stmt.executeQuery(sql);
 			
-			while(rs.next()){
+			String sql1 = "SELECT * FROM FOOD_ORIGIN "
+					   + "ORDER BY ORIGIN";
+			
+			ResultSet rs1 = stmt.executeQuery(sql1);
+			
+			
+			while(rs1.next()){
 				FoodOrigin fOrigin = new FoodOrigin();
-				fOrigin.setOrigin(rs.getString("ORIGIN"));
+				fOrigin.setOrigin(rs1.getString("ORIGIN"));
 				foodOriginResult.add(fOrigin);
 			}
-			rs.close();
+			
+			String sql2 = "SELECT * FROM FOOD_TYPE "
+					   + "ORDER BY TYPE_NAME";
+			
+			ResultSet rs2 = stmt.executeQuery(sql2);
+			
+			while(rs2.next()){
+				FoodType fType = new FoodType();
+				fType.setType(rs2.getString("TYPE_NAME"));
+				foodTypeResult.add(fType);
+			}
+			rs1.close();
+			rs2.close();
 	        stmt.close();
 	        conn.close();
 			
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace(); 
 		}
+	    
+	    prepTime.add(new Double (15));
+	    prepTime.add(new Double (30));
+	    prepTime.add(new Double (45));
+	    prepTime.add(new Double (1.00));
+	    prepTime.add(new Double (1.15));
+	    prepTime.add(new Double (1.30));
+	    prepTime.add(new Double (1.45));
+	    prepTime.add(new Double (2.00));
+	    prepTime.add(new Double (2.15));
+	    prepTime.add(new Double (2.30));
+	    prepTime.add(new Double (2.45));
+	    prepTime.add(new Double (3.00));
+	    prepTime.add(new Double (3.15));
+	    prepTime.add(new Double (3.30));
+	    prepTime.add(new Double (3.45));
+	    prepTime.add(new Double (4.00));
+	    prepTime.add(new Double (4.15));
+	    prepTime.add(new Double (4.30));
+	    prepTime.add(new Double (4.45));
+	    prepTime.add(new Double (5.00));
+	    prepTime.add(new Double (5.15));
+	    prepTime.add(new Double (5.30));
+	    prepTime.add(new Double (5.45));
+	    prepTime.add(new Double (6.00));
 		
 		request.setAttribute("foodOriginResult", foodOriginResult);
+		request.setAttribute("foodTypeResult", foodTypeResult);
+		request.setAttribute("prepTime", prepTime);
 		request.getRequestDispatcher("jsp/RecipeEntry.jsp").forward(request, response);
 	
 	} // End doGet
