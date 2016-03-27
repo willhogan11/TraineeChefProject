@@ -7,16 +7,22 @@ function popup(mylink, windowname) {
 		href = mylink; 
 	else 
 		href = mylink.href; 
-	window.open(href, windowname, 'width=800, height=500, scrollbars=yes'); 
+	window.open(href, windowname, 'width=800, height=600, scrollbars=yes'); 
 	return false; 
 }
 
 
+
+
+
 // Add Ingredient on page when "+" button is clicked
 function addIngredient() {
-    var x = document.getElementById("myText").value;
-    document.getElementById("demo").innerHTML = x;
+    var ingredient = document.getElementById("myText").value;
+    document.getElementById("demo").innerHTML = ingredient;
 }
+
+
+
 
 
 // Function to Check if Input is Valid
@@ -41,10 +47,6 @@ function validateForm() {
     }
 }
 
-// Testing Purposes. 
-/*function testPopUp(){
-	alert("Test Pop Up!");
-}*/
 
 // Return result of page to main page (W.I.P)
 function HandlePopupResult(result) {

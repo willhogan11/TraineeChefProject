@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dataAccessObjects.IngredientDAO;
+import dataAccessObjects.MeasurementDAO;
 
 /**
  * Servlet implementation class AddIngredients
@@ -23,6 +24,7 @@ public class AddIngredients extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			request.setAttribute("ingredientTypeResult", IngredientDAO.ingredientList());
+			request.setAttribute("measureTypeResult", MeasurementDAO.measureType());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

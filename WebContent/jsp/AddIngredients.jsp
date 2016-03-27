@@ -17,18 +17,53 @@
 <body>
 	<div id="ingredientsForm">
 		<h1>Add Ingredients</h1>
-			<select>
-				<option selected="selected">-Select-</option>
-				<c:forEach items="${IngredientDAO.ingredientList()}" var="items">
-					<option>${items.name}</option>	
-				</c:forEach>
-			</select>
-			First Name: <input type="text" id="myText" value="">
+		<hr>
+		<table>
+			<tr>
+				<td><h3>Add Ingredient from Database:</h3></td>
+			</tr>
+			<tr>
+				<td>Item:</td>
+				<td>
+					<select>
+						<option selected="selected">-Select-</option>
+						<c:forEach items="${IngredientDAO.ingredientList()}" var="item">
+							<option>${item.name}</option>	
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Measurement Type:</td>
+				<td>
+					<select>
+						<option selected="selected">-Select-</option>
+						<c:forEach items="${MeasurementDAO.measureType()}" var="item">
+							<option>${item.measureName}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Quantity:</td>
+				<td>
+					<select>
+						<option selected="selected">-Select-</option>
+						<c:forEach var="i" begin="1" end="100">
+							<option>${i}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			
+			
+		<!-- 	First Name: <input type="text" id="myText" value="">
 			<button onclick="addIngredient()">+</button>
 			
-			<!-- <button id="addButton" name="addButton">+</button> -->
+			<button id="addButton" name="addButton">+</button>
 
-			<p id="demo"></p>
+			<p id="demo"></p> -->
+		</table>
 	</div>
 </body>
 </html>
