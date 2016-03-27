@@ -3,22 +3,23 @@
 <%@ page import="java.io.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="beans.*" %>
+<%@ page import="dataAccessObjects.*" %>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Recipe Entry</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Recipe Entry</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 <body>
 	<div class="recipeEntryForm">
 		<form name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
 			<table>
-			    <tr>
+		    	<tr>
 			        <td>Your Name</td>
 			        <td>
 			        	<input type="text" name="name" required="">
@@ -36,7 +37,7 @@
 			        <td>
 			        	<select id="foodType" name="foodType">
 			        		<option selected="selected">-Select-</option>
-			        		<c:forEach items="${foodTypeResult}" var="items">
+			        		<c:forEach items="${FoodTypeDAO.foodTypelist()}" var="items">
 								<option>${items.type}</option>
 							</c:forEach>
 			        	</select>
@@ -48,7 +49,7 @@
 			        <td>
 			        	<select id="menuOrigin" name="menuOrigin">
 				        	<option selected="selected">-Select-</option>
-			        		<c:forEach items="${foodOriginResult}" var="items">
+			        		<c:forEach items="${FoodOriginDAO.foodOriginlist()}" var="items">
 								<option>${items.origin}</option>
 							</c:forEach>
 			        	</select>
@@ -66,7 +67,7 @@
 			    	<td>
 			    		<select>
 			    			<option selected="selected">-Select-</option>
-			        		<c:forEach items="${prepTime}" var="items">
+			        		<c:forEach items="${PrepTimeDAO.prepTime()}" var="items">
 								<option>${items}</option>
 							</c:forEach>
 			    		</select>
@@ -75,7 +76,7 @@
 			    <tr>
 			    	<td>Ingredients</td>
 			    	<td>
-			    	<a href="html/AddIngredients.html" onClick="return popup(this, 'notes')">
+			    	<a href="jsp/AddIngredients.jsp" onClick="return popup(this, 'notes')">
 			    		<button id="addIngredients" type="button" name="addIngredients" required="">Add Ingredients</button>
     			    </a>
 			    	</td>

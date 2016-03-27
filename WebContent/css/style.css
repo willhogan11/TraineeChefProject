@@ -8,11 +8,12 @@ p,h1,h2,h3,h4,h5,tr,td,input,select,option,button,image {
 	border: solid black 2px;
 	margin: auto;
 	width: 475px;
-	padding: 30px;
+	height: auto;
+	padding: 20px;
 	font-family: arial;
 }
 
-.recipeEntryForm form table tr td, h1{
+.recipeEntryForm form table tr td, h1 {
 	padding: 8px;
 }
 

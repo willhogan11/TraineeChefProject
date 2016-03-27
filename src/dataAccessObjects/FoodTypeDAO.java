@@ -1,27 +1,23 @@
-package DataAccessObjects;
+package dataAccessObjects;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.annotation.WebServlet;
-
-import beans.FoodOrigin;
-
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import beans.FoodType;
 
-public class FoodOriginDAO {
-
-	public List<FoodOrigin> _list() throws Exception{
-			
+public class FoodTypeDAO {
+	
+	public static List<FoodType> foodTypelist() throws Exception {
+		
 		String url = "jdbc:mysql://localhost/traineechefdb";
 	    String driver = "com.mysql.jdbc.Driver";
 	    String user = "root";
 	    String password = null;
-	    List<FoodOrigin> result = new ArrayList<FoodOrigin>();
+	    List<FoodType> result = new ArrayList<FoodType>();
         
     	try {
 			Class.forName(driver).newInstance();
@@ -30,13 +26,14 @@ public class FoodOriginDAO {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			Statement stmt = (Statement) conn.createStatement();
-			String sql = "SELECT * FROM FOOD_ORIGIN";
+			String sql = "SELECT * FROM FOOD_TYPE "
+					   + "ORDER BY TYPE_NAME";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				FoodOrigin fOrigin = new FoodOrigin();
-				fOrigin.setOrigin(rs.getString("ORIGIN"));
-				result.add(fOrigin);
+				FoodType fType = new FoodType();
+				fType.setType(rs.getString("TYPE_NAME"));
+				result.add(fType);
 			}
 			rs.close();
 	        stmt.close();
@@ -44,9 +41,6 @@ public class FoodOriginDAO {
 			
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace(); 
-		}
-    	for (FoodOrigin s : result) {
-			System.out.println(s);
 		}
     	return result;
 	}

@@ -2,13 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -17,13 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
-
-import beans.FoodOrigin;
-import beans.FoodType;
+import dataAccessObjects.*;
 
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/RecipeEntry" })
@@ -33,125 +22,17 @@ public class RecipeEntry extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
-		
-		String url = "jdbc:mysql://localhost/traineechefdb";
-	    String driver = "com.mysql.jdbc.Driver";
-	    String user = "root";
-	    String password = null;
-	    List<FoodOrigin> foodOriginResult = new ArrayList<FoodOrigin>();
-	    List<FoodType> foodTypeResult = new ArrayList<FoodType>();
-	    List<Double> prepTime = new ArrayList<Double>();
-	    
-    	try {
-			Class.forName(driver).newInstance();
-			Connection conn = (Connection) DriverManager.getConnection(url, user, password);
-			System.out.println("Connection Established");		
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Statement stmt = (Statement) conn.createStatement();
-			
-			String sql1 = "SELECT * FROM FOOD_ORIGIN "
-					   + "ORDER BY ORIGIN";
-			
-			ResultSet rs1 = stmt.executeQuery(sql1);
-			
-			
-			while(rs1.next()){
-				FoodOrigin fOrigin = new FoodOrigin();
-				fOrigin.setOrigin(rs1.getString("ORIGIN"));
-				foodOriginResult.add(fOrigin);
-			}
-			
-			String sql2 = "SELECT * FROM FOOD_TYPE "
-					   + "ORDER BY TYPE_NAME";
-			
-			ResultSet rs2 = stmt.executeQuery(sql2);
-			
-			while(rs2.next()){
-				FoodType fType = new FoodType();
-				fType.setType(rs2.getString("TYPE_NAME"));
-				foodTypeResult.add(fType);
-			}
-			rs1.close();
-			rs2.close();
-	        stmt.close();
-	        conn.close();
-			
-		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace(); 
+  
+		try {
+			request.setAttribute("foodOriginResult", FoodOriginDAO.foodOriginlist());
+			request.setAttribute("foodTypeResult", FoodTypeDAO.foodTypelist());
+			request.setAttribute("prepTimeResult", PrepTimeDAO.prepTime());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	    
-	    prepTime.add(new Double (15));
-	    prepTime.add(new Double (30));
-	    prepTime.add(new Double (45));
-	    prepTime.add(new Double (1.00));
-	    prepTime.add(new Double (1.15));
-	    prepTime.add(new Double (1.30));
-	    prepTime.add(new Double (1.45));
-	    prepTime.add(new Double (2.00));
-	    prepTime.add(new Double (2.15));
-	    prepTime.add(new Double (2.30));
-	    prepTime.add(new Double (2.45));
-	    prepTime.add(new Double (3.00));
-	    prepTime.add(new Double (3.15));
-	    prepTime.add(new Double (3.30));
-	    prepTime.add(new Double (3.45));
-	    prepTime.add(new Double (4.00));
-	    prepTime.add(new Double (4.15));
-	    prepTime.add(new Double (4.30));
-	    prepTime.add(new Double (4.45));
-	    prepTime.add(new Double (5.00));
-	    prepTime.add(new Double (5.15));
-	    prepTime.add(new Double (5.30));
-	    prepTime.add(new Double (5.45));
-	    prepTime.add(new Double (6.00));
-		
-		request.setAttribute("foodOriginResult", foodOriginResult);
-		request.setAttribute("foodTypeResult", foodTypeResult);
-		request.setAttribute("prepTime", prepTime);
 		request.getRequestDispatcher("jsp/RecipeEntry.jsp").forward(request, response);
 	
 	} // End doGet
-	
-	
-	
-	
-/*		
-	public List<FoodOrigin>list() throws Exception{
-		String url = "jdbc:mysql://localhost/traineechefdb";
-	    String driver = "com.mysql.jdbc.Driver";
-	    String user = "root";
-	    String password = null;
-	    List<FoodOrigin> foodOriginList = new ArrayList<FoodOrigin>();
-	    
-        
-    	try {
-			Class.forName(driver).newInstance();
-			Connection conn = (Connection) DriverManager.getConnection(url, user, password);
-			System.out.println("Connection Established");		
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Statement stmt = (Statement) conn.createStatement();
-			String sql = "SELECT * FROM FOOD_ORIGIN";
-			ResultSet rs = stmt.executeQuery(sql);
-			
-			while(rs.next()){
-				FoodOrigin fo = new FoodOrigin();
-				fo.setOrigin(rs.getString("foodOrigin"));
-				foodOriginList.add(fo);
-			}
-			rs.close();
-	        stmt.close();
-	        conn.close();
-			
-		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace(); 
-		}
-    	return foodOriginList;
-	}
-	
-	
-	*/
 	
 	
 	
