@@ -5,12 +5,13 @@
 <%@ page import="beans.*" %>
 <%@ page import="dataAccessObjects.*" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Add Ingredients</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+	<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" /> --%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 
@@ -55,7 +56,31 @@
 					</select>
 				</td>
 			</tr>
-			
+			<tr>
+				<td>
+					<button id="add">Add</button>
+				</td>
+			</tr>
+		</table>
+		<hr>
+		
+		<form id="addToDatabase" name="addToDatabase" method="POST" action="/TraineeChefProject/jsp/AddIngredients">
+			<h3>Ingredient not in Database? <br> No problem, Add below...</h3>
+			<table>
+				<tr>
+					<td>Ingredient Name:</td>
+					<td>
+						<input type="text" name="ingredientName" required="">
+					</td>
+					<td></td>
+					<td>
+						<input type="submit" value="+">
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+		
 			
 		<!-- 	First Name: <input type="text" id="myText" value="">
 			<button onclick="addIngredient()">+</button>
@@ -63,7 +88,7 @@
 			<button id="addButton" name="addButton">+</button>
 
 			<p id="demo"></p> -->
-		</table>
+		
 	</div>
 </body>
 </html>

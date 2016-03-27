@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.jdbc.Connection;
+
+import beans.Ingredient;
 import dataAccessObjects.IngredientDAO;
 import dataAccessObjects.MeasurementDAO;
 
@@ -31,4 +34,27 @@ public class AddIngredients extends HttpServlet {
 		request.getRequestDispatcher("jsp/AddIngredients.jsp").forward(request, response);
 		
 	} // End doGet
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String url = "jdbc:mysql://localhost/traineechefdb";
+	    String user = "root";
+	    String password = null;
+	    Connection conn = null;
+	    
+	    Ingredient ingredient = new Ingredient();
+	   
+	    String addToDB = request.getParameter("addToDatabase");
+	    ingredient.setName(addToDB);
+	    
+	    System.out.println(ingredient.getName());
+	}
 }
+
+
+
+
+

@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="recipeEntryForm">
-		<form name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
+		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
 			<table>
 		    	<tr>
