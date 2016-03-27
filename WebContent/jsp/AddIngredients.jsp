@@ -3,6 +3,7 @@
 <%@ page import="java.io.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="beans.*" %>
+<%@ page import="dataAccessObjects.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,9 +17,18 @@
 <body>
 	<div id="ingredientsForm">
 		<h1>Add Ingredients</h1>
-		<table>
+			<select>
+				<option selected="selected">-Select-</option>
+				<c:forEach items="${IngredientDAO.ingredientList()}" var="items">
+					<option>${items.name}</option>	
+				</c:forEach>
+			</select>
+			First Name: <input type="text" id="myText" value="">
+			<button onclick="addIngredient()">+</button>
 			
-		</table>		
+			<!-- <button id="addButton" name="addButton">+</button> -->
+
+			<p id="demo"></p>
 	</div>
 </body>
 </html>

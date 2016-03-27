@@ -12,6 +12,13 @@ function popup(mylink, windowname) {
 }
 
 
+// Add Ingredient on page when "+" button is clicked
+function addIngredient() {
+    var x = document.getElementById("myText").value;
+    document.getElementById("demo").innerHTML = x;
+}
+
+
 // Function to Check if Input is Valid
 function validateFunc(){
 	var x;
