@@ -64,7 +64,7 @@
 		</table>
 		<hr>
 		
-		<form id="addToDatabase" name="addToDatabase" method="POST" action="/TraineeChefProject/jsp/AddIngredients">
+		<form name="addToDatabase" method="POST" action="/TraineeChefProject/AddIngredients">
 			<h3>Ingredient not in Database? <br> No problem, Add below...</h3>
 			<table>
 				<tr>

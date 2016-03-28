@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import com.mysql.jdbc.Connection;
 import dataAccessObjects.*;
+import beans.*;
 
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/RecipeEntry" })
@@ -31,6 +32,7 @@ public class RecipeEntry extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher("jsp/RecipeEntry.jsp").forward(request, response);
+		response.sendRedirect("jsp/RecipeEntry.jsp");
 	
 	} // End doGet
 	

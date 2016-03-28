@@ -1,17 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.DriverManager;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.mysql.jdbc.Connection;
+import beans.*;
+import dataAccessObjects.*;
 
-import beans.Ingredient;
-import dataAccessObjects.IngredientDAO;
-import dataAccessObjects.MeasurementDAO;
 
 /**
  * Servlet implementation class AddIngredients
@@ -35,6 +35,7 @@ public class AddIngredients extends HttpServlet {
 		
 	} // End doGet
 	
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -46,11 +47,33 @@ public class AddIngredients extends HttpServlet {
 	    Connection conn = null;
 	    
 	    Ingredient ingredient = new Ingredient();
-	   
-	    String addToDB = request.getParameter("addToDatabase");
-	    ingredient.setName(addToDB);
+	    String ingredientName = request.getParameter("ingredientName");
+	    ingredient.setName(ingredientName);
+	    request.setAttribute("ingredientName", ingredientName);
+	    response.setContentType("text/html");
 	    
-	    System.out.println(ingredient.getName());
+	    try {
+	    	Class.forName("com.mysql.jdbc.Driver");
+			conn = (Connection) DriverManager.getConnection(url, user, password);
+			System.out.println("Connection Established");
+	    	
+			String sql = "INSERT INTO INGREDIENTS (NAME) VALUES(?)";
+			java.sql.PreparedStatement prest = conn.prepareStatement(sql);
+
+			prest.setString(1, ingredient.getName());
+			prest.executeUpdate();
+
+			prest.close();
+			conn.close();
+			
+	    }catch (Exception e) {
+            e.printStackTrace();
+	    }
+	    
+	    System.out.println("value from 'getName()' " + ingredient.getName()); // Console Test
+	    response.getWriter().print("Ingredient " + ingredient.getName() + " successfully added to Database");
+	    
+	    response.sendRedirect("jsp/AddIngredients.jsp");
 	}
 }
 
