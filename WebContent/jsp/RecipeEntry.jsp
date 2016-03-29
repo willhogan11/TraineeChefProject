@@ -32,6 +32,13 @@
 			        </td>
 			    </tr>  
 			    
+			    <tr>
+			   		<td>Recipe Name</td>
+			   		<td>
+			   			<input type="text" name="recipeName" required="">
+			   		</td> 
+			    </tr>
+			    
 			     <tr>
 			        <td>Food Type </td>
 			        <td>

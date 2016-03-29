@@ -61,7 +61,7 @@
 					<button id="add" name="add" onClick="concatIngred()">Add</button>
 				</td>
 			</tr>
-			<tr><td id="doesitwork"><p id="concatResult"></p></td></tr>
+			<tr><td id="tableDetailsID"><p id="concatResult"></p></td></tr>
 		</table>
 		
 		<hr>

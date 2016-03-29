@@ -11,6 +11,7 @@ public class MeasurementDAO {
 		
 		List<MeasureType> measureType = new ArrayList<MeasureType>();
 		
+		measureType.add(new MeasureType("Number"));
 		measureType.add(new MeasureType("Pinch"));
 		measureType.add(new MeasureType("Teaspoon"));
 		measureType.add(new MeasureType("Tablespoon"));
