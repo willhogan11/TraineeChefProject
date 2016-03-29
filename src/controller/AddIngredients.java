@@ -51,9 +51,6 @@ public class AddIngredients extends HttpServlet {
 	    Ingredient ingredient = new Ingredient();
 	    String ingredientName = request.getParameter("ingredientName");
 	    ingredient.setName(ingredientName);
-	    request.setAttribute("Added to Database ", ingredientName);
-
-	    response.setContentType("text/html");
 	    
 	    try {
 	    	Class.forName("com.mysql.jdbc.Driver");
@@ -73,16 +70,14 @@ public class AddIngredients extends HttpServlet {
             e.printStackTrace();
 	    }
 	    
-	    System.out.println("value from 'getName()' " + ingredient.getName()); // Console Test
+	    // System.out.println("value from 'getName()' " + ingredient.getName()); // Console Test
 	    
+	    request.setAttribute("ingredientName", ingredientName +  " Added to Database");
 	    getServletContext().getRequestDispatcher("/jsp/AddIngredients.jsp").forward(request, response);
         getServletContext().getAttribute(ingredientName);
         
-        request.getAttribute(ingredientName);
-	    
 	    // response.getWriter().print("Ingredient " + ingredient.getName() + " successfully added to Database");
-	    // response.sendRedirect("/jsp/AddIngredients.jsp");
-	    
+	    //response.sendRedirect("/jsp/AddIngredients.jsp");
 	    
 	} // End doPost
 }
