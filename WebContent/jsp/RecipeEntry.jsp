@@ -76,7 +76,7 @@
 			    <tr>
 			    	<td>Ingredients</td>
 			    	<td>
-			    	<a href="AddIngredients.jsp" onClick="return popup(this, 'notes')">
+			    	<a href="/TraineeChefProject/AddIngredients" onClick="return popup(this, 'notes')">
 			    		<button id="addIngredients" type="button" name="addIngredients" required="">Add Ingredients</button>
     			    </a>
 			    	</td>

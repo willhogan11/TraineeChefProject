@@ -12,7 +12,10 @@ function popup(mylink, windowname) {
 }
 
 
-
+// Test Alert
+function successAlert() {
+    alert("Successfully added");
+}
 
 
 // Add Ingredient on page when "+" button is clicked

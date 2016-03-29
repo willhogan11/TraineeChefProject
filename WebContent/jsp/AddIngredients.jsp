@@ -74,11 +74,16 @@
 					</td>
 					<td></td>
 					<td>
-						<input type="submit" value="+">
+						<input type="submit" value="+" >
 					</td>
 				</tr>
 			</table>
 		</form>
+		
+		<!-- Testing... Trying to retrieve server side variable -->
+			<%-- <p><c:out value="${ingredientName}"></c:out></p> --%>
+			<p>${ingredientName}</p>
+		<!-- End -->
 		
 		
 			
