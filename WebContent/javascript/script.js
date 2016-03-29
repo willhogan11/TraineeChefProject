@@ -27,6 +27,24 @@ function addIngredient() {
 
 
 
+// Function that concatenates each Ingredients Item, Measurement Type & Quantity
+function concatIngred(){
+	var item = "Item: " + document.getElementById("item").value + " "
+	var measure = "Measure: " + document.getElementById("measure").value + " "
+	var quantity = "Quantity: " + parseInt(document.getElementById("quantity").value);
+	var concatDetails = item + measure + quantity;
+	
+	// document.getElementById("concatResult").innerHTML = concatDetails;
+	
+	// Create a New Node to keep visual track of all entered Ingredients details
+	var paragraph = document.createElement("p");
+	var node = document.createTextNode(concatDetails);
+	paragraph.appendChild(node);
+	var element = document.getElementById("doesitwork");
+	element.appendChild(paragraph);
+}
+
+
 
 // Function to Check if Input is Valid
 function validateFunc(){

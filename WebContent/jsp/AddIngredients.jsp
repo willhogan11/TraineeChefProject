@@ -26,7 +26,7 @@
 			<tr>
 				<td>Item:</td>
 				<td>
-					<select>
+					<select id="item" name="item">
 						<option selected="selected">-Select-</option>
 						<c:forEach items="${IngredientDAO.ingredientList()}" var="item">
 							<option>${item.name}</option>	
@@ -37,7 +37,7 @@
 			<tr>
 				<td>Measurement Type:</td>
 				<td>
-					<select>
+					<select id="measure" name="measure">
 						<option selected="selected">-Select-</option>
 						<c:forEach items="${MeasurementDAO.measureType()}" var="item">
 							<option>${item.measureName}</option>
@@ -48,7 +48,7 @@
 			<tr>
 				<td>Quantity:</td>
 				<td>
-					<select>
+					<select id="quantity" name="quantity">
 						<option selected="selected">-Select-</option>
 						<c:forEach var="i" begin="1" end="100">
 							<option>${i}</option>
@@ -58,10 +58,12 @@
 			</tr>
 			<tr>
 				<td>
-					<button id="add">Add</button>
+					<button id="add" name="add" onClick="concatIngred()">Add</button>
 				</td>
 			</tr>
+			<tr><td id="doesitwork"><p id="concatResult"></p></td></tr>
 		</table>
+		
 		<hr>
 		
 		<form name="addToDatabase" method="POST" action="/TraineeChefProject/AddIngredients">
@@ -80,19 +82,8 @@
 			</table>
 		</form>
 		
-		<!-- Testing... Trying to retrieve server side variable -->
-			<%-- <p><c:out value="${ingredientName}"></c:out></p> --%>
-			<p>${ingredientName}</p>
-		<!-- End -->
-		
-		
-			
-		<!-- 	First Name: <input type="text" id="myText" value="">
-			<button onclick="addIngredient()">+</button>
-			
-			<button id="addButton" name="addButton">+</button>
-
-			<p id="demo"></p> -->
+		<!-- Display Result from Server -->
+		<p>${ingredientName}</p>
 		
 	</div>
 </body>
