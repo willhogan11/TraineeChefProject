@@ -13,14 +13,15 @@
 	<title>Recipe Entry</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
-	
 </head>
-<body onload="getCookie()">
-	
-	<textarea id="ingredientsReturned" rows="10" cols="30"></textarea>
-	
-	<button id="receiveString" name="receiveString" onClick="getCookie()">Ingredients String</button>
 
+<body onfocus="getCookie()">
+
+	<!-- Testing Purposes, to visualise cookie string to be used in ingredients -->
+		<textarea id="ingredientsReturned" rows="10" cols="30"></textarea>
+		<button id="receiveString" name="receiveString" onClick="getCookie()">Ingredients String</button>
+	<!-- End -->
+	
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>

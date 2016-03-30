@@ -2,7 +2,7 @@ var ingredientDetails = [];
 var cookiesArray = [];
 var jsonString;
 var jsonParse;
-var testVar;
+
 
 // Pop up window code that triggers the launch of the 'AddIngredients.html' page
 function popup(mylink, windowname) { 
@@ -17,79 +17,25 @@ function popup(mylink, windowname) {
 	return false; 
 }
 
+// Close the Pop up window
 function closePopUp(){
 	window.close();
-	location.reload();
 }
 
-
-
-// function testPassVariable() {
-	// testVar = document.ingredientsForm.tableDetailsID.value;
-// }
-
-
-
-
-// Add Ingredient on page when "+" button is clicked
-function addIngredient() {
-    var ingredient = document.getElementById("myText").value;
-    document.getElementById("demo").innerHTML = ingredient;
+function getCookie(){
+	jsonString = document.cookie;
+	jsonParse = JSON.parse(jsonString);
+	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
 }
 
+function setCookie(){
+	jsonString = JSON.stringify(ingredientDetails);
+	document.cookie = jsonString;
+}
 
 function storeIngredientDetails(concatDetails){
 	ingredientDetails.push(concatDetails);	
 }
-
-
-String.prototype.escapeSpecialChars = function() {
-    return this.replace(/\\n/g, "\\n")
-               .replace(/\\'/g, "\\'")
-               .replace(/\\"/g, '\\"')
-               .replace(/\\&/g, "\\&")
-               .replace(/\\r/g, "\\r")
-               .replace(/\\t/g, "\\t")
-               .replace(/\\b/g, "\\b")
-               .replace(/\\f/g, "\\f");
-};
-
-/*function getCookie(){
-	
-    cookiesSplitArray = document.cookie.split("; ");
-    
-	   
-    for(var i=0; i < cookiesArray.length; i++){
-    	// var returnedValue = cookiesArray[i].split("; ");
-    	
-    	// document.getElementById("concatResult").value = cookiesArray[i];
-    	
-    	document.getElementById("tableDetailsID").innerHTML = cookiesArray[0];
-    	console.log(cookiesArray[i]);
-	} 
-}*/
-
-function getCookie(){
-	
-	jsonString = document.cookie;
-	jsonParse = JSON.parse(jsonString);
-	
-	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
-}
-
-/*window.onunload = unloadPage;
-function unloadPage(){
-	console.log("unload event fired!");
-	getCookie();
-}*/
-
-
-/*function setCookie(){
-	jsonString = JSON.stringify(ingredientDetails);
-	document.cookie = jsonString;
-}*/
-
-
 
 // Function that concatenates each Ingredients Item, Measurement Type & Quantity
 function concatIngred(){
@@ -99,12 +45,10 @@ function concatIngred(){
 	var measure = "[Measure]: " + document.getElementById("measure").value + " "
 	var quantity = "[Quantity]: " + parseInt(document.getElementById("quantity").value);
 	var concatDetails = item + measure + quantity;
-	
-	ingredientDetails.push(concatDetails);
-		// setCookie();
-	
-	jsonString = JSON.stringify(ingredientDetails);
-	document.cookie = jsonString;
+
+	// Store value in function and launch setCookie function to stroe json string
+	storeIngredientDetails(concatDetails);
+    setCookie();
 
 	// Create a New Node to keep visual track of all entered Ingredients details
 	var paragraph = document.createElement("p");
@@ -140,8 +84,13 @@ function validateForm() {
     }
 }
 
-
-// Return result of page to main page (W.I.P)
-/*function HandlePopupResult(result) {
-    alert("result of popup is: " + result);
-}*/
+String.prototype.escapeSpecialChars = function() {
+    return this.replace(/\\n/g, "\\n")
+               .replace(/\\'/g, "\\'")
+               .replace(/\\"/g, '\\"')
+               .replace(/\\&/g, "\\&")
+               .replace(/\\r/g, "\\r")
+               .replace(/\\t/g, "\\t")
+               .replace(/\\b/g, "\\b")
+               .replace(/\\f/g, "\\f");
+};
