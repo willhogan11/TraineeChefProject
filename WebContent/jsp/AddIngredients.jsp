@@ -76,7 +76,7 @@
 					</td>
 					<td></td>
 					<td>
-						<input type="submit" value="+" >
+						<input type="submit" value="+">
 					</td>
 				</tr>
 			</table>
