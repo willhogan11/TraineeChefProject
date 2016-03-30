@@ -15,11 +15,11 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 
-<body onfocus="getCookie()">
+<body>
 
 	<!-- Testing Purposes, to visualise cookie string to be used in ingredients -->
-		<textarea id="ingredientsReturned" rows="10" cols="30"></textarea>
-		<button id="receiveString" name="receiveString" onClick="getCookie()">Ingredients String</button>
+		<textarea onfocus="getLocalStorage()" id="ingredientsReturned" rows="10" cols="30"></textarea>
+		<!-- <button id="receiveString" name="receiveString" onClick="getCookie()">Ingredients String</button> -->
 	<!-- End -->
 	
 	<div class="recipeEntryForm">

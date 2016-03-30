@@ -22,23 +22,24 @@ function closePopUp(){
 	window.close();
 }
 
-function getCookie(){
-	jsonString = document.cookie;
-	jsonParse = JSON.parse(jsonString);
-	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
+function setLocalStorage(){
+	jsonString = JSON.stringify(ingredientDetails);
+	localStorage.setItem("jsonString", jsonString);
 }
 
-function setCookie(){
-	jsonString = JSON.stringify(ingredientDetails);
-	document.cookie = jsonString;
+function getLocalStorage(){
+	var tempString = localStorage.getItem("jsonString");
+	jsonParse = JSON.parse(tempString);
+	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
 }
 
 function storeIngredientDetails(concatDetails){
 	ingredientDetails.push(concatDetails);	
 }
 
+
 // Function that concatenates each Ingredients Item, Measurement Type & Quantity
-function concatIngred(){
+function concatIngred() {
 	
 	// Create Variables to get the elements by ID, then concatenate them
 	var item = "[Item]: " + document.getElementById("item").value + " "
@@ -46,9 +47,9 @@ function concatIngred(){
 	var quantity = "[Quantity]: " + parseInt(document.getElementById("quantity").value);
 	var concatDetails = item + measure + quantity;
 
-	// Store value in function and launch setCookie function to stroe json string
+	// Store value in function and launch setLocalStorage function to store json string
 	storeIngredientDetails(concatDetails);
-    setCookie();
+	setLocalStorage();
 
 	// Create a New Node to keep visual track of all entered Ingredients details
 	var paragraph = document.createElement("p");
