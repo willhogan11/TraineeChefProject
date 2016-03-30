@@ -61,7 +61,16 @@
 					<button id="add" name="add" onClick="concatIngred()">Add</button>
 				</td>
 			</tr>
-			<tr><td id="tableDetailsID"><p id="concatResult"></p></td></tr>
+			<tr>
+				<td id="tableDetailsID" name="tableDetailsID">
+					<p id="concatResult" name="concatResult"></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="finishedIngredients" name="finishedIngredients" onclick="closePopUp()">Finished</button>
+				</td>
+			</tr>
 		</table>
 		
 		<hr>

@@ -2,6 +2,7 @@ var ingredientDetails = [];
 var cookiesArray = [];
 var jsonString;
 var jsonParse;
+var testVar;
 
 // Pop up window code that triggers the launch of the 'AddIngredients.html' page
 function popup(mylink, windowname) { 
@@ -15,6 +16,19 @@ function popup(mylink, windowname) {
 	window.open(href, windowname, 'width=1000, height=600, scrollbars=yes'); 
 	return false; 
 }
+
+function closePopUp(){
+	window.close();
+	location.reload();
+}
+
+
+
+// function testPassVariable() {
+	// testVar = document.ingredientsForm.tableDetailsID.value;
+// }
+
+
 
 
 // Add Ingredient on page when "+" button is clicked
@@ -56,19 +70,19 @@ String.prototype.escapeSpecialChars = function() {
 }*/
 
 function getCookie(){
-	for(var i=0; i < 10; i++){
-		jsonString = document.cookie.split(",");
-	}
 	
+	jsonString = document.cookie;
 	jsonParse = JSON.parse(jsonString);
-	document.getElementById("tableDetailsID").innerHTML = jsonParse;
+	
+	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
 }
 
-window.onunload = unloadPage;
+/*window.onunload = unloadPage;
 function unloadPage(){
 	console.log("unload event fired!");
 	getCookie();
-}
+}*/
+
 
 /*function setCookie(){
 	jsonString = JSON.stringify(ingredientDetails);
