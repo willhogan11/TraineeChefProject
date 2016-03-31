@@ -37,7 +37,6 @@ function storeIngredientDetails(concatDetails){
 	ingredientDetails.push(concatDetails);	
 }
 
-
 // Function that concatenates each Ingredients Item, Measurement Type & Quantity
 function concatIngred() {
 	

@@ -16,12 +16,6 @@
 </head>
 
 <body>
-
-	<!-- Testing Purposes, to visualise cookie string to be used in ingredients -->
-		<textarea onfocus="getLocalStorage()" id="ingredientsReturned" rows="10" cols="30"></textarea>
-		<!-- <button id="receiveString" name="receiveString" onClick="getCookie()">Ingredients String</button> -->
-	<!-- End -->
-	
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
@@ -38,13 +32,6 @@
 						<input type="text" name="surname" required="">
 			        </td>
 			    </tr>  
-			    
-			    <tr>
-			   		<td>Recipe Name</td>
-			   		<td>
-			   			<input type="text" name="recipeName" required="">
-			   		</td> 
-			    </tr>
 			    
 			     <tr>
 			        <td>Food Type </td>
@@ -69,6 +56,13 @@
 			        	</select>
 			        </td>
 			    </tr>   
+			    
+		       <tr>
+			   		<td>Recipe Name</td>
+			   		<td>
+			   			<input type="text" name="recipeName" required="">
+			   		</td> 
+			    </tr>
 			    
 			    <tr>
 			        <td>Description </td>
@@ -95,6 +89,15 @@
     			    </a>
 			    	</td>
 			    </tr>   
+			    <tr>
+			    	<td>
+			    		<div style="display:none" 
+			    			 onsubmit="getLocalStorage()" 
+			    			 onmouseover="getLocalStorage()" 
+			    			 id="ingredientsReturned" 
+			    			 name="ingredientsReturned"></div>
+			    	</td>
+			    </tr>
 			    <tr>
 			    	<td>Directions</td>
 			    	<td>
