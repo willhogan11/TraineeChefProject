@@ -3,8 +3,8 @@ package beans;
 public class Chef {
 	
 	private int id;
-	private String firstName;
-	private String surname;
+	private String studentName;
+	private String studentSurname;
 	
 	public int getId() {
 		return id;
@@ -12,16 +12,16 @@ public class Chef {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getStudentName() {
+		return studentName;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
-	public String getSurname() {
-		return surname;
+	public String getStudentSurname() {
+		return studentSurname;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setStudentSurname(String studentSurname) {
+		this.studentSurname = studentSurname;
 	}
 }

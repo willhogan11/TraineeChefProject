@@ -1,4 +1,4 @@
-	package controller;
+package controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,13 +44,25 @@ public class RecipeEntry extends HttpServlet {
 	    String user = "root";
 	    String password = null;
 	    Connection conn = null;
-		
-	    HttpSession session = request.getSession();
-	    String message = null;
 	    
-	    InputStream inputStream = null; // input stream of the upload file
-        
-        // obtains the upload file part in this multipart request
+	    String message = null;
+		InputStream inputStream = null; // input stream of the upload file
+	    HttpSession session = request.getSession();
+		
+		Chef chef = new Chef();
+		Recipe recipe = new Recipe();
+	   
+	    chef.setStudentName(request.getParameter("studentName"));
+	    chef.setStudentSurname(request.getParameter("studentSurname"));
+	    
+	    recipe.setRecipeName(request.getParameter("recipeName"));
+	    recipe.setDescription(request.getParameter("description"));
+	    double prepTime = Double.parseDouble(request.getParameter("prepTime"));
+	    recipe.setPrepTime(prepTime);
+	    recipe.setIngredients(request.getParameter("ingredientsReturned"));
+	    recipe.setDirections(request.getParameter("directions"));
+	    
+        // Obtains the upload file part in this multipart request
         Part filePart = request.getPart("image");
         if (filePart != null) {
             // prints out some information for debugging
@@ -60,23 +72,23 @@ public class RecipeEntry extends HttpServlet {
              
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
-        }
-	    
-	    String name = request.getParameter("name");
-	    String surname = request.getParameter("surname");
-		String age = request.getParameter("age");
-		String testdata = request.getParameter("testdata");
+        } //  End if
+        
 	    
 	    try {
 	    	Class.forName("com.mysql.jdbc.Driver");
 			conn = (Connection) DriverManager.getConnection(url, user, password);
 			System.out.println("Connection Established");
 	    	
-			String sql = "INSERT INTO USERTABLE(NAME, SURNAME, AGE, IMAGE) VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
+					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			java.sql.PreparedStatement prest = conn.prepareStatement(sql);
-			/*prest.setString(1, name);
-			prest.setString(2, surname);*/
-			prest.setString(3, age);
+			
+			prest.setString(1, recipe.getRecipeName());
+			prest.setString(2, recipe.getDescription());
+			prest.setDouble(3,  recipe.getPrepTime());
+			prest.setString(4,  recipe.getIngredients());
+			prest.setString(5,  recipe.getDirections());
 			
 			// fetches input stream of the upload file for the blob column
 			if (inputStream != null) {
@@ -94,17 +106,17 @@ public class RecipeEntry extends HttpServlet {
 			// sets the message in request scope
             request.setAttribute("Message", message);
 			session.setAttribute("msg", "You Successfully Created a User!");
-			session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
+			// session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
 			
-			String fbUser = name + "<br>" + surname;
-			request.setAttribute("fbUser", fbUser);
-			request.setAttribute("testData", testdata);
+			// String fbUser = name + "<br>" + surname;
+			// request.setAttribute("fbUser", fbUser);
+			// request.setAttribute("testData", testdata);
 			
 			// forwards to the message page
             getServletContext().getRequestDispatcher("/Success.jsp").forward(request, response);
-            getServletContext().getAttribute(name);
-            getServletContext().getAttribute(fbUser);
-            getServletContext().getAttribute(testdata);
+            // getServletContext().getAttribute(name);
+            // getServletContext().getAttribute(fbUser);
+            // getServletContext().getAttribute(testdata);
 			// response.sendRedirect("Success.jsp");
             if(request.getAttribute("logout") != null){
             	session.invalidate();

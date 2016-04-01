@@ -32,6 +32,7 @@ public class FoodTypeDAO {
 			
 			while(rs.next()){
 				FoodType fType = new FoodType();
+				fType.setId(rs.getInt("FOOD_TYPE_ID"));
 				fType.setType(rs.getString("TYPE_NAME"));
 				result.add(fType);
 			}

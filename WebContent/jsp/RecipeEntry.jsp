@@ -17,21 +17,23 @@
 
 <body>
 	<div class="recipeEntryForm">
-		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/jsp/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
+		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
 			<table>
 		    	<tr>
 			        <td>Your Name</td>
 			        <td>
-			        	<input type="text" name="name" required="">
+			        	<input type="text" name="studentName" required="">
 			        </td>
 			    </tr>
 			     <tr>
 			        <td>Your Surname</td>
 			        <td>
-						<input type="text" name="surname" required="">
+						<input type="text" name="studentSurname" required="">
 			        </td>
 			    </tr>  
+			    
+			    <tr><td><hr></td></tr>
 			    
 			     <tr>
 			        <td>Food Type </td>
@@ -39,7 +41,7 @@
 			        	<select id="foodType" name="foodType">
 			        		<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodTypeDAO.foodTypelist()}" var="items">
-								<option>${items.type}</option>
+								<option>${items.id} : ${items.type}</option>
 							</c:forEach>
 			        	</select>
 			        </td>
@@ -48,7 +50,7 @@
 			     <tr>
 			        <td>Menu Origin</td>
 			        <td>
-			        	<select id="menuOrigin" name="menuOrigin">
+			        	<select id="foodOrigin" name="foodOrigin">
 				        	<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodOriginDAO.foodOriginlist()}" var="items">
 								<option>${items.origin}</option>
@@ -74,7 +76,7 @@
 			    	<td>Prep/Cooking Time[Hours|Mins]</td>
 			    	<td>
 			    		<select>
-			    			<option selected="selected">-Select-</option>
+			    			<option id="prepTime" name="prepTime" selected="selected">-Select-</option>
 			        		<c:forEach items="${PrepTimeDAO.prepTime()}" var="items">
 								<option>${items}</option>
 							</c:forEach>
@@ -85,7 +87,7 @@
 			    	<td>Ingredients</td>
 			    	<td>
 			    	<a href="/TraineeChefProject/AddIngredients" onClick="return popup(this, 'notes')">
-			    		<button id="addIngredients" type="button" name="addIngredients" required="">Add Ingredients</button>
+			    		<button id="addIngredients" name="addIngredients" type="button" required="">Add Ingredients</button>
     			    </a>
 			    	</td>
 			    </tr>   

@@ -1,17 +1,21 @@
 package beans;
 
+import javax.servlet.http.Part;
+
 // Recipe Bean Class
 public class Recipe {
 	
 	private int recipeId;
-	private String name;
+	private String recipeName;
 	private String description;
-	private int prepTime;
+	private double prepTime;
 	private String ingredients;
 	private String directions;
+	
 	private int chefId;
 	private int foodTypeId;
 	private int foodOriginId;
+	
 	
 	public int getRecipeId() {
 		return recipeId;
@@ -19,11 +23,11 @@ public class Recipe {
 	public void setRecipeId(int recipeId) {
 		this.recipeId = recipeId;
 	}
-	public String getName() {
-		return name;
+	public String getRecipeName() {
+		return recipeName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
 	}
 	public String getDescription() {
 		return description;
@@ -31,10 +35,10 @@ public class Recipe {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPrepTime() {
+	public double getPrepTime() {
 		return prepTime;
 	}
-	public void setPrepTime(int prepTime) {
+	public void setPrepTime(double prepTime) {
 		this.prepTime = prepTime;
 	}
 	public String getIngredients() {
@@ -67,5 +71,4 @@ public class Recipe {
 	public void setFoodOriginId(int foodOriginId) {
 		this.foodOriginId = foodOriginId;
 	}
-	
 }
