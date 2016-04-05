@@ -51,9 +51,19 @@ public class RecipeEntry extends HttpServlet {
 		
 		Chef chef = new Chef();
 		Recipe recipe = new Recipe();
-	   
+		FoodType foodType = new FoodType();
+		FoodOrigin foodOrigin = new FoodOrigin();
+		
 	    chef.setStudentName(request.getParameter("studentName"));
 	    chef.setStudentSurname(request.getParameter("studentSurname"));
+	    
+	    foodType.setType(request.getParameter("foodType"));
+	    
+	    int foodTypeId = Integer.parseInt(request.getParameter("foodType"));
+	    foodType.setId(foodTypeId);
+	    
+	    int foodOriginId = Integer.parseInt(request.getParameter("foodOrigin"));
+	    foodOrigin.setFoodOriginid(foodOriginId);
 	    
 	    recipe.setRecipeName(request.getParameter("recipeName"));
 	    recipe.setDescription(request.getParameter("description"));

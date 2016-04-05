@@ -32,6 +32,7 @@ public class FoodOriginDAO {
 			
 			while(rs.next()){
 				FoodOrigin fOrigin = new FoodOrigin();
+				fOrigin.setFoodOriginid(rs.getInt("FOOD_ORIGIN_ID"));
 				fOrigin.setOrigin(rs.getString("ORIGIN"));
 				result.add(fOrigin);
 			}
