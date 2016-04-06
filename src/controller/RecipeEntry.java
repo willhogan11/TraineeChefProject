@@ -54,6 +54,9 @@ public class RecipeEntry extends HttpServlet {
 		FoodType foodType = new FoodType();
 		FoodOrigin foodOrigin = new FoodOrigin();
 		
+		
+		// Need to set this up that on login through client side, 
+		// data is fetched from server and textfields are prepopulated with data. 
 		chef.setId(1);
 	    chef.setStudentName(request.getParameter("studentName"));
 	    chef.setStudentSurname(request.getParameter("studentSurname"));
@@ -62,11 +65,11 @@ public class RecipeEntry extends HttpServlet {
 	    int foodTypeId = Integer.parseInt(request.getParameter("foodType"));
 	    foodType.setId(foodTypeId);
 	    
-	    int foodOriginId = Integer.parseInt(request.getParameter("foodOrigin"));
-	    foodOrigin.setFoodOriginid(foodOriginId);
+	    /*int foodOriginId = Integer.parseInt(request.getParameter("foodOrigin"));
+	    foodOrigin.setFoodOriginid(foodOriginId);*/
 	    
-	    // foodType.setType(request.getParameter("foodType"));
-	    // foodOrigin.setOrigin(request.getParameter("foodOrigin"));
+	    foodType.setType(request.getParameter("foodType"));
+	    foodOrigin.setOrigin(request.getParameter("foodOrigin"));
 	    
 	    recipe.setRecipeName(request.getParameter("recipeName"));
 	    recipe.setDescription(request.getParameter("description"));
@@ -97,15 +100,15 @@ public class RecipeEntry extends HttpServlet {
 			conn = (Connection) DriverManager.getConnection(url, user, password);
 			System.out.println("Connection Established");
 			
-			String sql = "INSERT INTO CHEF(F_NAME, SURNAME) "
-					   + "VALUES(?, ?)";
+			/*String sql = "INSERT INTO CHEF(F_NAME, SURNAME) "
+					   + "VALUES(?, ?)";*/
 	    	
 			String sql1 = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
 					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
-			java.sql.PreparedStatement prest = conn.prepareStatement(sql);
+			/*java.sql.PreparedStatement prest = conn.prepareStatement(sql);
 			prest.setString(1, chef.getStudentName());
-			prest.setString(2, chef.getStudentSurname());
+			prest.setString(2, chef.getStudentSurname());*/
 			
 			java.sql.PreparedStatement prest1 = conn.prepareStatement(sql1);
 			
@@ -123,7 +126,7 @@ public class RecipeEntry extends HttpServlet {
 			prest1.setInt(8, foodType.getId());
 			prest1.setInt(9, foodOrigin.getFoodOriginid());
 			
-			prest.executeUpdate();
+			// prest.executeUpdate();
 			
 			// sends the statement to the database server
             int row = prest1.executeUpdate();
@@ -131,7 +134,7 @@ public class RecipeEntry extends HttpServlet {
                 message = "File uploaded and saved into database";
             }
             
-            prest.close();
+            // prest.close();
             prest1.close();
 			conn.close();
 			

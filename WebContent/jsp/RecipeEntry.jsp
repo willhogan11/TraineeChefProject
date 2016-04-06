@@ -41,7 +41,7 @@
 			        	<select id="foodType" name="foodType">
 			        		<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodTypeDAO.foodTypelist()}" var="items">
-								<option>${items.id}</option> <!-- ${items.type} -->
+								<option>${items.type} - ${items.id}</option>
 							</c:forEach>
 			        	</select>
 			        </td>

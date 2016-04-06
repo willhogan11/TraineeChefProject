@@ -93,6 +93,8 @@ function validateForm() {
     }
 }
 
+
+
 String.prototype.escapeSpecialChars = function() {
     return this.replace(/\\n/g, "\\n")
                .replace(/\\'/g, "\\'")
