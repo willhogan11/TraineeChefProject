@@ -46,6 +46,7 @@ public class RecipeEntry extends HttpServlet {
 	    Connection conn = null;
 	    
 	    String message = null;
+	    String[] stringSplit;
 		InputStream inputStream = null; // input stream of the upload file
 	    HttpSession session = request.getSession();
 		
@@ -57,28 +58,25 @@ public class RecipeEntry extends HttpServlet {
 		
 		// Need to set this up that on login through client side, 
 		// data is fetched from server and textfields are prepopulated with data. 
-		chef.setId(1);
-	    chef.setStudentName(request.getParameter("studentName"));
-	    chef.setStudentSurname(request.getParameter("studentSurname"));
+		
+		chef.setId(1); //  For Testing Purposes
 	    
+		// chef.setStudentName(request.getParameter("studentName"));
+	    // chef.setStudentSurname(request.getParameter("studentSurname"));
 	    
-	    int foodTypeId = Integer.parseInt(request.getParameter("foodType"));
+		String receivedFoodtype = request.getParameter("foodType");
+		stringSplit = receivedFoodtype.split(" - ");
+		int foodTypeId = Integer.parseInt(stringSplit[1]);
 	    foodType.setId(foodTypeId);
 	    
-	    /*int foodOriginId = Integer.parseInt(request.getParameter("foodOrigin"));
-	    foodOrigin.setFoodOriginid(foodOriginId);*/
-	    
-	    foodType.setType(request.getParameter("foodType"));
-	    foodOrigin.setOrigin(request.getParameter("foodOrigin"));
+		String receivedFoodOrigin = request.getParameter("foodOrigin");
+		stringSplit = receivedFoodOrigin.split(" - ");	    
+		int foodOriginId = Integer.parseInt(stringSplit[1]);
+	    foodOrigin.setFoodOriginid(foodOriginId);
 	    
 	    recipe.setRecipeName(request.getParameter("recipeName"));
 	    recipe.setDescription(request.getParameter("description"));
-	    
-	    /*Double prepTime = Double.parseDouble(request.getParameter("prepTime"));
-	    recipe.setPrepTime(prepTime);*/
-	    
 	    recipe.setPrepTime(Double.parseDouble(request.getParameter("prepTime")));
-	    
 	    recipe.setIngredients(request.getParameter("ingredientsReturned"));
 	    recipe.setDirections(request.getParameter("directions"));
 	    

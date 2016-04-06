@@ -53,7 +53,7 @@
 			        	<select id="foodOrigin" name="foodOrigin">
 				        	<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodOriginDAO.foodOriginlist()}" var="items">
-								<option>${items.foodOriginid}</option> <!-- ${items.origin} -->
+								<option>${items.origin} - ${items.foodOriginid}</option>
 							</c:forEach>
 			        	</select>
 			        </td>
