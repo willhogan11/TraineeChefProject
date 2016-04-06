@@ -131,7 +131,6 @@ public class RecipeEntry extends HttpServlet {
             if (row > 0) {
                 message = "File uploaded and saved into database";
             }
-            
             // prest.close();
             prest1.close();
 			conn.close();
