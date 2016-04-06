@@ -50,7 +50,7 @@
 				<td>
 					<select id="quantity" name="quantity">
 						<option selected="selected">-Select-</option>
-						<c:forEach var="i" begin="1" end="100">
+						<c:forEach var="i" begin="1" end="500">
 							<option>${i}</option>
 						</c:forEach>
 					</select>

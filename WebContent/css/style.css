@@ -22,6 +22,11 @@ p,h1,h2,h3,h4,h5,tr,td,input,select,option,button,image {
 	width: 250px;
 }
 
+textarea {
+	width: 250px;
+	height: 75px;
+}
+
 /* Dimensions class for any textarea */	
 .description{
 	width: 250px;

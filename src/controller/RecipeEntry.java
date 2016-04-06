@@ -150,6 +150,7 @@ public class RecipeEntry extends HttpServlet {
             // getServletContext().getAttribute(name);
             // getServletContext().getAttribute(fbUser);
             // getServletContext().getAttribute(testdata);
+            
 			response.sendRedirect("jsp/Success.jsp");
             
             if(request.getAttribute("logout") != null){

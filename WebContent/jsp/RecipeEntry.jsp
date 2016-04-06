@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 
-<body>
+<body onfocus="getLocalStorage()">
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
@@ -23,13 +23,13 @@
 		    	<tr>
 			        <td>Your Name</td>
 			        <td>
-			        	<input type="text" name="studentName" required="" value="Will">
+			        	<input type="text" name="studentName" required value="Will">
 			        </td>
 			    </tr>
 			     <tr>
 			        <td>Your Surname</td>
 			        <td>
-						<input type="text" name="studentSurname" required="" value="Hogan">
+						<input type="text" name="studentSurname" required value="Hogan">
 			        </td>
 			    </tr>  
 			    
@@ -62,14 +62,14 @@
 		       <tr>
 			   		<td>Recipe Name</td>
 			   		<td>
-			   			<input type="text" name="recipeName" required="" value="Spaghetti Bolognaise">
+			   			<input type="text" name="recipeName" required value="Spaghetti Bolognaise">
 			   		</td> 
 			    </tr>
 			    
 			    <tr>
 			        <td>Description </td>
 			        <td>
-						<textarea class="description" type="text" name="description" required="">This is a Wonderful description....</textarea>
+						<textarea class="description" name="description" required>This is a Wonderful description....</textarea>
 			        </td>
 			    </tr>   
 			    <tr>
@@ -87,24 +87,25 @@
 			    	<td>Ingredients</td>
 			    	<td>
 			    	<a href="/TraineeChefProject/AddIngredients" onClick="return popup(this, 'notes')">
-			    		<button id="addIngredients" name="addIngredients" type="button" required="">Add Ingredients</button>
+			    		<button id="addIngredients" name="addIngredients" type="button">Add Ingredients</button>
     			    </a>
 			    	</td>
 			    </tr>   
 			    <tr>
+			    	<td>Entered Ingredients</td>
 			    	<td>
-			    	<!-- style="display:none" --> 
-		    			<textarea  
-		    				 onsubmit="getLocalStorage()" 
-			    			 onmouseover="getLocalStorage()" 
-			    			 id="ingredientsReturned" 
-			    			 name="ingredientsReturned"></textarea>
+			    		<!-- style="display:none" --> 
+		    			<textarea readonly
+		    					  required 
+		    					  placeholder="Ingredients will be loaded here..." 
+		    					  id="ingredientsReturned" 
+		    					  name="ingredientsReturned"></textarea>
 			    	</td>
 			    </tr>
 			    <tr>
 			    	<td>Directions</td>
 			    	<td>
-			    		<textarea class="description" name="directions" required="">These are Wonderful cooking directions....</textarea>
+			    		<textarea class="description" name="directions" required>These are Wonderful cooking directions....</textarea>
 		    		</td>
 			    </tr>     
 			    <tr>
