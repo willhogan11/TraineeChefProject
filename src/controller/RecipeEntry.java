@@ -54,8 +54,10 @@ public class RecipeEntry extends HttpServlet {
 		FoodType foodType = new FoodType();
 		FoodOrigin foodOrigin = new FoodOrigin();
 		
+		chef.setId(1);
 	    chef.setStudentName(request.getParameter("studentName"));
 	    chef.setStudentSurname(request.getParameter("studentSurname"));
+	    
 	    
 	    int foodTypeId = Integer.parseInt(request.getParameter("foodType"));
 	    foodType.setId(foodTypeId);
@@ -65,7 +67,6 @@ public class RecipeEntry extends HttpServlet {
 	    
 	    // foodType.setType(request.getParameter("foodType"));
 	    // foodOrigin.setOrigin(request.getParameter("foodOrigin"));
-	  
 	    
 	    recipe.setRecipeName(request.getParameter("recipeName"));
 	    recipe.setDescription(request.getParameter("description"));
@@ -134,9 +135,10 @@ public class RecipeEntry extends HttpServlet {
             prest1.close();
 			conn.close();
 			
+			
 			// sets the message in request scope
             request.setAttribute("Message", message);
-			session.setAttribute("msg", "You Successfully Created a User!");
+			// session.setAttribute("msg", "You Successfully Created a User!");
 			// session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
 			
 			// String fbUser = name + "<br>" + surname;
@@ -144,11 +146,11 @@ public class RecipeEntry extends HttpServlet {
 			// request.setAttribute("testData", testdata);
 			
 			// forwards to the message page
-            getServletContext().getRequestDispatcher("/Success.jsp").forward(request, response);
+            // getServletContext().getRequestDispatcher("jsp/Success.jsp").forward(request, response);
             // getServletContext().getAttribute(name);
             // getServletContext().getAttribute(fbUser);
             // getServletContext().getAttribute(testdata);
-			// response.sendRedirect("Success.jsp");
+			response.sendRedirect("jsp/Success.jsp");
             
             if(request.getAttribute("logout") != null){
             	session.invalidate();

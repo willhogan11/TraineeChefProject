@@ -94,11 +94,11 @@
 			    <tr>
 			    	<td>
 			    	<!-- style="display:none" --> 
-			    		<div 
-			    			 onsubmit="getLocalStorage()" 
+		    			<textarea  
+		    				 onsubmit="getLocalStorage()" 
 			    			 onmouseover="getLocalStorage()" 
 			    			 id="ingredientsReturned" 
-			    			 name="ingredientsReturned"></div>
+			    			 name="ingredientsReturned"></textarea>
 			    	</td>
 			    </tr>
 			    <tr>
