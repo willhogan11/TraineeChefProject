@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 
-<body onfocus="getLocalStorage()">
+<body onfocus="getLocalStorage()" onload="clearLocalStorage()">
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
@@ -94,10 +94,9 @@
 			    <tr>
 			    	<td>Entered Ingredients</td>
 			    	<td>
-			    		<!-- style="display:none" --> 
-		    			<textarea readonly
-		    					  required 
-		    					  placeholder="Ingredients will be loaded here..." 
+		    			<textarea readonly 
+		    					  required=""
+		    					  placeholder="Ingredients will be loaded here..."
 		    					  id="ingredientsReturned" 
 		    					  name="ingredientsReturned"></textarea>
 			    	</td>

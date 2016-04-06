@@ -22,17 +22,25 @@ function closePopUp(){
 	window.close();
 }
 
+// Function to Clear localStorage upon page load
+function clearLocalStorage(){
+	localStorage.clear();
+}
+
+// Function to setLocalStorage 
 function setLocalStorage(){
 	jsonString = JSON.stringify(ingredientDetails);
 	localStorage.setItem("jsonString", jsonString);
 }
 
+// Function to getLocalStorage
 function getLocalStorage(){
 	var tempString = localStorage.getItem("jsonString");
 	jsonParse = JSON.parse(tempString);
 	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
 }
 
+// Function to store details of Each ingredient in an Array
 function storeIngredientDetails(concatDetails){
 	ingredientDetails.push(concatDetails);	
 }
@@ -65,21 +73,22 @@ function concatIngred() {
 // Function to Check if Input is Valid
 function validateFunc(){
 	var x;
-	x = document.getElementById("age").value;
+	x = document.getElementById("ingredientsReturned").value;
 	if( isNaN(x) || x < 1 || x > 20 ){
 		window.alert("Input is Not Valid");
-		document.getElementById("age").value = "";
+		document.getElementById("ingredientsReturned").value = "";
 	}
 } // End of validateFunc()
 
 
+// Function to Validate form onsubmit
+// Will stop the POST method and inform the user to insert correct information
 function validateForm() {
-    var x = document.forms["submitForm"]["name"].value;
-    var y = document.forms["submitForm"]["surname"].value;
-    var z = document.forms["submitForm"]["age"].value;
+    var ingredRet = document.forms["submitForm"]["ingredientsReturned"].value;
+    var foodTypeSelect = document.forms["submitForm"]["foodType"].value;
     
-    if ( (x == null || x == "") || (y == null || y == "") (z == null || z == "") ){
-        alert("Form Must be Filled out Correctly");
+    if ( (ingredRet == null) || (ingredRet == "") || (foodTypeSelect == "-Select-") ) {
+        alert("Field(s) can't be blank");
         return false;
     }
 }
