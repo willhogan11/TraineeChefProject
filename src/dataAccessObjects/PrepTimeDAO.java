@@ -9,9 +9,9 @@ public class PrepTimeDAO {
 		
 		List<Double> prepTime = new ArrayList<Double>();
 		
-		prepTime.add(new Double (15));
-	    prepTime.add(new Double (30));
-	    prepTime.add(new Double (45));
+		prepTime.add(new Double (0.15));
+	    prepTime.add(new Double (0.30));
+	    prepTime.add(new Double (0.45));
 	    prepTime.add(new Double (1.00));
 	    prepTime.add(new Double (1.15));
 	    prepTime.add(new Double (1.30));

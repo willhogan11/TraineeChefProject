@@ -23,13 +23,13 @@
 		    	<tr>
 			        <td>Your Name</td>
 			        <td>
-			        	<input type="text" name="studentName" required="">
+			        	<input type="text" name="studentName" required="" value="Will">
 			        </td>
 			    </tr>
 			     <tr>
 			        <td>Your Surname</td>
 			        <td>
-						<input type="text" name="studentSurname" required="">
+						<input type="text" name="studentSurname" required="" value="Hogan">
 			        </td>
 			    </tr>  
 			    
@@ -41,7 +41,7 @@
 			        	<select id="foodType" name="foodType">
 			        		<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodTypeDAO.foodTypelist()}" var="items">
-								<option>${items.id} - ${items.type}</option>
+								<option>${items.id}</option> <!-- ${items.type} -->
 							</c:forEach>
 			        	</select>
 			        </td>
@@ -53,7 +53,7 @@
 			        	<select id="foodOrigin" name="foodOrigin">
 				        	<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodOriginDAO.foodOriginlist()}" var="items">
-								<option>${items.foodOriginid} - ${items.origin}</option>
+								<option>${items.foodOriginid}</option> <!-- ${items.origin} -->
 							</c:forEach>
 			        	</select>
 			        </td>
@@ -62,21 +62,21 @@
 		       <tr>
 			   		<td>Recipe Name</td>
 			   		<td>
-			   			<input type="text" name="recipeName" required="">
+			   			<input type="text" name="recipeName" required="" value="Spaghetti Bolognaise">
 			   		</td> 
 			    </tr>
 			    
 			    <tr>
 			        <td>Description </td>
 			        <td>
-						<textarea class="description" type="text" name="description" required=""></textarea>
+						<textarea class="description" type="text" name="description" required="">This is a Wonderful description....</textarea>
 			        </td>
 			    </tr>   
 			    <tr>
 			    	<td>Prep/Cooking Time[Hours|Mins]</td>
 			    	<td>
-			    		<select>
-			    			<option id="prepTime" name="prepTime" selected="selected">-Select-</option>
+			    		<select id="prepTime" name="prepTime">
+			    			<option  selected="selected">-Select-</option>
 			        		<c:forEach items="${PrepTimeDAO.prepTime()}" var="items">
 								<option>${items}</option>
 							</c:forEach>
@@ -93,7 +93,8 @@
 			    </tr>   
 			    <tr>
 			    	<td>
-			    		<div style="display:none" 
+			    	<!-- style="display:none" --> 
+			    		<div 
 			    			 onsubmit="getLocalStorage()" 
 			    			 onmouseover="getLocalStorage()" 
 			    			 id="ingredientsReturned" 
@@ -103,7 +104,7 @@
 			    <tr>
 			    	<td>Directions</td>
 			    	<td>
-			    		<textarea class="description" name="directions" required=""></textarea>
+			    		<textarea class="description" name="directions" required="">These are Wonderful cooking directions....</textarea>
 		    		</td>
 			    </tr>     
 			    <tr>

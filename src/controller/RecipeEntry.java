@@ -57,18 +57,24 @@ public class RecipeEntry extends HttpServlet {
 	    chef.setStudentName(request.getParameter("studentName"));
 	    chef.setStudentSurname(request.getParameter("studentSurname"));
 	    
-	    foodType.setType(request.getParameter("foodType"));
-	    
 	    int foodTypeId = Integer.parseInt(request.getParameter("foodType"));
 	    foodType.setId(foodTypeId);
 	    
 	    int foodOriginId = Integer.parseInt(request.getParameter("foodOrigin"));
 	    foodOrigin.setFoodOriginid(foodOriginId);
 	    
+	    // foodType.setType(request.getParameter("foodType"));
+	    // foodOrigin.setOrigin(request.getParameter("foodOrigin"));
+	  
+	    
 	    recipe.setRecipeName(request.getParameter("recipeName"));
 	    recipe.setDescription(request.getParameter("description"));
-	    double prepTime = Double.parseDouble(request.getParameter("prepTime"));
-	    recipe.setPrepTime(prepTime);
+	    
+	    /*Double prepTime = Double.parseDouble(request.getParameter("prepTime"));
+	    recipe.setPrepTime(prepTime);*/
+	    
+	    recipe.setPrepTime(Double.parseDouble(request.getParameter("prepTime")));
+	    
 	    recipe.setIngredients(request.getParameter("ingredientsReturned"));
 	    recipe.setDirections(request.getParameter("directions"));
 	    
@@ -89,28 +95,43 @@ public class RecipeEntry extends HttpServlet {
 	    	Class.forName("com.mysql.jdbc.Driver");
 			conn = (Connection) DriverManager.getConnection(url, user, password);
 			System.out.println("Connection Established");
-	    	
-			String sql = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
-					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			java.sql.PreparedStatement prest = conn.prepareStatement(sql);
 			
-			prest.setString(1, recipe.getRecipeName());
-			prest.setString(2, recipe.getDescription());
-			prest.setDouble(3,  recipe.getPrepTime());
-			prest.setString(4,  recipe.getIngredients());
-			prest.setString(5,  recipe.getDirections());
+			String sql = "INSERT INTO CHEF(F_NAME, SURNAME) "
+					   + "VALUES(?, ?)";
+	    	
+			String sql1 = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
+					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			java.sql.PreparedStatement prest = conn.prepareStatement(sql);
+			prest.setString(1, chef.getStudentName());
+			prest.setString(2, chef.getStudentSurname());
+			
+			java.sql.PreparedStatement prest1 = conn.prepareStatement(sql1);
+			
+			prest1.setString(1, recipe.getRecipeName());
+			prest1.setString(2, recipe.getDescription());
+			prest1.setDouble(3, recipe.getPrepTime());
+			prest1.setString(4, recipe.getIngredients());
+			prest1.setString(5, recipe.getDirections());
 			
 			// fetches input stream of the upload file for the blob column
 			if (inputStream != null) {
-				prest.setBlob(4, inputStream);
+				prest1.setBlob(6, inputStream);
 			}
+			prest1.setInt(7, chef.getId());
+			prest1.setInt(8, foodType.getId());
+			prest1.setInt(9, foodOrigin.getFoodOriginid());
+			
+			prest.executeUpdate();
+			
 			// sends the statement to the database server
-            int row = prest.executeUpdate();
+            int row = prest1.executeUpdate();
             if (row > 0) {
                 message = "File uploaded and saved into database";
             }
-
-			prest.close();
+            
+            prest.close();
+            prest1.close();
 			conn.close();
 			
 			// sets the message in request scope
@@ -128,6 +149,7 @@ public class RecipeEntry extends HttpServlet {
             // getServletContext().getAttribute(fbUser);
             // getServletContext().getAttribute(testdata);
 			// response.sendRedirect("Success.jsp");
+            
             if(request.getAttribute("logout") != null){
             	session.invalidate();
             	System.out.println("Logged Out");
