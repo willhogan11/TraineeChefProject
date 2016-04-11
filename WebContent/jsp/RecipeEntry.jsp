@@ -69,7 +69,7 @@
 			    <tr>
 			        <td>Description </td>
 			        <td>
-						<textarea class="description" name="description" required>This is a Wonderful description....</textarea>
+						<textarea class="description" name="description" required></textarea>
 			        </td>
 			    </tr>   
 			    <tr>
@@ -104,7 +104,7 @@
 			    <tr>
 			    	<td>Directions</td>
 			    	<td>
-			    		<textarea class="description" name="directions" required>These are Wonderful cooking directions....</textarea>
+			    		<textarea class="description" name="directions" required></textarea>
 		    		</td>
 			    </tr>     
 			    <tr>
@@ -121,6 +121,9 @@
 			    </tr>
 			</table>
 		</form>
+		<div  style="text-align: left;">
+			<a href="../html/Menu.html"><button>Main Menu</button></a>
+		</div>
 	</div>
 </body>
 </html>

@@ -23,8 +23,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      // window.location.replace("http://www.localhost.com:8081/TraineeChefProject/jsp/RecipeEntry.jsp");
-      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/jsp/RecipeEntry.jsp");
+      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/html/Menu.html");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
