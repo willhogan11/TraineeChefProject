@@ -9,7 +9,12 @@
 <body>
 	<p>${msg}</p>
 	<p>${SavedInsert}</p>
+	<p>${message}</p>
+	<p>${recipeName}</p>
 	
+	<p><%=request.getAttribute("Message")%></p>
+	<p><%=request.getAttribute("RecipeName")%></p>
+	<p><%=request.getAttribute("recipeName")%></p>
 	
 <%--<p><%=request.getAttribute("Message")%></p>
 	<p><%=request.getAttribute("fbUser")%></p>

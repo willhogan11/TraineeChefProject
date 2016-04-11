@@ -97,16 +97,9 @@ public class RecipeEntry extends HttpServlet {
 	    	Class.forName("com.mysql.jdbc.Driver");
 			conn = (Connection) DriverManager.getConnection(url, user, password);
 			System.out.println("Connection Established");
-			
-			/*String sql = "INSERT INTO CHEF(F_NAME, SURNAME) "
-					   + "VALUES(?, ?)";*/
 	    	
 			String sql1 = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
 					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			
-			/*java.sql.PreparedStatement prest = conn.prepareStatement(sql);
-			prest.setString(1, chef.getStudentName());
-			prest.setString(2, chef.getStudentSurname());*/
 			
 			java.sql.PreparedStatement prest1 = conn.prepareStatement(sql1);
 			
@@ -124,20 +117,16 @@ public class RecipeEntry extends HttpServlet {
 			prest1.setInt(8, foodType.getId());
 			prest1.setInt(9, foodOrigin.getFoodOriginid());
 			
-			// prest.executeUpdate();
-			
 			// sends the statement to the database server
             int row = prest1.executeUpdate();
             if (row > 0) {
                 message = "File uploaded and saved into database";
             }
-            // prest.close();
             prest1.close();
-			conn.close();
-			
+			conn.close();		
 			
 			// sets the message in request scope
-            request.setAttribute("Message", message);
+            // request.setAttribute("Message", message);
 			// session.setAttribute("msg", "You Successfully Created a User!");
 			// session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
 			
@@ -146,18 +135,23 @@ public class RecipeEntry extends HttpServlet {
 			// request.setAttribute("testData", testdata);
 			
 			// forwards to the message page
-            // getServletContext().getRequestDispatcher("jsp/Success.jsp").forward(request, response);
-            // getServletContext().getAttribute(name);
+           
+ 
             // getServletContext().getAttribute(fbUser);
             // getServletContext().getAttribute(testdata);
+			// getServletContext().getAttribute(message);
+			// getServletContext().getRequestDispatcher("jsp/Success.jsp").forward(request, response);
             
+			String RecipeName = (String) request.getAttribute("recipeName");
+			request.setAttribute("RecipeName", RecipeName);
+			getServletContext().getAttribute(message);
 			response.sendRedirect("jsp/Success.jsp");
             
-            if(request.getAttribute("logout") != null){
+          /*  if(request.getAttribute("logout") != null){
             	session.invalidate();
             	System.out.println("Logged Out");
             	response.sendRedirect("Index.jsp");
-            }
+            }*/
 			
 	    }catch (Exception e) {
             e.printStackTrace();
