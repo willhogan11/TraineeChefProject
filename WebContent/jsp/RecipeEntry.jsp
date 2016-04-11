@@ -23,13 +23,13 @@
 		    	<tr>
 			        <td>Your Name</td>
 			        <td>
-			        	<input type="text" name="studentName" required value="Will">
+			        	<input type="text" name="studentName">
 			        </td>
 			    </tr>
 			     <tr>
 			        <td>Your Surname</td>
 			        <td>
-						<input type="text" name="studentSurname" required value="Hogan">
+						<input type="text" name="studentSurname">
 			        </td>
 			    </tr>  
 			    
@@ -62,14 +62,17 @@
 		       <tr>
 			   		<td>Recipe Name</td>
 			   		<td>
-			   			<input type="text" name="recipeName" required value="Spaghetti Bolognaise">
+			   			<input placeholder="Recipe Name" type="text" name="recipeName" required>
 			   		</td> 
 			    </tr>
 			    
 			    <tr>
 			        <td>Description </td>
 			        <td>
-						<textarea class="description" name="description" required></textarea>
+						<textarea placeholder="Enter your Recipe Description here..." 
+								  class="description" 
+								  name="description" 
+								  required></textarea>
 			        </td>
 			    </tr>   
 			    <tr>
@@ -104,7 +107,10 @@
 			    <tr>
 			    	<td>Directions</td>
 			    	<td>
-			    		<textarea class="description" name="directions" required></textarea>
+			    		<textarea placeholder="Enter the directions here...." 
+			    		          class="description" 
+			    		          name="directions" 
+			    		          required></textarea>
 		    		</td>
 			    </tr>     
 			    <tr>

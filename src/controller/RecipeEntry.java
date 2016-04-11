@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import com.mysql.jdbc.Connection;
+import com.sun.glass.ui.Application;
+
 import dataAccessObjects.*;
 import beans.*;
 
@@ -31,8 +33,7 @@ public class RecipeEntry extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("jsp/RecipeEntry.jsp").forward(request, response);
-		response.sendRedirect("jsp/RecipeEntry.jsp");
+		// request.getRequestDispatcher("jsp/Success.jsp").forward(request, response);
 	
 	} // End doGet
 	
@@ -45,10 +46,13 @@ public class RecipeEntry extends HttpServlet {
 	    String password = null;
 	    Connection conn = null;
 	    
-	    String message = null;
 	    String[] stringSplit;
 		InputStream inputStream = null; // input stream of the upload file
-	    HttpSession session = request.getSession();
+		
+	    HttpSession session = request.getSession(); 
+		String recipeName = request.getParameter("recipeName");
+		request.setAttribute("recipeName", "You Successfully Entered a recipe for: " + recipeName);
+		session.setAttribute("recipeName", "You Successfully Entered a recipe for: " + recipeName);
 		
 		Chef chef = new Chef();
 		Recipe recipe = new Recipe();
@@ -60,9 +64,6 @@ public class RecipeEntry extends HttpServlet {
 		// data is fetched from server and textfields are prepopulated with data. 
 		
 		chef.setId(1); //  For Testing Purposes
-	    
-		// chef.setStudentName(request.getParameter("studentName"));
-	    // chef.setStudentSurname(request.getParameter("studentSurname"));
 	    
 		String receivedFoodtype = request.getParameter("foodType");
 		stringSplit = receivedFoodtype.split(" - ");
@@ -82,16 +83,10 @@ public class RecipeEntry extends HttpServlet {
 	    
         // Obtains the upload file part in this multipart request
         Part filePart = request.getPart("image");
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-             
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-        } //  End if
         
+        if (filePart != null) {
+            inputStream = filePart.getInputStream(); // obtains input stream of the upload file
+        }
 	    
 	    try {
 	    	Class.forName("com.mysql.jdbc.Driver");
@@ -118,34 +113,10 @@ public class RecipeEntry extends HttpServlet {
 			prest1.setInt(9, foodOrigin.getFoodOriginid());
 			
 			// sends the statement to the database server
-            int row = prest1.executeUpdate();
-            if (row > 0) {
-                message = "File uploaded and saved into database";
-            }
+            prest1.executeUpdate();
             prest1.close();
-			conn.close();		
+			conn.close();	
 			
-			// sets the message in request scope
-            // request.setAttribute("Message", message);
-			// session.setAttribute("msg", "You Successfully Created a User!");
-			// session.setAttribute("SavedInsert", "NAME: " + name + "<br>SURNAME: " + surname);
-			
-			// String fbUser = name + "<br>" + surname;
-			// request.setAttribute("fbUser", fbUser);
-			// request.setAttribute("testData", testdata);
-			
-			// forwards to the message page
-           
- 
-            // getServletContext().getAttribute(fbUser);
-            // getServletContext().getAttribute(testdata);
-			// getServletContext().getAttribute(message);
-			// getServletContext().getRequestDispatcher("jsp/Success.jsp").forward(request, response);
-            
-			String RecipeName = (String) request.getAttribute("recipeName");
-			request.setAttribute("RecipeName", RecipeName);
-			getServletContext().getAttribute(message);
-			response.sendRedirect("jsp/Success.jsp");
             
           /*  if(request.getAttribute("logout") != null){
             	session.invalidate();
@@ -156,5 +127,6 @@ public class RecipeEntry extends HttpServlet {
 	    }catch (Exception e) {
             e.printStackTrace();
 	    }
+	    response.sendRedirect("jsp/Success.jsp");
 	}
 }
