@@ -23,7 +23,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      window.location.replace("http://www.localhost.com:8081/TraineeChefProject/html/Menu.html");
+      // window.location.replace("http://www.localhost.com:8081/TraineeChefProject/html/Menu.html");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
@@ -86,7 +86,7 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
       name = response.name;
-      console.log(name);
+      sessionStorage.setItem("name", response.name);
     });
   }
 </script>
@@ -97,8 +97,8 @@
   the FB.login() function when clicked.
 -->
 <div class="login">
-	<form name="fbLogin" method="POST" action="ChefDatabaseEntry">
-		<fb:login-button data-max-rows="1" data-size="xlarge" data-show-faces="false" 
+	<form name="fbLogin" method="POST" name="status" action="DisplayRecipes">
+		<fb:login-button name="status" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
 		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
 		<div class="statusText" id="status" name="status">
