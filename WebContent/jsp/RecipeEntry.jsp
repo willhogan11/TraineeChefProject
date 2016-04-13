@@ -13,9 +13,14 @@
 	<title>Recipe Entry</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/login.js"></script>
 </head>
 
 <body onfocus="getLocalStorage()" onload="clearLocalStorage()">
+
+<fb:login-button name="status" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
+		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+		
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
 			<h3>Enter your Recipe</h3>
@@ -127,8 +132,8 @@
 			    </tr>
 			</table>
 		</form>
-		<div  style="text-align: left;">
-			<a href="../html/Menu.html"><button>Main Menu</button></a>
+		<div style="text-align: left;">
+			<a href="../jsp/Menu.jsp"><button>Main Menu</button></a>
 		</div>
 	</div>
 </body>

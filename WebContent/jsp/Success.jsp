@@ -10,11 +10,10 @@
 	<p>EL(Expression Language) -----> ${recipeName}</p>
 	<%-- <p>Scriplet Session object -----> <%=session.getAttribute("recipeName")%></p> --%>
 	
-	<a href="../html/Menu.html">
+	<a href="../jsp/Menu.jsp">
 		<button>Return</button>
 	</a>
 	
 	<!-- <a href="index.jsp"><input type="submit" name="logout" value="Logout" method="POST"></a> -->
-
 </body>
 </html>

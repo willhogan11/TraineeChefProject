@@ -33,8 +33,6 @@ public class RecipeEntry extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// request.getRequestDispatcher("jsp/Success.jsp").forward(request, response);
-	
 	} // End doGet
 	
 	
@@ -58,7 +56,6 @@ public class RecipeEntry extends HttpServlet {
 		Recipe recipe = new Recipe();
 		FoodType foodType = new FoodType();
 		FoodOrigin foodOrigin = new FoodOrigin();
-		
 		
 		// Need to set this up that on login through client side, 
 		// data is fetched from server and textfields are prepopulated with data. 
