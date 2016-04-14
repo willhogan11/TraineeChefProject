@@ -40,10 +40,12 @@ function getLocalStorage(){
 	document.getElementById("ingredientsReturned").innerHTML = jsonParse;
 }
 
+
 // Function to store details of Each ingredient in an Array
 function storeIngredientDetails(concatDetails){
 	ingredientDetails.push(concatDetails);	
 }
+
 
 // Function that concatenates each Ingredients Item, Measurement Type & Quantity
 function concatIngred() {
@@ -68,6 +70,21 @@ function concatIngred() {
 } // End Function
 
 
+
+// Function to get and display the session details in the HTML text boxes in the RecipeEntry page
+function getSessionName(){
+	var retrieveSession = sessionStorage.getItem("name");
+	
+	if(sessionStorage.length == 0){
+		document.getElementById("sessionName").innerHTML = "No Name"
+		document.getElementById("sessionSurname").innerHTML = "No Surname";
+	}
+	else{
+		var nameSplit = retrieveSession.split(" ");
+		document.getElementById("sessionName").innerHTML = nameSplit[0];
+		document.getElementById("sessionSurname").innerHTML = nameSplit[1];
+	}
+}
 
 
 // Function to Check if Input is Valid

@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 
-<body onfocus="getLocalStorage()" onload="clearLocalStorage()">
+<body onfocus="getLocalStorage();" onload="clearLocalStorage(); getSessionName();">
 		
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
@@ -23,13 +23,13 @@
 			<table>
 		    	<tr>
 			        <td>Your Name</td>
-			        <td>
+			        <td id="sessionName">
 			        	<input type="text" name="studentName">
 			        </td>
 			    </tr>
 			     <tr>
 			        <td>Your Surname</td>
-			        <td>
+			        <td id="sessionSurname">
 						<input type="text" name="studentSurname">
 			        </td>
 			    </tr>  
