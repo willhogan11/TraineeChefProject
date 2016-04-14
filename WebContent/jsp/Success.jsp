@@ -7,7 +7,14 @@
 	<title>Success Page</title>
 </head>
 <body>
+	<p>${studentName}</p>
+	<p>${studentSurname}</p>
+	
+	<p>session.getAttribute("studentName")%></p>
+	<p>session.getAttribute("studentSurname")%></p>
+	
 	<p>EL(Expression Language) -----> ${recipeName}</p>
+	
 	<%-- <p>Scriplet Session object -----> <%=session.getAttribute("recipeName")%></p> --%>
 	
 	<a href="../jsp/Menu.jsp">

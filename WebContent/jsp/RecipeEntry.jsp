@@ -19,6 +19,7 @@
 		
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
+			
 			<h3>Enter your Recipe</h3>
 			<table>
 		    	<tr>
@@ -37,7 +38,7 @@
 			    <tr><td><hr></td></tr>
 			    
 			     <tr>
-			        <td>Food Type </td>
+			        <td>Food Type</td>
 			        <td>
 			        	<select id="foodType" name="foodType">
 			        		<option selected="selected">-Select-</option>
@@ -68,7 +69,7 @@
 			    </tr>
 			    
 			    <tr>
-			        <td>Description </td>
+			        <td>Description</td>
 			        <td>
 						<textarea placeholder="Enter your Recipe Description here..." 
 								  class="description" 
