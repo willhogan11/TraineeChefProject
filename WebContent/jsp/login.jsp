@@ -9,8 +9,8 @@
 	<title>Login Page</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
-<body>
 
+<body onload="enableNavButton();" onchange="enableNavButton();" onformchange="enableNavButton();">
 
 <!--
   Below we include the Login Button social plugin. This button uses
@@ -19,14 +19,14 @@
 -->
 <div class="login">
 
-	<form name="fbLogin" method="POST" name="status" action="DisplayRecipes">
+	<form onformchange="enableNavButton();" onchange="enableNavButton();" name="fbLogin" method="POST" action="DisplayRecipes">
 	
-		<fb:login-button name="status" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
+		<fb:login-button onformchange="enableNavButton();" onchange="enableNavButton();" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
 		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
-		<div class="statusText" id="status" name="status">
-			<input type="text" name="fbusername" value="hiddenValue"></input>
-		</div>
+		<p class="statusText" id="status" value=""></p>
+		
+		<button id="hiddenButton" type="button">Go To Menu -></button>
 	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>
 </div>

@@ -8,15 +8,11 @@
 	<title>Menu</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/login.js"></script>
 </head>
 
 <body>
 
-<fb:login-button name="status" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
-		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-
-	<h2 id="name">Welcome ${name}</h2>
+	<h2>Welcome ${name}</h2>
 	
 	<div id="menuControl"
 		 style="border: 2px solid black; 
@@ -30,6 +26,9 @@
 				<button>Add a Recipe</button>
 			</a>
 			<button>View Existing Recipes</button>
+			<a href="login.jsp">
+				<button>Return to Login screen to logout</button>
+			</a>
 		</div>
 	</div>
 </body>

@@ -76,3 +76,23 @@ var name = "";
       sessionStorage.setItem("name", response.name);
     });
   }
+  
+  
+function disableNavButton(){
+	document.getElementById("hiddenButton").disabled = true;
+}
+  
+function enableNavButton(){
+	var str = document.getElementById("status").innerHTML;
+	if(str.includes("Welcome")){
+		console.log(true);
+		document.getElementById("hiddenButton").disabled = false;
+	}
+	else{
+		console.log("Doesn't contain the string");
+		document.getElementById("hiddenButton").disabled = true;
+	}
+}
+	
+	
+	

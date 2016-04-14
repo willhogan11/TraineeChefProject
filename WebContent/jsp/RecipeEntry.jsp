@@ -13,13 +13,9 @@
 	<title>Recipe Entry</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/login.js"></script>
 </head>
 
 <body onfocus="getLocalStorage()" onload="clearLocalStorage()">
-
-<fb:login-button name="status" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
-		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
 	<div class="recipeEntryForm">
 		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
