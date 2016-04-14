@@ -25,8 +25,9 @@
 		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
 		<p class="statusText" id="status" value=""></p>
-		
-		<button id="hiddenButton" type="button">Go To Menu -></button>
+		<a id="hiddenButton" href="Menu.jsp">
+			<button type="button">Go To Menu -></button>
+		</a>
 	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>
 </div>

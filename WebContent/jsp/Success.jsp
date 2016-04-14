@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Success Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Success Page</title>
 </head>
 <body>
 	<p>EL(Expression Language) -----> ${recipeName}</p>

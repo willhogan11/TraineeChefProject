@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class DisplayRecipes
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/DisplayRecipes" })
-public class DisplayRecipes extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/RecipeEntrySuccess" })
+public class RecipeEntrySuccess extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
@@ -31,7 +31,7 @@ public class DisplayRecipes extends HttpServlet {
 		System.out.println("Username is: " + status);
 		System.out.println("Username is: " + session.getAttribute(status));
 		
-		out.println("<p>" + status + "</p>");
+		// out.println("<p>" + status + "</p>");
 		response.sendRedirect("jsp/Menu.jsp");
 		
 	}
