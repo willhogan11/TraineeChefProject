@@ -76,6 +76,7 @@ function getSessionName(){
 	var retrieveSession = sessionStorage.getItem("name");
 	
 	if(sessionStorage.length == 0){
+		
 		document.getElementById("sessionName").innerHTML = "No Name"
 		document.getElementById("sessionSurname").innerHTML = "No Surname";
 	}
@@ -109,13 +110,6 @@ function validateForm() {
         return false;
     }
 }
-
-
-
-
-
-
-
 
 
 String.prototype.escapeSpecialChars = function() {

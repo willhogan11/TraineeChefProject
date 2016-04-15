@@ -19,6 +19,7 @@ var name = "";
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log into Facebook to Access the Trainee Chef Recipe Application.';
       disableNavButton();
+      sessionStorage.clear();
     }
   }
 
@@ -80,10 +81,13 @@ var name = "";
   }
   
   
+// Disable Menu button, whilst not logged on to Facebook
 function disableNavButton(){
 	document.getElementById("hiddenButton").disabled = true;
 }
   
+
+// Enable Menu Button if Logged on to Facebook
 function enableNavButton(){
 	var str = document.getElementById("status").innerHTML;
 	

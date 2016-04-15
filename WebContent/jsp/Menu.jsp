@@ -12,7 +12,7 @@
 
 <body>
 
-	<h2>Logged in as </h2>
+	<div id="menuSessionName">Logged in as </div>
 	
 	<div id="menuControl"
 		 style="border: 2px solid black; 
