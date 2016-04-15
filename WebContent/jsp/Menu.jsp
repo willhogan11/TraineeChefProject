@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
 	<div id="menuSessionName">Logged in as </div>
 	
 	<div id="menuControl"
@@ -25,10 +24,17 @@
 			<a href="RecipeEntry.jsp">
 				<button>Add a Recipe</button>
 			</a>
-			<button>View Existing Recipes</button>
-			<a href="login.jsp">
-				<button>Return to Login screen to logout</button>
-			</a>
+			
+			<!--  -->			
+			
+			<!-- Need to Send the CHEF_ID from the database into a hidden field in this form -->
+			<form id="displayChefRecipes" name="displayChefRecipes" method="GET" action="/TraineeChefProject/DisplayChefRecipes">
+				<input type="submit" value="View Existing Recipes">
+			</form>
+			
+			<!--  -->
+			
+			<button>Return to Login screen to logout</button>
 		</div>
 	</div>
 </body>

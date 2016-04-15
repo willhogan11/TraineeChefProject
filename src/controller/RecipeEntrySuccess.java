@@ -30,10 +30,8 @@ public class RecipeEntrySuccess extends HttpServlet {
 		session.setAttribute("status", "Welcome User " + status);
 		System.out.println("Username is: " + status);
 		System.out.println("Username is: " + session.getAttribute(status));
-		
-		// out.println("<p>" + status + "</p>");
-		response.sendRedirect("jsp/Menu.jsp");
-		
+	
+		response.sendRedirect("jsp/Menu.jsp");	
 	}
 
 	/**
@@ -49,7 +47,6 @@ public class RecipeEntrySuccess extends HttpServlet {
 		System.out.println("Username is: " + status);
 		System.out.println("Username is: " + session.getAttribute(status));
 		
-		out.println("<p>" + status + "</p>");
 		response.sendRedirect("jsp/Menu.jsp");
 		
 	}
