@@ -10,7 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 
-<body onload="enableNavButton();" onchange="enableNavButton();" onformchange="enableNavButton();">
+<body>
 
 <!--
   Below we include the Login Button social plugin. This button uses
@@ -19,14 +19,14 @@
 -->
 <div class="login">
 
-	<form onformchange="enableNavButton();" onchange="enableNavButton();" name="fbLogin" method="POST" action="DisplayRecipes">
+	<form name="fbLogin" method="POST" action="DisplayRecipes">
 	
-		<fb:login-button onformchange="enableNavButton();" onchange="enableNavButton();" data-max-rows="1" data-size="xlarge" data-show-faces="false" 
+		<fb:login-button data-max-rows="1" data-size="xlarge" data-show-faces="false" 
 		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
 		<p class="statusText" id="status" value=""></p>
-		<a id="hiddenButton" href="Menu.jsp">
-			<button type="button">Go To Menu -></button>
+		<a href="Menu.jsp">
+			<button id="hiddenButton" type="button">Go To Menu -></button>
 		</a>
 	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>

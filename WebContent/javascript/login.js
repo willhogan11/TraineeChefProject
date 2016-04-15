@@ -18,6 +18,7 @@ var name = "";
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log into Facebook to Access the Trainee Chef Recipe Application.';
+      disableNavButton();
     }
   }
 
@@ -74,6 +75,7 @@ var name = "";
       document.getElementById('status').innerHTML = 'Welcome ' + response.name + '!';
       name = response.name;
       sessionStorage.setItem("name", response.name);
+      enableNavButton();
     });
   }
   
@@ -84,6 +86,7 @@ function disableNavButton(){
   
 function enableNavButton(){
 	var str = document.getElementById("status").innerHTML;
+	
 	if(str.includes("Welcome")){
 		console.log(true);
 		document.getElementById("hiddenButton").disabled = false;
@@ -91,8 +94,8 @@ function enableNavButton(){
 	else{
 		console.log("Doesn't contain the string");
 		document.getElementById("hiddenButton").disabled = true;
+		str = "";
 	}
 }
-	
-	
+
 	
