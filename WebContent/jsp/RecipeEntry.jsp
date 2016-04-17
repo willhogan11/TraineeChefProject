@@ -100,7 +100,7 @@
 			    	<td>Entered Ingredients</td>
 			    	<td>
 		    			<textarea readonly 
-		    					  required=""
+		    					  required
 		    					  placeholder="Ingredients will be loaded here..."
 		    					  id="ingredientsReturned" 
 		    					  name="ingredientsReturned"></textarea>

@@ -24,17 +24,16 @@
 			<a href="RecipeEntry.jsp">
 				<button>Add a Recipe</button>
 			</a>
-			
-			<!--  -->			
-			
+
 			<!-- Need to Send the CHEF_ID from the database into a hidden field in this form -->
 			<form id="displayChefRecipes" name="displayChefRecipes" method="GET" action="/TraineeChefProject/DisplayChefRecipes">
-				<input type="submit" value="View Existing Recipes">
+				<input name="test" type="submit" value="View Existing Recipes">
+				<input type="hidden" name="country" value="Norway">
 			</form>
-			
-			<!--  -->
-			
-			<button>Return to Login screen to logout</button>
+
+			<a href="login.jsp">
+				<button>Return to Login screen to logout</button>
+			</a>
 		</div>
 	</div>
 </body>

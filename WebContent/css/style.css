@@ -40,6 +40,7 @@ textarea {
 	padding: 100px;
 	width: 400px;
     border-radius: 10px;
+    box-shadow: 10px 10px 5px #888888;
 }
    
 /* .login, p{

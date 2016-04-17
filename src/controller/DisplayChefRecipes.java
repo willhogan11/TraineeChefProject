@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.xml.internal.txw2.Document;
+
 /**
  * Servlet implementation class DisplayChefRecipes
  */
@@ -22,11 +24,19 @@ public class DisplayChefRecipes extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String displayChefRecipes = request.getParameter("displayChefRecipes");
-		System.out.println(displayChefRecipes);
+		/* 1) Need to find out how to redirect the 'test'(in this case) parameter
+		 * 	  to the DisplayChefRecipe page and access it. 
+		 * 2) Need to get CHEF_ID from DB early on (maybe using test 1 as static ID for now)
+		 * 3) Need to Populate the jsp page with info in tables from the DB
+		 *  */
+		String test = request.getParameter("test");	
+		request.setAttribute("test", test);
+		System.out.println(test);
 		
+		request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
 	}
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

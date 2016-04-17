@@ -24,19 +24,6 @@ public class RecipeEntry extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
-  
-		try {
-			request.setAttribute("foodOriginResult", FoodOriginDAO.foodOriginlist());
-			request.setAttribute("foodTypeResult", FoodTypeDAO.foodTypelist());
-			request.setAttribute("prepTimeResult", PrepTimeDAO.prepTime());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	} // End doGet
-	
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "jdbc:mysql://localhost/traineechefdb";
@@ -49,6 +36,15 @@ public class RecipeEntry extends HttpServlet {
 		
 	    HttpSession session = request.getSession(); 
 		String recipeName = request.getParameter("recipeName");
+		String studentName = request.getParameter("studentName");
+		String studentSurname = request.getParameter("studentSurname");
+		
+		request.setAttribute("studentName", studentName);
+	    request.setAttribute("studentSurname", studentSurname);
+
+		session.setAttribute("studentName", studentName);
+		session.setAttribute("studentSurname", studentSurname);
+		
 		request.setAttribute("recipeName", "You Successfully Entered a recipe for: " + recipeName);
 		session.setAttribute("recipeName", "You Successfully Entered a recipe for: " + recipeName);
 		
@@ -124,6 +120,7 @@ public class RecipeEntry extends HttpServlet {
 	    }catch (Exception e) {
             e.printStackTrace();
 	    }
-	    response.sendRedirect("jsp/Success.jsp");
+	    // response.sendRedirect("jsp/Success.jsp");
+	    request.getRequestDispatcher("jsp/Success.jsp").forward(request, response);
 	}
 }

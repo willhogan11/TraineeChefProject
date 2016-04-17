@@ -24,10 +24,12 @@
 		<fb:login-button data-max-rows="1" data-size="xlarge" data-show-faces="false" 
 		autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 		
-		<p class="statusText" id="status" value=""></p>
+		<p class="statusText" id="status" name="status" value=""></p>
+		
 		<a href="Menu.jsp">
-			<button id="hiddenButton" type="button">Go To Menu -></button>
+			<button id="hiddenButton" type="button">Go To Menu</button>
 		</a>
+		
 	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>
 </div>
