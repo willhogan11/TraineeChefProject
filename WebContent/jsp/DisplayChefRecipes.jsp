@@ -11,7 +11,11 @@
 	<h1>Display Recipes Page</h1>
 
 	<p>${test}</p>	
-	<p>${country}</p>
+	<p>${chefId}</p>
+	
+	<a href="jsp/Menu.jsp">
+		<button>Return to Menu</button>
+	</a>
 
 </body>
 </html>

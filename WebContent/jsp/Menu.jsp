@@ -28,7 +28,7 @@
 			<!-- Need to Send the CHEF_ID from the database into a hidden field in this form -->
 			<form id="displayChefRecipes" name="displayChefRecipes" method="GET" action="/TraineeChefProject/DisplayChefRecipes">
 				<input name="test" type="submit" value="View Existing Recipes">
-				<input type="hidden" name="country" value="Norway">
+				<input type="hidden" name="chef_Id" value="1">
 			</form>
 
 			<a href="login.jsp">

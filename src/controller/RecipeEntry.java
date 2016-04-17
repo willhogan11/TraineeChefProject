@@ -36,11 +36,18 @@ public class RecipeEntry extends HttpServlet {
 		
 	    HttpSession session = request.getSession(); 
 		String recipeName = request.getParameter("recipeName");
-		String studentName = request.getParameter("studentName");
-		String studentSurname = request.getParameter("studentSurname");
 		
+		// Get the Chef's username parameters
+		String studentName = request.getParameter("studentName");
+		String studentSurname = request.getParameter("studentSurname"); 
+		
+		request.getMethod();
+		
+		// Set Attributes that save the values of each
 		request.setAttribute("studentName", studentName);
 	    request.setAttribute("studentSurname", studentSurname);
+	    
+	    System.out.println(studentName + " " + studentSurname);
 
 		session.setAttribute("studentName", studentName);
 		session.setAttribute("studentSurname", studentSurname);
@@ -120,7 +127,7 @@ public class RecipeEntry extends HttpServlet {
 	    }catch (Exception e) {
             e.printStackTrace();
 	    }
-	    // response.sendRedirect("jsp/Success.jsp");
-	    request.getRequestDispatcher("jsp/Success.jsp").forward(request, response);
+	    response.sendRedirect("jsp/Success.jsp");
+	    // request.getRequestDispatcher("jsp/Success.jsp").forward(request, response);
 	}
 }
