@@ -17,6 +17,7 @@ import com.mysql.jdbc.Statement;
 import com.sun.xml.internal.txw2.Document;
 
 import beans.Chef;
+import beans.Recipe;
 
 /**
  * Servlet implementation class DisplayChefRecipes
@@ -48,8 +49,9 @@ public class DisplayChefRecipes extends HttpServlet {
 		chef.setId(chefIdString);
 		
 		
+		
 		// Make a connection to the database
-		String url = "jdbc:mysql://localhost/users";
+		String url = "jdbc:mysql://localhost/traineechefdb";
 		String driver = "com.mysql.jdbc.Driver";
 		String user = "root";
 		String password = null;
@@ -67,21 +69,39 @@ public class DisplayChefRecipes extends HttpServlet {
 						  		"ON R.FOOD_ORIGIN_ID = FO.FOOD_ORIGIN_ID " +
 						  	"INNER JOIN FOOD_TYPE AS FT " +
 						  		"ON R.FOOD_TYPE_ID = FT.FOOD_TYPE_ID " +
-						  "WHERE R.CHEF_ID = ?";
+						  "WHERE R.CHEF_ID = '" + chef.getId() + "' ";
 			 
 			 // This might work for data access object structure
 			 // DisplayResultsSetDAO sql = new DisplayResultsSetDAO();
 			 
 			 ResultSet rs = stmt.executeQuery(sql);
 			 
+			 Recipe recipe = new Recipe();
+			 
 			 while(rs.next()){
 				 
-				 
-				 
-			 	/*int id = rs.getInt("ID");
-			 	String name = rs.getString("NAME");
-			 	int age = rs.getInt("AGE");*/
+			 	String NAME = rs.getString("R.NAME");
+			 	String DESCRIPTION = rs.getString("R.DESCRIPTION");
+			 	double PREP_TIME = rs.getDouble("R.PREP_TIME");
+			 	String INGREDIENTS = rs.getString("R.INGREDIENTS");
+			 	String DIRECTIONS = rs.getString("R.DIRECTIONS");
+			 	String ORIGIN = rs.getString("FO.ORIGIN");
+			 	String TYPE_NAME = rs.getString("FT.TYPE_NAME");
+			 	
+			 	recipe.setRecipeName(NAME);
+			 	recipe.setDescription(DESCRIPTION);
+			 	recipe.setPrepTime(PREP_TIME);
+			 	
+			 	request.setAttribute("recipeName", recipe.getRecipeName());
+			 	request.setAttribute("recipeDescription", recipe.getDescription());
+			 	request.setAttribute("recipePrepTime", recipe.getPrepTime());
+			 	
+			 	// Debugging
+			 	System.out.println(request.getAttribute("recipeName"));
+			 	System.out.println(request.getAttribute("recipeDescription"));
+			 	System.out.println(request.getAttribute("recipePrepTime"));
 			 }
+			 
 			 rs.close();
 			 conn.close();
 			 
@@ -90,7 +110,6 @@ public class DisplayChefRecipes extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		
-		request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
 	}
 }
