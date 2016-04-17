@@ -9,6 +9,8 @@ public class Recipe {
 	private double prepTime;
 	private String ingredients;
 	private String directions;
+	private String foodType;
+	private String foodOrigin;
 	
 	private int chefId;
 	private int foodTypeId;
@@ -68,5 +70,17 @@ public class Recipe {
 	}
 	public void setFoodOriginId(int foodOriginId) {
 		this.foodOriginId = foodOriginId;
+	}
+	public String getFoodType() {
+		return foodType;
+	}
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
+	}
+	public String getFoodOrigin() {
+		return foodOrigin;
+	}
+	public void setFoodOrigin(String foodOrigin) {
+		this.foodOrigin = foodOrigin;
 	}
 }

@@ -82,16 +82,13 @@ public class DisplayChefRecipes extends HttpServlet {
 				 recipe.setPrepTime(rs.getDouble("R.PREP_TIME"));
 				 recipe.setIngredients(rs.getString("R.INGREDIENTS"));
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
+				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));
+				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
 				
 				 resultSet.add(recipe);
 				 recipe.equals(null);
 			 }
-			 
-			 request.setAttribute("resultSet", resultSet);
-		 	 
-		 	 
-		 	 // 1) Need to Store result set in an Arraylist to access with JSTL in DisplayChefRecipes.jsp table
-		 	 // 2) Need to research iteration of List to display result set in table
+			request.setAttribute("resultSet", resultSet);
 			 
 			rs.close();
 			conn.close();

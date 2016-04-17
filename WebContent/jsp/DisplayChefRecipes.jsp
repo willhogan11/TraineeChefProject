@@ -8,10 +8,36 @@
 	<title>Chef Recipe Page</title>
 	
 	<style>
+		html *{
+			font-family: Century Gothic;
+		}
+		
+		h1 {
+			text-align: center;
+			color: #4d94ff;
+		}
+		
+		table {
+    		border-collapse: collapse;
+    		width: 100%;
+		}	
 		th, td {
-	    border: 1px solid black;
-	    padding: 5px;
-	}
+	    	border: 1px solid black;
+	    	padding: 10px;
+	    	text-align: left;
+		}
+		th {
+			font-size: 20px;
+			color: #4d94ff;
+		}
+		
+		td {
+			font-size: 15px;
+		}
+		
+		tbody tr:nth-of-type(odd) {
+		  background-color: #f2f2f2;
+		}
 	</style>
 
 </head>
@@ -19,20 +45,34 @@
 	<h1>Display Recipes Page</h1>
 
 	<table>
-		<c:forEach items="${resultSet}" var="row">
+		<thead>
 			<tr>
-				<td>${row.recipeName}</td>
-				<td>${row.description}</td>
-				<td>${row.prepTime}</td>
-				<td>${row.ingredients}</td>
-				<td>${row.directions}</td>
+				<th>Recipe Name</th>
+				<th>Food Origin</th>
+				<th>Food Type</th>
+				<th>Description</th>
+				<th>Prep Time (Hours/mins)</th>
+				<th>Ingredients</th>
+				<th>Directions</th>
 			</tr>
-		</c:forEach>
+		</thead>
+		<tbody>
+			<c:forEach items="${resultSet}" var="row">
+				<tr>
+					<td>${row.recipeName}</td>
+					<td>${row.foodOrigin}</td>
+					<td>${row.foodType}</td>
+					<td>${row.description}</td>
+					<td>${row.prepTime}</td>
+					<td>${row.ingredients}</td>
+					<td>${row.directions}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
-	
-	
+
 	<br>
-	
+
 	<a href="jsp/Menu.jsp">
 		<button>Return to Menu</button>
 	</a>
