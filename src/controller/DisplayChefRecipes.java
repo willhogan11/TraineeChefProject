@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,8 @@ import com.mysql.jdbc.Statement;
 import com.sun.xml.internal.txw2.Document;
 
 import beans.Chef;
+import beans.FoodOrigin;
+import beans.FoodType;
 import beans.Recipe;
 
 /**
@@ -32,22 +36,15 @@ public class DisplayChefRecipes extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/* 1) Need to find out how to redirect the 'test'(in this case) parameter
-		 * 	  to the DisplayChefRecipe page and access it. 
-		 * 2) Need to get CHEF_ID from DB early on (maybe using test 1 as static ID for now)
-		 * 3) Need to Populate the jsp page with info in tables from the DB
-		 *  */
-		
-	/*	String test = request.getParameter("test");	
-		String chefId = request.getParameter("chef_Id");
-		
-		request.setAttribute("chefId", chefId);
-		request.setAttribute("test", test);*/
-		
 		Chef chef = new Chef();
+		Recipe recipe = new Recipe();
+		FoodOrigin foodOrigin = new FoodOrigin();
+		FoodType foodType = new FoodType();
+		
 		int chefIdString = Integer.parseInt(request.getParameter("chef_Id"));
 		chef.setId(chefIdString);
 		
+		List<String> resultSet = new ArrayList<String>();
 		
 		
 		// Make a connection to the database
@@ -76,8 +73,6 @@ public class DisplayChefRecipes extends HttpServlet {
 			 
 			 ResultSet rs = stmt.executeQuery(sql);
 			 
-			 Recipe recipe = new Recipe();
-			 
 			 while(rs.next()){
 				 
 			 	String NAME = rs.getString("R.NAME");
@@ -91,25 +86,29 @@ public class DisplayChefRecipes extends HttpServlet {
 			 	recipe.setRecipeName(NAME);
 			 	recipe.setDescription(DESCRIPTION);
 			 	recipe.setPrepTime(PREP_TIME);
-			 	
-			 	request.setAttribute("recipeName", recipe.getRecipeName());
-			 	request.setAttribute("recipeDescription", recipe.getDescription());
-			 	request.setAttribute("recipePrepTime", recipe.getPrepTime());
-			 	
-			 	// Debugging
-			 	System.out.println(request.getAttribute("recipeName"));
-			 	System.out.println(request.getAttribute("recipeDescription"));
-			 	System.out.println(request.getAttribute("recipePrepTime"));
+			 	recipe.setIngredients(INGREDIENTS);
+			 	recipe.setDirections(DIRECTIONS);
+			 	foodOrigin.setOrigin(ORIGIN);
+			 	foodType.setType(TYPE_NAME);
 			 }
+			 request.setAttribute("recipeName", recipe.getRecipeName());
+		 	 request.setAttribute("recipeDescription", recipe.getDescription());
+		 	 request.setAttribute("recipePrepTime", recipe.getPrepTime());
+		 	 request.setAttribute("recipeIngredients", recipe.getIngredients());
+		 	 request.setAttribute("recipeDirections", recipe.getDirections());
+		 	 request.setAttribute("foodOrigin", foodOrigin.getOrigin());
+		 	 request.setAttribute("foodType", foodType.getType());
+		 	 
+		 	 
+		 	 // 1) Need to Store result set in an Arraylist to access with JSTL in DisplayChefRecipes.jsp table
+		 	 // 2) Need to research iteration of List to display result set in table
 			 
-			 rs.close();
-			 conn.close();
+			rs.close();
+			conn.close();
 			 
-			}
-			catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			}catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-		
 			request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
 	}
 }
