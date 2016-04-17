@@ -37,14 +37,14 @@ public class DisplayChefRecipes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Chef chef = new Chef();
-		Recipe recipe = new Recipe();
+		
 		FoodOrigin foodOrigin = new FoodOrigin();
 		FoodType foodType = new FoodType();
 		
 		int chefIdString = Integer.parseInt(request.getParameter("chef_Id"));
 		chef.setId(chefIdString);
 		
-		List<String> resultSet = new ArrayList<String>();
+		List<Object> resultSet = new ArrayList<Object>();
 		
 		
 		// Make a connection to the database
@@ -75,29 +75,19 @@ public class DisplayChefRecipes extends HttpServlet {
 			 
 			 while(rs.next()){
 				 
-			 	String NAME = rs.getString("R.NAME");
-			 	String DESCRIPTION = rs.getString("R.DESCRIPTION");
-			 	double PREP_TIME = rs.getDouble("R.PREP_TIME");
-			 	String INGREDIENTS = rs.getString("R.INGREDIENTS");
-			 	String DIRECTIONS = rs.getString("R.DIRECTIONS");
-			 	String ORIGIN = rs.getString("FO.ORIGIN");
-			 	String TYPE_NAME = rs.getString("FT.TYPE_NAME");
-			 	
-			 	recipe.setRecipeName(NAME);
-			 	recipe.setDescription(DESCRIPTION);
-			 	recipe.setPrepTime(PREP_TIME);
-			 	recipe.setIngredients(INGREDIENTS);
-			 	recipe.setDirections(DIRECTIONS);
-			 	foodOrigin.setOrigin(ORIGIN);
-			 	foodType.setType(TYPE_NAME);
+				 Recipe recipe = new Recipe();
+				 
+				 recipe.setRecipeName(rs.getString("R.NAME"));
+				 recipe.setDescription(rs.getString("R.DESCRIPTION"));
+				 recipe.setPrepTime(rs.getDouble("R.PREP_TIME"));
+				 recipe.setIngredients(rs.getString("R.INGREDIENTS"));
+				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
+				
+				 resultSet.add(recipe);
+				 recipe.equals(null);
 			 }
-			 request.setAttribute("recipeName", recipe.getRecipeName());
-		 	 request.setAttribute("recipeDescription", recipe.getDescription());
-		 	 request.setAttribute("recipePrepTime", recipe.getPrepTime());
-		 	 request.setAttribute("recipeIngredients", recipe.getIngredients());
-		 	 request.setAttribute("recipeDirections", recipe.getDirections());
-		 	 request.setAttribute("foodOrigin", foodOrigin.getOrigin());
-		 	 request.setAttribute("foodType", foodType.getType());
+			 
+			 request.setAttribute("resultSet", resultSet);
 		 	 
 		 	 
 		 	 // 1) Need to Store result set in an Arraylist to access with JSTL in DisplayChefRecipes.jsp table

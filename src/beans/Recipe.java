@@ -1,7 +1,5 @@
 package beans;
 
-import javax.servlet.http.Part;
-
 // Recipe Bean Class
 public class Recipe {
 	

@@ -8,37 +8,28 @@
 	<title>Chef Recipe Page</title>
 	
 	<style>
-		table, th, td {
+		th, td {
 	    border: 1px solid black;
+	    padding: 5px;
 	}
 	</style>
 
 </head>
 <body>
 	<h1>Display Recipes Page</h1>
-	
+
 	<table>
-		<thead>
+		<c:forEach items="${resultSet}" var="row">
 			<tr>
-				<th>Recipe Name:</th>
+				<td>${row.recipeName}</td>
+				<td>${row.description}</td>
+				<td>${row.prepTime}</td>
+				<td>${row.ingredients}</td>
+				<td>${row.directions}</td>
 			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>${recipeName}</td>
-			</tr>
-		</tbody>
-		<thead>
-			<tr>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>${recipeDescription}</td>
-			</tr>
-		</tbody>
+		</c:forEach>
 	</table>
+	
 	
 	<br>
 	
