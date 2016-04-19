@@ -37,15 +37,9 @@ public class DisplayChefRecipes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Chef chef = new Chef();
-		
-		FoodOrigin foodOrigin = new FoodOrigin();
-		FoodType foodType = new FoodType();
-		
 		int chefIdString = Integer.parseInt(request.getParameter("chef_Id"));
 		chef.setId(chefIdString);
-		
 		List<Object> resultSet = new ArrayList<Object>();
-		
 		
 		// Make a connection to the database
 		String url = "jdbc:mysql://localhost/traineechefdb";
@@ -60,7 +54,7 @@ public class DisplayChefRecipes extends HttpServlet {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 
 			 Statement stmt = (Statement) conn.createStatement();
-			 String sql = "SELECT R.NAME, R.DESCRIPTION, R.PREP_TIME, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME " +
+			 String sql = "SELECT R.NAME, R.DESCRIPTION, R.PREP_TIME, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
 						  "FROM RECIPE AS R " +
 						  	"INNER JOIN FOOD_ORIGIN AS FO " + 
 						  		"ON R.FOOD_ORIGIN_ID = FO.FOOD_ORIGIN_ID " +
@@ -84,6 +78,9 @@ public class DisplayChefRecipes extends HttpServlet {
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
 				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));
 				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
+				 recipe.setImage(rs.getBytes("R.IMAGE"));
+				 
+				 // byte[] img = rs.getBytes("image");
 				
 				 resultSet.add(recipe);
 				 recipe.equals(null);

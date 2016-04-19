@@ -11,6 +11,7 @@ public class Recipe {
 	private String directions;
 	private String foodType;
 	private String foodOrigin;
+	private byte[] image;
 	
 	private int chefId;
 	private int foodTypeId;
@@ -82,5 +83,11 @@ public class Recipe {
 	}
 	public void setFoodOrigin(String foodOrigin) {
 		this.foodOrigin = foodOrigin;
+	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 }

@@ -5,44 +5,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/displayRecipes.css" />
 	<title>Chef Recipe Page</title>
-	
-	<style>
-		html *{
-			font-family: Century Gothic;
-		}
-		
-		h1 {
-			text-align: center;
-			color: #4d94ff;
-		}
-		
-		table {
-    		border-collapse: collapse;
-    		width: 100%;
-		}	
-		th, td {
-	    	border: 1px solid black;
-	    	padding: 10px;
-	    	text-align: left;
-		}
-		th {
-			font-size: 20px;
-			color: #4d94ff;
-		}
-		
-		td {
-			font-size: 15px;
-		}
-		
-		tbody tr:nth-of-type(odd) {
-		  background-color: #f2f2f2;
-		}
-	</style>
-
 </head>
 <body>
-	<h1>Display Recipes Page</h1>
+	<h1>Recipe List</h1>
 
 	<table>
 		<thead>
