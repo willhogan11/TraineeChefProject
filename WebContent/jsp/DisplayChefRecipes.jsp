@@ -45,8 +45,8 @@
 	
 	<div id="returnButton">
 		<a href="jsp/Menu.jsp">
-			<button class="btn btn-large btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>
-			 Return to Menu</button>
+			<button class="btn btn-large btn-primary"><span class="glyphicon glyphicon-hand-left"></span>
+			  Return to Menu</button>
 		</a>
 	</div>
 

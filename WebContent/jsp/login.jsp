@@ -33,7 +33,7 @@
 		<div class="buttonGroup">
 			<a href="Menu.jsp">
 				<button id="hiddenButton" type="button" class="btn btn-large btn-success">
-				Go To Menu <span class="glyphicon glyphicon-arrow-right"></span></button>
+				 Go To Menu <span class="glyphicon glyphicon-hand-right"></span></button>
 			</a>
 		</div>
 		

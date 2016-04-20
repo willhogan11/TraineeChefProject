@@ -19,9 +19,11 @@
 <body onfocus="getLocalStorage();" onload="clearLocalStorage(); getSessionName();">
 		
 	<div class="recipeEntryForm">
-		<form id="submitForm" name="submitForm" method="POST" action="/TraineeChefProject/RecipeEntry" enctype="multipart/form-data" onsubmit="return validateForm()" >
+		<form role="form" id="submitForm" name="submitForm" method="POST" enctype="multipart/form-data" 
+		      action="/TraineeChefProject/RecipeEntry" onsubmit="return validateForm()" >
 			
 			<h3>Enter your Recipe</h3>
+			<hr>
 			<table>
 		    	<tr>
 			        <td>Your Name</td>
@@ -36,12 +38,15 @@
 			        </td>
 			    </tr>  
 			    
-			    <tr><td><hr></td></tr>
-			    
 			     <tr>
 			        <td>Food Type</td>
 			        <td>
-			        	<select id="foodType" name="foodType">
+			        	<select data-toggle="tooltip" 
+			        	        title="Starter, Main Etc.." 
+			        	        data-toggle="dropdown" 
+			        	        class="btn btn-default btn-md dropdown-toggle" 
+			        	        id="foodType" 
+			        	        name="foodType">
 			        		<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodTypeDAO.foodTypelist()}" var="items">
 								<option>${items.type} - ${items.id}</option>
@@ -53,7 +58,12 @@
 			     <tr>
 			        <td>Menu Origin</td>
 			        <td>
-			        	<select id="foodOrigin" name="foodOrigin">
+			        	<select data-toggle="tooltip" 
+			        	        title="Country where recipe originated" 
+			        	        data-toggle="dropdown" 
+			        	        class="btn btn-default btn-md dropdown-toggle" 
+			        	        id="foodOrigin" 
+			        	        name="foodOrigin">
 				        	<option selected="selected">-Select-</option>
 			        		<c:forEach items="${FoodOriginDAO.foodOriginlist()}" var="items">
 								<option>${items.origin} - ${items.foodOriginid}</option>
@@ -65,7 +75,13 @@
 		       <tr>
 			   		<td>Recipe Name</td>
 			   		<td>
-			   			<input placeholder="Recipe Name" type="text" name="recipeName" required>
+			   			<input data-toggle="tooltip" 
+			   			       title="Insert your Recipe name here" 
+			   			       class="form-control" 
+			   			       placeholder="Recipe Name" 
+			   			       type="text" 
+			   			       name="recipeName" 
+			   			       required>
 			   		</td> 
 			    </tr>
 			    
@@ -73,7 +89,8 @@
 			        <td>Description</td>
 			        <td>
 						<textarea placeholder="Enter your Recipe Description here..." 
-								  class="description" 
+								  class="form-control"
+								  data-toggle="tooltip" title="Describe your Recipe"
 								  name="description" 
 								  required></textarea>
 			        </td>
@@ -81,8 +98,12 @@
 			    <tr>
 			    	<td>Prep/Cooking Time[Hours|Mins]</td>
 			    	<td>
-			    		<select id="prepTime" name="prepTime">
-			    			<option  selected="selected">-Select-</option>
+			    		<select data-toggle="tooltip" title="Prep / Cooking time" 
+			    		        data-toggle="dropdown" 
+			    		        class="btn btn-default btn-md dropdown-toggle" 
+			    		        id="prepTime" 
+			    		        name="prepTime">
+			    			<option selected="selected">-Select-</option>
 			        		<c:forEach items="${PrepTimeDAO.prepTime()}" var="items">
 								<option>${items}</option>
 							</c:forEach>
@@ -93,7 +114,12 @@
 			    	<td>Ingredients</td>
 			    	<td>
 			    	<a href="/TraineeChefProject/AddIngredients" onClick="return popup(this, 'notes')">
-			    		<button id="addIngredients" name="addIngredients" type="button">Add Ingredients</button>
+			    		<button class="btn btn-sm btn-warning" id="addIngredients" 
+			    				data-toggle="tooltip" title="Click here to add your Ingredients"
+			    		        name="addIngredients" type="button">
+			    					Add Ingredients
+			    		 	<span class="glyphicon glyphicon-plus"></span>
+			    		 </button>
     			    </a>
 			    	</td>
 			    </tr>   
@@ -101,37 +127,46 @@
 			    	<td>Entered Ingredients</td>
 			    	<td>
 		    			<textarea readonly 
-		    					  required
+		    					  data-toggle="tooltip" title="The Ingredients that you entered"
+		    					  class="form-control"
 		    					  placeholder="Ingredients will be loaded here..."
 		    					  id="ingredientsReturned" 
-		    					  name="ingredientsReturned"></textarea>
+		    					  name="ingredientsReturned"
+		    					  required></textarea>
 			    	</td>
 			    </tr>
 			    <tr>
 			    	<td>Directions</td>
 			    	<td>
 			    		<textarea placeholder="Enter the directions here...." 
-			    		          class="description" 
+			    		          class="form-control" 
 			    		          name="directions" 
+			    		          data-toggle="tooltip" title="Detail here how to Cook / make your recipe"
 			    		          required></textarea>
 		    		</td>
 			    </tr>     
 			    <tr>
 			    	<td>Image</td>
 			    	<td>
-			    		<input type="file" name="image">
+			    		<input data-toggle="tooltip" title="Upload an Image of your recipe" type="file" name="image"> 
 		    		</td>
 			    </tr>
 			    <tr>
 			        <td></td>
 			        <td>
-			        	<input type="submit" value="Submit">
+			        	<input data-toggle="tooltip" title="Enter your recipe to the database" 
+			        	       class="btn btn-md btn-primary" type="submit" value="Submit">
 		        	</td>
 			    </tr>
 			</table>
 		</form>
 		<div style="text-align: left;">
-			<a href="../jsp/Menu.jsp"><button>Main Menu</button></a>
+			<a href="../jsp/Menu.jsp">
+				<button class="btn btn-large btn-default">
+					<span class="glyphicon glyphicon-hand-left"></span> 
+						Main Menu
+				</button>
+			</a>
 		</div>
 	</div>
 </body>
