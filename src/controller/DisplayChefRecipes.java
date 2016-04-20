@@ -1,6 +1,9 @@
 package controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +34,7 @@ import beans.Recipe;
 public class DisplayChefRecipes extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private static final int DEFAULT_BUFFER_SIZE = 16177215;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +45,7 @@ public class DisplayChefRecipes extends HttpServlet {
 		int chefIdString = Integer.parseInt(request.getParameter("chef_Id"));
 		chef.setId(chefIdString);
 		List<Object> resultSet = new ArrayList<Object>();
-		
+
 		// Make a connection to the database
 		String url = "jdbc:mysql://localhost/traineechefdb";
 		String driver = "com.mysql.jdbc.Driver";
@@ -67,7 +72,12 @@ public class DisplayChefRecipes extends HttpServlet {
 			 
 			 ResultSet rs = stmt.executeQuery(sql);
 			 
+			 InputStream sImage = null;
+			 
 			 while(rs.next()){
+				 
+				 // int size = 0;
+				 // byte[] imgByteArray = new byte[DEFAULT_BUFFER_SIZE];
 				 
 				 Recipe recipe = new Recipe();
 				 
@@ -78,17 +88,19 @@ public class DisplayChefRecipes extends HttpServlet {
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
 				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));
 				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
-				 recipe.setImage(rs.getBytes("R.IMAGE"));
+				 sImage = rs.getBinaryStream("R.IMAGE");
+				 recipe.setImage(sImage);
 				 
-				 // byte[] img = rs.getBytes("image");
-				
 				 resultSet.add(recipe);
 				 recipe.equals(null);
 			 }
 			request.setAttribute("resultSet", resultSet);
 			 
+			sImage.close();
+			
 			rs.close();
 			conn.close();
+			
 			 
 			}catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 				e.printStackTrace();

@@ -1,5 +1,7 @@
 package beans;
 
+import java.io.InputStream;
+
 // Recipe Bean Class
 public class Recipe {
 	
@@ -11,7 +13,7 @@ public class Recipe {
 	private String directions;
 	private String foodType;
 	private String foodOrigin;
-	private byte[] image;
+	private InputStream image;
 	
 	private int chefId;
 	private int foodTypeId;
@@ -84,10 +86,10 @@ public class Recipe {
 	public void setFoodOrigin(String foodOrigin) {
 		this.foodOrigin = foodOrigin;
 	}
-	public byte[] getImage() {
+	public InputStream getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImage(InputStream sImage) {
+		this.image = sImage;
 	}
 }

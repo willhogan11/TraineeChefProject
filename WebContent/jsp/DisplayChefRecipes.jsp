@@ -21,6 +21,7 @@
 				<th>Prep Time (Hours/mins)</th>
 				<th>Ingredients</th>
 				<th>Directions</th>
+				<th>Image</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,6 +34,7 @@
 					<td>${row.prepTime}</td>
 					<td>${row.ingredients}</td>
 					<td>${row.directions}</td>
+					<td>${row.image}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

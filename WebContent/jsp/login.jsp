@@ -5,8 +5,12 @@
 <html>
 <head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/login.js"></script>
 	<title>Login Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 
@@ -26,9 +30,13 @@
 		
 		<p class="statusText" id="status" name="status" value=""></p>
 		
-		<a href="Menu.jsp">
-			<button id="hiddenButton" type="button">Go To Menu</button>
-		</a>
+		<div class="buttonGroup">
+			<a href="Menu.jsp">
+				<button id="hiddenButton" type="button" class="btn btn-large btn-success">
+				Go To Menu <span class="glyphicon glyphicon-arrow-right"></span></button>
+			</a>
+		</div>
+		
 		
 	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>
