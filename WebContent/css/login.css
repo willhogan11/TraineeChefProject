@@ -15,6 +15,7 @@ p,h1,h2,h3,h4,h5,tr,td,input,select,option,button,image {
 	border: solid 3px #c2c2a3;
 	border-radius: 1px 5px 1px;
 	box-shadow: 5px 5px 2px grey;
+	background-color: #FDFDF9;
 }
 
 .recipeEntryForm form table tr td, h1 {
@@ -46,7 +47,10 @@ textarea {
 	border-radius: 1px 50px 1px;
 	box-shadow: 10px 10px 5px grey;
 }
-   
+
+.submitForm {
+	background-color: #FBFBF1;
+}
    
 .statusText{
     padding: 15px;
