@@ -1,0 +1,20 @@
+
+#menuControl {
+	font-family: Century Gothic;
+	margin: auto;
+	text-align: center;
+	padding: 80px;
+	width: 600px;
+    border: solid 3px #c2c2a3;
+	border-radius: 1px 50px 1px;
+	box-shadow: 10px 10px 5px grey;
+}
+
+.buttonGroup{
+	padding: 0.25px;
+}
+
+#buttonDiv{
+	padding: 5px;
+}
+

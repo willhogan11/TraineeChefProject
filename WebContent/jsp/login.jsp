@@ -16,6 +16,8 @@
 
 <body>
 
+<br><br><br>
+
 <!--
   Below we include the Login Button social plugin. This button uses
   the JavaScript SDK to present a graphical Login button that triggers
@@ -36,7 +38,6 @@
 				Go To Menu <span class="glyphicon glyphicon-arrow-right"></span></button>
 			</a>
 		</div>
-		
 		
 	    <img class="image" src="../images/gmitLogo.jpg" style="float:">
     </form>
