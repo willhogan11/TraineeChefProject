@@ -5,6 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/displayRecipes.css" />
 	<title>Chef Recipe Page</title>
 </head>
@@ -21,7 +22,7 @@
 				<th>Prep Time (Hours/mins)</th>
 				<th>Ingredients</th>
 				<th>Directions</th>
-				<th>Image</th>
+				<!-- <th>Image</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -34,17 +35,20 @@
 					<td>${row.prepTime}</td>
 					<td>${row.ingredients}</td>
 					<td>${row.directions}</td>
-					<td>${row.image}</td>
+					<%-- <td>${row.image}</td> --%>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
 	<br>
-
-	<a href="jsp/Menu.jsp">
-		<button>Return to Menu</button>
-	</a>
+	
+	<div id="returnButton">
+		<a href="jsp/Menu.jsp">
+			<button class="btn btn-large btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>
+			 Return to Menu</button>
+		</a>
+	</div>
 
 </body>
 </html>

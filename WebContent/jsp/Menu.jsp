@@ -6,10 +6,8 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Menu</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Menu.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menu.css" />
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 

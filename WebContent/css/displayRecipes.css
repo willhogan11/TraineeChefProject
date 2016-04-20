@@ -5,12 +5,13 @@ html *{
 
 h1 {
 	text-align: center;
-	color: #4d94ff;
 }
 
 table {
 	border-collapse: collapse;
-	width: 100%;
+	width: 98%;
+	margin-left: auto;
+    margin-right: auto;
 }	
 
 th, td {
@@ -30,4 +31,8 @@ td {
 
 tbody tr:nth-of-type(odd) {
   	background-color: #f2f2f2;
+}
+
+#returnButton{
+	text-align: center;
 }

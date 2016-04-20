@@ -11,7 +11,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Recipe Entry</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/script.js"></script>
 </head>
 
