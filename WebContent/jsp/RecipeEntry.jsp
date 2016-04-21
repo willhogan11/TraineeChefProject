@@ -148,7 +148,8 @@
 			    <tr>
 			    	<td>Image</td>
 			    	<td>
-			    		<input data-toggle="tooltip" title="Upload an Image of your recipe" type="file" name="image"> 
+			    		<input data-toggle="tooltip" title="Upload an Image of your recipe" type="file" name="image">
+			    		<p style="color: blue; font-weight: bold;">File Size Limit 10mb</p>
 		    		</td>
 			    </tr>
 			    <tr>

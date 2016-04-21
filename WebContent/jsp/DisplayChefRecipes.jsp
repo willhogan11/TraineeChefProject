@@ -22,6 +22,7 @@
 				<th>Prep Time (Hours/mins)</th>
 				<th>Ingredients</th>
 				<th>Directions</th>
+				<th>Delete Recipe</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,6 +35,7 @@
 					<td>${row.prepTime}</td>
 					<td>${row.ingredients}</td>
 					<td>${row.directions}</td>
+					<td><button id="deleteRecipe" name="deleteRecipe" value="Delete">Delete</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>

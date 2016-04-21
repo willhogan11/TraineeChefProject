@@ -67,12 +67,9 @@ public class DisplayChefRecipes extends HttpServlet {
 						  		"ON R.FOOD_TYPE_ID = FT.FOOD_TYPE_ID " +
 						  "WHERE R.CHEF_ID = '" + chef.getId() + "' ";
 			 
-			 // This might work for data access object structure
-			 // DisplayResultsSetDAO sql = new DisplayResultsSetDAO();
-			 
 			 ResultSet rs = stmt.executeQuery(sql);
 			 
-			 InputStream sImage = null;
+			 // InputStream sImage = null;
 			 
 			 while(rs.next()){
 				 
@@ -88,15 +85,16 @@ public class DisplayChefRecipes extends HttpServlet {
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
 				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));
 				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
-				 sImage = rs.getBinaryStream("R.IMAGE");
-				 recipe.setImage(sImage);
+				 
+				 // sImage = rs.getBinaryStream("R.IMAGE");
+				 // recipe.setImage(sImage);
 				 
 				 resultSet.add(recipe);
 				 recipe.equals(null);
 			 }
 			request.setAttribute("resultSet", resultSet);
 			 
-			sImage.close();
+			// sImage.close();
 			
 			rs.close();
 			conn.close();
