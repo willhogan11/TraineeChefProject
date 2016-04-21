@@ -50,8 +50,8 @@ public class RecipeEntry extends HttpServlet {
 		session.setAttribute("studentName", studentName);
 		session.setAttribute("studentSurname", studentSurname);
 		
-		request.setAttribute("recipeName", "You Successfully Entered a recipe for: " + recipeName);
-		session.setAttribute("recipeName", "You Successfully Entered a recipe for: " + recipeName);
+		request.setAttribute("recipeName", "Recipe " + recipeName + " Entered");
+		session.setAttribute("recipeName", "Recipe " + recipeName + " Entered");
 		
 		Chef chef = new Chef();
 		Recipe recipe = new Recipe();

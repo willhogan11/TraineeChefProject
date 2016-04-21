@@ -4,24 +4,22 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Success Page</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/success.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<title>Success</title>
 </head>
-<body>
-	<p>${studentName}</p>
-	<p>${studentSurname}</p>
+<body>	
 	
-	<p><%=session.getAttribute("studentName")%></p>
-	<p><%=session.getAttribute("studentSurname")%></p>
+	<div id="successDiv">
+		<h4>${recipeName} <br><span class="glyphicon glyphicon-ok"></span></h4>
+		<a href="../jsp/Menu.jsp">
+			<button class="btn btn-lg btn-success">Menu</button>
+		</a>
+		<a href="../jsp/login.jsp">
+			<button class="btn btn-lg btn-warning">Login Page</button>
+		</a>
+	</div>
 	
-	<p>EL(Expression Language) -----> ${recipeName}</p>
-	
-	
-	<%-- <p>Scriplet Session object -----> <%=session.getAttribute("recipeName")%></p> --%>
-	
-	<a href="../jsp/Menu.jsp">
-		<button>Return</button>
-	</a>
-	
-	<!-- <a href="index.jsp"><input type="submit" name="logout" value="Logout" method="POST"></a> -->
 </body>
 </html>
