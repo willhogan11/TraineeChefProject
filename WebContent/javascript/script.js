@@ -104,10 +104,13 @@ function validateFunc(){
 function validateForm() {
     var ingredRet = document.forms["submitForm"]["ingredientsReturned"].value;
     var foodTypeSelect = document.forms["submitForm"]["foodType"].value;
+    var itemTypeSelect = document.forms["ingredientsForm"]["item"].value;
+    var measureTypeSelect = document.forms["ingredientsForm"]["measure"].value;
     
-    if ( (ingredRet == null) || (ingredRet == "") || (foodTypeSelect == "-Select-") ) {
-        alert("Field(s) can't be blank");
-        return false;
+    if ( (ingredRet == null) || (ingredRet == "") || (foodTypeSelect == "-Select-") || 
+    	 (itemTypeSelect == "-Select-") || (measureTypeSelect == "-Select-") ) {
+	        alert("Field(s) can't be blank");
+	        return false;
     }
 }
 
