@@ -10,7 +10,7 @@
 	<title>Chef Recipe Page</title>
 </head>
 <body>
-	<h1>Recipe List</h1>
+	<h1>Your Recipe List</h1>
 
 	<table>
 		<thead>

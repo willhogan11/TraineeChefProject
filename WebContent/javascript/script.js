@@ -51,10 +51,10 @@ function storeIngredientDetails(concatDetails){
 function concatIngred() {
 	
 	// Create Variables to get the elements by ID, then concatenate them
-	var item = "[Item]: " + document.getElementById("item").value + " "
-	var measure = "[Measure]: " + document.getElementById("measure").value + " "
-	var quantity = "[Quantity]: " + parseInt(document.getElementById("quantity").value);
-	var concatDetails = item + measure + quantity;
+	var quantity = parseInt(document.getElementById("quantity").value) + " ";
+	var measure = document.getElementById("measure").value + " ";
+	var item = document.getElementById("item").value;
+	var concatDetails = quantity + measure + item;
 
 	// Store value in function and launch setLocalStorage function to store json string
 	storeIngredientDetails(concatDetails);

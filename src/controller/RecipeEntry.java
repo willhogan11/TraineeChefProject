@@ -41,8 +41,6 @@ public class RecipeEntry extends HttpServlet {
 		String studentName = request.getParameter("studentName");
 		String studentSurname = request.getParameter("studentSurname"); 
 		
-		request.getMethod();
-		
 		// Set Attributes that save the values of each
 		request.setAttribute("studentName", studentName);
 	    request.setAttribute("studentSurname", studentSurname);
@@ -128,6 +126,5 @@ public class RecipeEntry extends HttpServlet {
             e.printStackTrace();
 	    }
 	    response.sendRedirect("jsp/Success.jsp");
-	    // request.getRequestDispatcher("jsp/Success.jsp").forward(request, response);
 	}
 }
