@@ -48,7 +48,7 @@ public class DisplayChefRecipes extends HttpServlet {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 
 			 Statement stmt = (Statement) conn.createStatement();
-			 String sql = "SELECT R.NAME, R.DESCRIPTION, R.PREP_TIME_HOURS, R.PREP_TIME_MINS, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
+			 String sql = "SELECT R.RECIPE_ID, R.NAME, R.DESCRIPTION, R.PREP_TIME_HOURS, R.PREP_TIME_MINS, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
 						  "FROM RECIPE AS R " +
 						  	"INNER JOIN FOOD_ORIGIN AS FO " + 
 						  		"ON R.FOOD_ORIGIN_ID = FO.FOOD_ORIGIN_ID " +
@@ -62,10 +62,20 @@ public class DisplayChefRecipes extends HttpServlet {
 
 				 Recipe recipe = new Recipe();
 				 
+				 recipe.setRecipeId(rs.getInt("R.RECIPE_ID"));
 				 recipe.setRecipeName(rs.getString("R.NAME"));
 				 recipe.setDescription(rs.getString("R.DESCRIPTION"));
 				 recipe.setPrepTimeHours(rs.getInt("R.PREP_TIME_HOURS"));
 				 recipe.setPrepTimeMins(rs.getInt("R.PREP_TIME_MINS"));
+				 
+				 // Working on how to Split string
+			/*	 String Str = new String("9 g Baking Soda,90 g Chorizo,90 g Flour");
+
+			      for (String retval: Str.split(",", 100)){
+			         System.out.println(retval);
+			      }
+			      System.out.println("");*/
+				 
 				 recipe.setIngredients(rs.getString("R.INGREDIENTS"));
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
 				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));

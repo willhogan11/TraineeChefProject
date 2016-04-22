@@ -15,6 +15,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>ID</th>
 				<th>Recipe Name</th>
 				<th>Food Origin</th>
 				<th>Food Type</th>
@@ -28,6 +29,7 @@
 		<tbody>
 			<c:forEach items="${resultSet}" var="row">
 				<tr>
+					<td id="recipeId">${row.recipeId}</td>
 					<td>${row.recipeName}</td>
 					<td>${row.foodOrigin}</td>
 					<td>${row.foodType}</td>

@@ -65,3 +65,9 @@ h3 {
     display: block;
     padding-top: 30px;
 }
+
+#menuButton {
+	text-align: center;
+	width: 525px;
+	margin: auto auto 35px auto;
+}

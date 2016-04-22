@@ -104,10 +104,8 @@
 			    		        class="btn btn-default btn-md dropdown-toggle" 
 			    		        id="prepTimeHours" 
 			    		        name="prepTimeHours">
-			    		       <!--  id="prepTime" 
-			    		        name="prepTime"> -->
 			    			<option selected="selected">-Select-</option>
-			        		<c:forEach var="i" begin="1" end="60">
+			        		<c:forEach var="i" begin="0" end="10">
 								<option>${i}</option>
 							</c:forEach>
 			    		</select>
@@ -118,7 +116,7 @@
 			    		        id="prepTimeMins" 
 			    		        name="prepTimeMins">
 			    			<option selected="selected">-Select-</option>
-			    			<c:forEach var="i" begin="0" end="10">
+			    			<c:forEach var="i" begin="1" end="60">
 			    				<option>${i}</option>
 			    			</c:forEach>
 			    		</select>
@@ -169,7 +167,8 @@
 		    		</td>
 			    </tr>
 			    <tr>
-			        <td>
+			    	<td></td>
+			  <!--       <td>
 		        		<div>
 							<a href="../jsp/Menu.jsp">
 								<button class="btn btn-large btn-default">
@@ -178,7 +177,7 @@
 								</button>
 							</a>
 						</div>
-		        	</td>
+		        	</td> -->
 			        <td>
 			        	<input data-toggle="tooltip" title="Enter your recipe to the database" 
 			        	       class="btn btn-md btn-primary" type="submit" value="Submit">
@@ -187,5 +186,15 @@
 			</table>
 		</form>
 	</div>
+	
+	<div id="menuButton">
+		<a href="../jsp/Menu.jsp">
+			<button class="btn btn-default btn-lg btn-block">
+				<span class="glyphicon glyphicon-hand-left"></span> 
+					Main Menu
+			</button>
+		</a>
+	</div>
+	
 </body>
 </html>
