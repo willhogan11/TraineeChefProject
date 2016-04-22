@@ -168,16 +168,6 @@
 			    </tr>
 			    <tr>
 			    	<td></td>
-			  <!--       <td>
-		        		<div>
-							<a href="../jsp/Menu.jsp">
-								<button class="btn btn-large btn-default">
-									<span class="glyphicon glyphicon-hand-left"></span> 
-										Main Menu
-								</button>
-							</a>
-						</div>
-		        	</td> -->
 			        <td>
 			        	<input data-toggle="tooltip" title="Enter your recipe to the database" 
 			        	       class="btn btn-md btn-primary" type="submit" value="Submit">

@@ -12,37 +12,40 @@
 <body>
 	<h1>Your Recipe List</h1>
 
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Recipe Name</th>
-				<th>Food Origin</th>
-				<th>Food Type</th>
-				<th>Description</th>
-				<th>Preparation Time</th>
-				<th>Ingredients</th>
-				<th>Directions</th>
-				<th>Delete Recipe</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${resultSet}" var="row">
+	<form id="submitForm" name="submitForm" method="GET" action="/TraineeChefProject/DeleteRecipe">
+		<table>
+			<thead>
 				<tr>
-					<td id="recipeId">${row.recipeId}</td>
-					<td>${row.recipeName}</td>
-					<td>${row.foodOrigin}</td>
-					<td>${row.foodType}</td>
-					<td>${row.description}</td>
-					<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
-					<td>${row.ingredients}</td>
-					<td>${row.directions}</td>
-					<td><button id="deleteRecipe" name="deleteRecipe" value="Delete">Delete</button></td>
+					<th>ID</th>
+					<th>Recipe Name</th>
+					<th>Food Origin</th>
+					<th>Food Type</th>
+					<th>Description</th>
+					<th>Preparation Time</th>
+					<th>Ingredients</th>
+					<th>Directions</th>
+					<th>Delete Recipe</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
+			</thead>
+			<tbody>
+				<c:forEach items="${resultSet}" var="row">
+					<tr>
+						<td id="recipeId">${row.recipeId}</td>
+						<td>${row.recipeName}</td>
+						<td>${row.foodOrigin}</td>
+						<td>${row.foodType}</td>
+						<td>${row.description}</td>
+						<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
+						<td>${row.ingredients}</td>
+						<td>${row.directions}</td>
+						<td>
+							<input id="deleteRecipe" name="deleteRecipe" type="submit" value="${row.recipeId}" />
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</form>
 	<br>
 	
 	<div id="returnButton">
