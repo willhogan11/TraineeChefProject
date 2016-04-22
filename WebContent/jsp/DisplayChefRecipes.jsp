@@ -19,7 +19,7 @@
 				<th>Food Origin</th>
 				<th>Food Type</th>
 				<th>Description</th>
-				<th>Prep Time (Hours/mins)</th>
+				<th>Preparation Time</th>
 				<th>Ingredients</th>
 				<th>Directions</th>
 				<th>Delete Recipe</th>
@@ -32,7 +32,7 @@
 					<td>${row.foodOrigin}</td>
 					<td>${row.foodType}</td>
 					<td>${row.description}</td>
-					<td>${row.prepTime}</td>
+					<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
 					<td>${row.ingredients}</td>
 					<td>${row.directions}</td>
 					<td><button id="deleteRecipe" name="deleteRecipe" value="Delete">Delete</button></td>

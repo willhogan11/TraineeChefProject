@@ -75,7 +75,8 @@ public class RecipeEntry extends HttpServlet {
 	    
 	    recipe.setRecipeName(request.getParameter("recipeName"));
 	    recipe.setDescription(request.getParameter("description"));
-	    recipe.setPrepTime(Double.parseDouble(request.getParameter("prepTime")));
+	    recipe.setPrepTimeHours(Integer.parseInt(request.getParameter("prepTimeHours")));
+	    recipe.setPrepTimeMins(Integer.parseInt(request.getParameter("prepTimeMins")));
 	    recipe.setIngredients(request.getParameter("ingredientsReturned"));
 	    recipe.setDirections(request.getParameter("directions"));
 	    
@@ -91,24 +92,25 @@ public class RecipeEntry extends HttpServlet {
 			conn = (Connection) DriverManager.getConnection(url, user, password);
 			System.out.println("Connection Established");
 	    	
-			String sql1 = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
-					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql1 = "INSERT INTO RECIPE(NAME, DESCRIPTION, PREP_TIME_HOURS, PREP_TIME_MINS, INGREDIENTS, DIRECTIONS, IMAGE, CHEF_ID, FOOD_TYPE_ID, FOOD_ORIGIN_ID) "
+					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			java.sql.PreparedStatement prest1 = conn.prepareStatement(sql1);
 			
 			prest1.setString(1, recipe.getRecipeName());
 			prest1.setString(2, recipe.getDescription());
-			prest1.setDouble(3, recipe.getPrepTime());
-			prest1.setString(4, recipe.getIngredients());
-			prest1.setString(5, recipe.getDirections());
+			prest1.setInt(3, recipe.getPrepTimeHours());
+			prest1.setInt(4, recipe.getPrepTimeMins());
+			prest1.setString(5, recipe.getIngredients());
+			prest1.setString(6, recipe.getDirections());
 			
 			// fetches input stream of the upload file for the blob column
 			if (inputStream != null) {
-				prest1.setBlob(6, inputStream);
+				prest1.setBlob(7, inputStream);
 			}
-			prest1.setInt(7, chef.getId());
-			prest1.setInt(8, foodType.getId());
-			prest1.setInt(9, foodOrigin.getFoodOriginid());
+			prest1.setInt(8, chef.getId());
+			prest1.setInt(9, foodType.getId());
+			prest1.setInt(10, foodOrigin.getFoodOriginid());
 			
 			// sends the statement to the database server
             prest1.executeUpdate();

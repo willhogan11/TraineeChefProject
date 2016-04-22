@@ -1,30 +1,19 @@
 package controller;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.mysql.jdbc.Statement;
-import com.sun.xml.internal.txw2.Document;
-
 import beans.Chef;
-import beans.FoodOrigin;
-import beans.FoodType;
 import beans.Recipe;
 
 /**
@@ -34,7 +23,7 @@ import beans.Recipe;
 public class DisplayChefRecipes extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final int DEFAULT_BUFFER_SIZE = 16177215;
+	// private static final int DEFAULT_BUFFER_SIZE = 16177215;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -59,7 +48,7 @@ public class DisplayChefRecipes extends HttpServlet {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 
 			 Statement stmt = (Statement) conn.createStatement();
-			 String sql = "SELECT R.NAME, R.DESCRIPTION, R.PREP_TIME, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
+			 String sql = "SELECT R.NAME, R.DESCRIPTION, R.PREP_TIME_HOURS, R.PREP_TIME_MINS, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
 						  "FROM RECIPE AS R " +
 						  	"INNER JOIN FOOD_ORIGIN AS FO " + 
 						  		"ON R.FOOD_ORIGIN_ID = FO.FOOD_ORIGIN_ID " +
@@ -69,32 +58,23 @@ public class DisplayChefRecipes extends HttpServlet {
 			 
 			 ResultSet rs = stmt.executeQuery(sql);
 			 
-			 // InputStream sImage = null;
-			 
 			 while(rs.next()){
-				 
-				 // int size = 0;
-				 // byte[] imgByteArray = new byte[DEFAULT_BUFFER_SIZE];
-				 
+
 				 Recipe recipe = new Recipe();
 				 
 				 recipe.setRecipeName(rs.getString("R.NAME"));
 				 recipe.setDescription(rs.getString("R.DESCRIPTION"));
-				 recipe.setPrepTime(rs.getDouble("R.PREP_TIME"));
+				 recipe.setPrepTimeHours(rs.getInt("R.PREP_TIME_HOURS"));
+				 recipe.setPrepTimeMins(rs.getInt("R.PREP_TIME_MINS"));
 				 recipe.setIngredients(rs.getString("R.INGREDIENTS"));
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
 				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));
 				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
 				 
-				 // sImage = rs.getBinaryStream("R.IMAGE");
-				 // recipe.setImage(sImage);
-				 
 				 resultSet.add(recipe);
 				 recipe.equals(null);
 			 }
 			request.setAttribute("resultSet", resultSet);
-			 
-			// sImage.close();
 			
 			rs.close();
 			conn.close();

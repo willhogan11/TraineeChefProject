@@ -8,13 +8,13 @@ public class Recipe {
 	private int recipeId;
 	private String recipeName;
 	private String description;
-	private double prepTime;
+	private int prepTimeHours;
+	private int prepTimeMins;
 	private String ingredients;
 	private String directions;
 	private String foodType;
 	private String foodOrigin;
 	private InputStream image;
-	
 	private int chefId;
 	private int foodTypeId;
 	private int foodOriginId;
@@ -37,12 +37,6 @@ public class Recipe {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public double getPrepTime() {
-		return prepTime;
-	}
-	public void setPrepTime(double prepTime) {
-		this.prepTime = prepTime;
 	}
 	public String getIngredients() {
 		return ingredients;
@@ -91,5 +85,17 @@ public class Recipe {
 	}
 	public void setImage(InputStream sImage) {
 		this.image = sImage;
+	}
+	public int getPrepTimeMins() {
+		return prepTimeMins;
+	}
+	public void setPrepTimeMins(int prepTimeMins) {
+		this.prepTimeMins = prepTimeMins;
+	}
+	public int getPrepTimeHours() {
+		return prepTimeHours;
+	}
+	public void setPrepTimeHours(int prepTimeHours) {
+		this.prepTimeHours = prepTimeHours;
 	}
 }

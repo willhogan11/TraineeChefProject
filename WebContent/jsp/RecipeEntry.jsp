@@ -95,21 +95,37 @@
 								  required></textarea>
 			        </td>
 			    </tr>   
+			    
 			    <tr>
-			    	<td>Prep/Cooking Time[Hours|Mins]</td>
+			    	<td>Prep Time</td>
 			    	<td>
-			    		<select data-toggle="tooltip" title="Prep / Cooking time" 
+			    		<select data-toggle="tooltip" title="Cooking time in Hours" 
 			    		        data-toggle="dropdown" 
 			    		        class="btn btn-default btn-md dropdown-toggle" 
-			    		        id="prepTime" 
-			    		        name="prepTime">
+			    		        id="prepTimeHours" 
+			    		        name="prepTimeHours">
+			    		       <!--  id="prepTime" 
+			    		        name="prepTime"> -->
 			    			<option selected="selected">-Select-</option>
-			        		<c:forEach items="${PrepTimeDAO.prepTime()}" var="items">
-								<option>${items}</option>
+			        		<c:forEach var="i" begin="1" end="60">
+								<option>${i}</option>
 							</c:forEach>
 			    		</select>
+			    		h
+			    		<select data-toggle="tooltip" title="Cooking time in Minutes" 
+			    				data-toggle="dropdown" 
+			    		        class="btn btn-default btn-md dropdown-toggle" 
+			    		        id="prepTimeMins" 
+			    		        name="prepTimeMins">
+			    			<option selected="selected">-Select-</option>
+			    			<c:forEach var="i" begin="0" end="10">
+			    				<option>${i}</option>
+			    			</c:forEach>
+			    		</select>
+			    		m
 		    		</td>
-			    </tr> 
+			    </tr>
+			    
 			    <tr>
 			    	<td>Ingredients</td>
 			    	<td>
@@ -153,7 +169,16 @@
 		    		</td>
 			    </tr>
 			    <tr>
-			        <td></td>
+			        <td>
+		        		<div>
+							<a href="../jsp/Menu.jsp">
+								<button class="btn btn-large btn-default">
+									<span class="glyphicon glyphicon-hand-left"></span> 
+										Main Menu
+								</button>
+							</a>
+						</div>
+		        	</td>
 			        <td>
 			        	<input data-toggle="tooltip" title="Enter your recipe to the database" 
 			        	       class="btn btn-md btn-primary" type="submit" value="Submit">
@@ -161,14 +186,6 @@
 			    </tr>
 			</table>
 		</form>
-		<div style="text-align: left;">
-			<a href="../jsp/Menu.jsp">
-				<button class="btn btn-large btn-default">
-					<span class="glyphicon glyphicon-hand-left"></span> 
-						Main Menu
-				</button>
-			</a>
-		</div>
 	</div>
 </body>
 </html>
