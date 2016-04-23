@@ -1,0 +1,28 @@
+body {
+	font-family: Century Gothic;
+}
+
+#recipeDeletedDiv {
+	width: 375px;
+	height: 175px;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: solid 3px #c2c2a3;
+	box-shadow: 10px 10px 5px grey;
+	border-radius: 1px 30px 1px;
+	background-color: #FDFDF9;
+	text-align: center;
+}
+
+#recipeDeletedDiv h4 {
+	text-align: center;
+	font-family: Century Gothic;
+}
+
+button {
+    margin: 0 auto;
+}

@@ -88,7 +88,6 @@ public class DisplayChefRecipes extends HttpServlet {
 			
 			rs.close();
 			conn.close();
-			
 			 
 			}catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 				e.printStackTrace();

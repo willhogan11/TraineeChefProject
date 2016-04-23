@@ -9,8 +9,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<title>Success</title>
 </head>
+
 <body>	
-	
 	<div id="successDiv">
 		<h4>${recipeName} <br><span class="glyphicon glyphicon-ok"></span></h4>
 		<a href="../jsp/Menu.jsp">
@@ -20,6 +20,5 @@
 			<button class="btn btn-lg btn-warning">Login Page</button>
 		</a>
 	</div>
-	
 </body>
 </html>

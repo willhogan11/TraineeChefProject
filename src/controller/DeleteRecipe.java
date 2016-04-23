@@ -1,11 +1,16 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.mysql.jdbc.Statement;
+
 
 /**
  * Servlet implementation class DeleteRecipe
@@ -24,25 +29,26 @@ public class DeleteRecipe extends HttpServlet {
 		
 		System.out.println("String deleteRecipe " + deleteRecipe); // Debugging Purposes
 		
+		String url = "jdbc:mysql://localhost/traineechefdb";
+		String driver = "com.mysql.jdbc.Driver";
+		String user = "root";
+		String password = null;
 		
-		
-		
-		
-		request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		try {
+			 Class.forName(driver).newInstance();
+			 Connection conn = (Connection) DriverManager.getConnection(url, user, password);
+			 System.out.println("Connection Established");		
+			 Class.forName("com.mysql.jdbc.Driver");
+			 Statement stmt = (Statement) conn.createStatement();
+			 String sql = "DELETE FROM RECIPE WHERE RECIPE_ID = '" + deleteRecipe + "' ";
+			 stmt.executeUpdate(sql);
+			 
+			 stmt.close();
+			 conn.close();
+			 
+		}catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("jsp/DeleteRecipeSuccess.jsp").forward(request, response);
 	}
 }
