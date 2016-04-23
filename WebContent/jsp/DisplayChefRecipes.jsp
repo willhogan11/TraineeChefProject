@@ -38,9 +38,13 @@
 						<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
 						<td>${row.ingredients}</td>
 						<td>${row.directions}</td>
+						
+						<!-- Working from here, need to Get id so i can delete the record -->
 						<td>
-							<input id="deleteRecipe" name="deleteRecipe" type="submit" value="${row.recipeId}" />
+							<input id="deleteRecipe" name="deleteRecipe" type="submit" value="Delete" />
+							<input id="deleteRecipe" name="deleteRecipe" type="hidden" value="${row.recipeId}" />
 						</td>
+						
 					</tr>
 				</c:forEach>
 			</tbody>
