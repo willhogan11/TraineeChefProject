@@ -127,7 +127,7 @@
 			    <tr>
 			    	<td>Ingredients</td>
 			    	<td>
-			    	<a href="/TraineeChefProject/AddIngredients" onClick="return popup(this, 'notes')">
+			    	<a href="/TraineeChefProject/AddIngredients" onclick="addIngredientsPopUp(this); return false;">
 			    		<button class="btn btn-sm btn-warning" id="addIngredients" 
 			    				data-toggle="tooltip" title="Click here to add your Ingredients"
 			    		        name="addIngredients" type="button">

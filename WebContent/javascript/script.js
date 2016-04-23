@@ -4,7 +4,6 @@ var jsonString;
 var jsonParse;
 
 
-// Pop up window code that triggers the launch of the 'AddIngredients.html' page
 function popup(mylink, windowname) { 
 	if (! window.focus)
 		return true; 
@@ -16,6 +15,15 @@ function popup(mylink, windowname) {
 	window.open(href, windowname, 'width=700, height=600, scrollbars=yes'); 
 	return false; 
 }
+
+
+//Pop up window code that triggers the launch of the 'AddIngredients.html' page
+function addIngredientsPopUp(param){
+	var x = screen.width/2 - 700/2;
+	var y = screen.height/2 - 550/2;
+	window.open(param.href, 'sharegplus','height=485,width=700,left='+x+',top='+y);
+}
+
 
 // Close the Pop up window
 function closePopUp(){
@@ -114,7 +122,7 @@ function validateForm() {
     }
 }
 
-
+// Used for Parsing
 String.prototype.escapeSpecialChars = function() {
     return this.replace(/\\n/g, "\\n")
                .replace(/\\'/g, "\\'")

@@ -103,7 +103,7 @@
 			<h3>Ingredient not in Database? <br> No problem, Add below...</h3>
 			<table>
 				<tr>
-					<td>Ingredient Name: </td>
+					<td>Ingredient Name:&nbsp;&nbsp;</td>
 					<td>
 						<input class="form-control" type="text" 
 							   name="ingredientName" required
@@ -112,7 +112,7 @@
 					<td></td>
 					<td>
 						<input data-toggle="tooltip" title="Add an Item to the Database" 
-							   class="form-control" type="submit" value="+">
+							   id="addButton" class="form-control" type="submit" value="+">
 					</td>
 				</tr>
 			</table>
