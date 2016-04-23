@@ -16,7 +16,6 @@
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Recipe Name</th>
 					<th>Food Origin</th>
 					<th>Food Type</th>
@@ -30,7 +29,6 @@
 			<tbody>
 				<c:forEach items="${resultSet}" var="row">
 					<tr>
-						<td id="recipeId">${row.recipeId}</td>
 						<td>${row.recipeName}</td>
 						<td>${row.foodOrigin}</td>
 						<td>${row.foodType}</td>
@@ -38,11 +36,8 @@
 						<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
 						<td>${row.ingredients}</td>
 						<td>${row.directions}</td>
-						
-						<!-- Working from here, need to Get id so i can delete the record -->
 						<td>
-							<input id="deleteRecipe" name="deleteRecipe" type="submit" value="Delete" />
-							<input id="deleteRecipe" name="deleteRecipe" type="hidden" value="${row.recipeId}" />
+							<button type="submit" name="deleteRecipe" value="${row.recipeId}">Delete</button>
 						</td>
 						
 					</tr>
@@ -50,6 +45,7 @@
 			</tbody>
 		</table>
 	</form>
+	
 	<br>
 	
 	<div id="returnButton">

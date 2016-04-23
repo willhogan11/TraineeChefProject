@@ -19,9 +19,15 @@ public class DeleteRecipe extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String deleteRecipe = request.getParameter("deleteRecipe");
+		String deleteRecipe = request.getParameter("deleteRecipe");	
 		request.setAttribute("deleteRecipe", deleteRecipe);
-		System.out.println("String deleteRecipe " + deleteRecipe);
+		
+		System.out.println("String deleteRecipe " + deleteRecipe); // Debugging Purposes
+		
+		
+		
+		
+		
 		request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
 	}
 
@@ -29,7 +35,7 @@ public class DeleteRecipe extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 
 	/**
