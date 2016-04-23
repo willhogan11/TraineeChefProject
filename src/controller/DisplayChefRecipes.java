@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,31 +68,15 @@ public class DisplayChefRecipes extends HttpServlet {
 				 recipe.setDescription(rs.getString("R.DESCRIPTION"));
 				 recipe.setPrepTimeHours(rs.getInt("R.PREP_TIME_HOURS"));
 				 recipe.setPrepTimeMins(rs.getInt("R.PREP_TIME_MINS"));
-				 
-				 // Working on how to Split string
-			/*	 String Str = new String("9 g Baking Soda,90 g Chorizo,90 g Flour");
-
-			      for (String retval: Str.split(",", 100)){
-			         System.out.println(retval);
-			      }
-			      System.out.println("");*/
-				 
 				 recipe.setIngredients(rs.getString("R.INGREDIENTS"));
 				 recipe.setDirections(rs.getString("R.DIRECTIONS"));
 				 recipe.setFoodOrigin(rs.getString("FO.ORIGIN"));
 				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
 				 
 				 resultSet.add(recipe);
-				 
-/*				 if(resultSet.isEmpty()){
-					 request.setAttribute("empty", "You have no recipes Entered");
-					 request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
-				 }*/
-				 
 				 recipe.equals(null);
 			 }
 			request.setAttribute("resultSet", resultSet);
-			
 			
 			rs.close();
 			conn.close();

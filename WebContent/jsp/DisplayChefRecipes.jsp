@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html>
 <html>
@@ -23,34 +24,28 @@
 					<th>Preparation Time</th>
 					<th>Ingredients</th>
 					<th>Directions</th>
-					<th>Delete Recipe</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${resultSet}" var="row">
-				
-					<c:choose>
-						<c:when test="${resultSet}">
-							<tr>
-								<td><h1>You have no Recipes Entered</h1></td>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<tr>
-								<td>${row.recipeName}</td>
-								<td>${row.foodOrigin}</td>
-								<td>${row.foodType}</td>
-								<td>${row.description}</td>
-								<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
-								<td>${row.ingredients}</td>
-								<td>${row.directions}</td>
-								<td>
-									<button type="submit" name="deleteRecipe" value="${row.recipeId}">Delete</button>
-								</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
-					
+					<tr>
+						<td>${row.recipeName}</td>
+						<td>${row.foodOrigin}</td>
+						<td>${row.foodType}</td>
+						<td>${row.description}</td>
+						<td>${row.prepTimeHours}h ${row.prepTimeMins}m</td>
+						<td>
+							<c:forTokens items="${row.ingredients}" delims="," var="ingredSplit">
+								${ingredSplit}
+									<br>
+							</c:forTokens>
+						</td>
+						<td>${row.directions}</td>
+						<td>
+							<button class="btn btn-large btn-danger" type="submit" name="deleteRecipe" value="${row.recipeId}">Delete <span class="glyphicon glyphicon-trash"></span></button>
+						</td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
