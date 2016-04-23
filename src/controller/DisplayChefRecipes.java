@@ -82,9 +82,16 @@ public class DisplayChefRecipes extends HttpServlet {
 				 recipe.setFoodType(rs.getString("FT.TYPE_NAME"));
 				 
 				 resultSet.add(recipe);
+				 
+/*				 if(resultSet.isEmpty()){
+					 request.setAttribute("empty", "You have no recipes Entered");
+					 request.getRequestDispatcher("jsp/DisplayChefRecipes.jsp").forward(request, response);
+				 }*/
+				 
 				 recipe.equals(null);
 			 }
 			request.setAttribute("resultSet", resultSet);
+			
 			
 			rs.close();
 			conn.close();

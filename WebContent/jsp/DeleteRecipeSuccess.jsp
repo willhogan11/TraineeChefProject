@@ -12,12 +12,9 @@
 	
 <body>
 	<div id="recipeDeletedDiv">
-		<h4>Recipe Deleted<br><span class="glyphicon glyphicon-ok"></span></h4>
-		<a href="/TraineeChefProject/WebContent/jsp/DeleteRecipeSuccess.jsp">
+		<h4>Recipe Deleted <span class="glyphicon glyphicon-ok"></span></h4>
+		<a href="${pageContext.request.contextPath}/jsp/Menu.jsp">
 			<button class="btn btn-lg btn-success">Menu</button>
-		</a>
-		<a href="/TraineeChefProject/WebContent/jsp/DeleteRecipeSuccess.jsp">
-			<button class="btn btn-lg btn-warning">Login Page</button>
 		</a>
 	</div>
 </body>
