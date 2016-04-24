@@ -36,6 +36,7 @@ public class RecipeEntry extends HttpServlet {
 		
 	    HttpSession session = request.getSession(); 
 		String recipeName = request.getParameter("recipeName");
+		String hiddenRecipeId = request.getParameter("hiddenRecipeId");
 		
 		// Get the Chef's username parameters
 		String studentName = request.getParameter("studentName");

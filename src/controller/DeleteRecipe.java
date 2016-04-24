@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.Statement;
 
+import beans.Recipe;
+
 
 /**
  * Servlet implementation class DeleteRecipe
@@ -24,7 +26,9 @@ public class DeleteRecipe extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Recipe recipe = new Recipe();
 		String deleteRecipe = request.getParameter("deleteRecipe");	
+		recipe.setRecipeId(Integer.parseInt(deleteRecipe));
 		request.setAttribute("deleteRecipe", deleteRecipe);
 		
 		System.out.println("String deleteRecipe " + deleteRecipe); // Debugging Purposes
@@ -40,7 +44,7 @@ public class DeleteRecipe extends HttpServlet {
 			 System.out.println("Connection Established");		
 			 Class.forName("com.mysql.jdbc.Driver");
 			 Statement stmt = (Statement) conn.createStatement();
-			 String sql = "DELETE FROM RECIPE WHERE RECIPE_ID = '" + deleteRecipe + "' ";
+			 String sql = "DELETE FROM RECIPE WHERE RECIPE_ID = '" + recipe.getRecipeId() + "' ";
 			 stmt.executeUpdate(sql);
 			 
 			 stmt.close();
