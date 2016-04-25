@@ -13,6 +13,16 @@ import com.mysql.jdbc.Statement;
 
 import beans.Recipe;
 
+/*
+ * This class is responsible for Deleting Recipes from the database using a HTTP GET request 
+ * These values are located by get the currently selected elements id using code from the dataAccesssObjects folder in this project
+ * to send the request to delete the row from the database. 
+ * Steps:
+ * 	1) Make a connection to the Database
+ * 	2) Create the SQL delete query and select parameters using the Bean class getters & setters methods
+ * 	3) Execute the query
+ * 	4) Redirect the user to the Recipe delete success page
+ */
 
 /**
  * Servlet implementation class DeleteRecipe

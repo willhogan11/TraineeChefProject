@@ -6,5 +6,3 @@
 * Course: Software Development
 * Module: 3rd Year Project
 * Project Supervisor: Gerard Harrison
-
-Work in Progress

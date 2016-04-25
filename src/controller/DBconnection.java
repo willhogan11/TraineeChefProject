@@ -1,8 +1,9 @@
 package controller;
 
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import com.mysql.jdbc.Connection;
+
+// This class hasn't been implemented as it's work in progress
 
 public class DBconnection {
 	

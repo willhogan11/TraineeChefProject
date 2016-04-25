@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +16,16 @@ import com.mysql.jdbc.Statement;
 import beans.Chef;
 import beans.Recipe;
 
+/*
+ * This class is responsible for Displaying any existing recipes from the database in a JSP page using a HTTP GET request 
+ * These values are retrieved using a MySQL query located below
+ * Steps:
+ * 	1) Make a connection to the Database
+ * 	2) Create the SQL delete query and select parameters using the Bean class getters & setters methods
+ * 	3) Execute the query
+ * 	4) Redirect the user to the DisplayChefRecipes JSP page
+ */
+
 /**
  * Servlet implementation class DisplayChefRecipes
  */
@@ -24,7 +33,6 @@ import beans.Recipe;
 public class DisplayChefRecipes extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	// private static final int DEFAULT_BUFFER_SIZE = 16177215;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +48,7 @@ public class DisplayChefRecipes extends HttpServlet {
 		String url = "jdbc:mysql://localhost/traineechefdb";
 		String driver = "com.mysql.jdbc.Driver";
 		String user = "root";
-		String password = null;
+		String password = null; 
 		
 		try {
 			 Class.forName(driver).newInstance();
@@ -49,7 +57,8 @@ public class DisplayChefRecipes extends HttpServlet {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 
 			 Statement stmt = (Statement) conn.createStatement();
-			 String sql = "SELECT R.RECIPE_ID, R.NAME, R.DESCRIPTION, R.PREP_TIME_HOURS, R.PREP_TIME_MINS, R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
+			 String sql = "SELECT R.RECIPE_ID, R.NAME, R.DESCRIPTION, R.PREP_TIME_HOURS, R.PREP_TIME_MINS," +
+			 		            " R.INGREDIENTS, R.DIRECTIONS, FO.ORIGIN, FT.TYPE_NAME, R.IMAGE " +
 						  "FROM RECIPE AS R " +
 						  	"INNER JOIN FOOD_ORIGIN AS FO " + 
 						  		"ON R.FOOD_ORIGIN_ID = FO.FOOD_ORIGIN_ID " +

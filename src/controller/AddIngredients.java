@@ -2,20 +2,21 @@ package controller;
 
 import java.io.IOException;
 import java.sql.DriverManager;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.mysql.jdbc.Connection;
 import beans.*;
 import dataAccessObjects.*;
 
 /*
- * This class is rensible for 
+ * This class is responsible for Retrieving the Ingredient items in the database using a HTTP Get request 
+ * and displaying them in a Dropdown list in the AddIngredients JSP page
+ * These values are retrieved using code from the dataAccesssObjects folder in this project 
+ * The doPost method is called when there isn't a particular tyope of ingredient for the user to select, 
+ * then the Chef can enter directly to the database from the AddIngredients page
  */
 
 /**
@@ -72,7 +73,6 @@ public class AddIngredients extends HttpServlet {
 	    }catch (Exception e) {
             e.printStackTrace();
 	    }
-	    
 	    request.setAttribute("ingredientName", ingredientName +  " Added to Database");
 	    getServletContext().getRequestDispatcher("/jsp/AddIngredients.jsp").forward(request, response);
         getServletContext().getAttribute(ingredientName);

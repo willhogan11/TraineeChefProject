@@ -12,11 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import com.mysql.jdbc.Connection;
-import com.sun.glass.ui.Application;
-
-import dataAccessObjects.*;
 import beans.*;
 
+
+/*
+ * This class is responsible for Entering recipes into the database from the front end section 
+ * of the Web application using a HTTP POST request 
+ * Steps:
+ * 	1) Make a connection to the Database
+ * 	2) Create the SQL delete query and select parameters using the Bean class getters & setters methods
+ * 	3) Bind the values from the getters and setters to the request parameters
+ * 	4) Execute the query
+ * 	5) Redirect the user to the Success JSP page
+ */
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/RecipeEntry" })
 @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
@@ -36,7 +44,6 @@ public class RecipeEntry extends HttpServlet {
 		
 	    HttpSession session = request.getSession(); 
 		String recipeName = request.getParameter("recipeName");
-		String hiddenRecipeId = request.getParameter("hiddenRecipeId");
 		
 		// Get the Chef's username parameters
 		String studentName = request.getParameter("studentName");
@@ -117,13 +124,6 @@ public class RecipeEntry extends HttpServlet {
             prest1.executeUpdate();
             prest1.close();
 			conn.close();	
-			
-            
-          /*  if(request.getAttribute("logout") != null){
-            	session.invalidate();
-            	System.out.println("Logged Out");
-            	response.sendRedirect("Index.jsp");
-            }*/
 			
 	    }catch (Exception e) {
             e.printStackTrace();
