@@ -19,9 +19,11 @@
 </head>
 
 <body>
+
 	<div class="btn-group-vertical" id="ingredientsForm">
 		<h1>Add Ingredients</h1>
 		<hr>
+		
 		<table>
 			<tr>
 				<td><h3>Add Ingredients from Database:</h3></td>
@@ -73,12 +75,12 @@
 			</tr>
 			<tr>
 				<td>Add Ingredient:		<span class="glyphicon glyphicon-arrow-right"></span></td>
-				<td>
+				<td> 
 					<button class="btn btn-sm btn-info" 
 							data-toggle="tooltip" title="Add an Ingredient"
 							id="add" 
 							name="add" 
-							onClick="concatIngred()">Add</button>
+							onClick="return validateIngredients();">Add</button>
 				</td>
 			</tr>
 			<tr>
@@ -122,5 +124,6 @@
 		<!-- Display Result from Server -->
 		<p>${ingredientName}</p>
 	</div>
+
 </body>
 </html>

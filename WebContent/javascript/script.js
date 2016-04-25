@@ -107,20 +107,44 @@ function validateFunc(){
 } // End of validateFunc()
 
 
+
 // Function to Validate form onsubmit
 // Will stop the POST method and inform the user to insert correct information
 function validateForm() {
+	
+	// Recipe Entry Form
     var ingredRet = document.forms["submitForm"]["ingredientsReturned"].value;
     var foodTypeSelect = document.forms["submitForm"]["foodType"].value;
-    var itemTypeSelect = document.forms["ingredientsForm"]["item"].value;
-    var measureTypeSelect = document.forms["ingredientsForm"]["measure"].value;
+    var foodOrigin = document.forms["submitForm"]["foodOrigin"].value;
+    var prepTimeHours = document.forms["submitForm"]["prepTimeHours"].value;
+    var prepTimeMins = document.forms["submitForm"]["prepTimeMins"].value;
     
-    if ( (ingredRet == null) || (ingredRet == "") || (foodTypeSelect == "-Select-") || 
-    	 (itemTypeSelect == "-Select-") || (measureTypeSelect == "-Select-") ) {
-	        alert("Field(s) can't be blank");
-	        return false;
+    if ( (ingredRet == null) || (ingredRet == "") || (foodTypeSelect == "-Select-") ||
+    	 (foodOrigin == "-Select-") || (prepTimeHours == "-Select-") || (prepTimeMins == "-Select-") ) {     
+	    		alert("You have left some fields blank");
+		        return false;
     }
 }
+
+// Function to validate the AddIngredients form
+// If Valid values entered, Concatenate the ingredients into a string
+function validateIngredients(){
+	
+	// Add Ingredients Form
+    var itemTypeSelect = document.getElementById("item").value;
+    var measureTypeSelect = document.getElementById("measure").value;
+    var quantity = document.getElementById("quantity").value;
+    
+    if ( (itemTypeSelect == "-Select-") || (measureTypeSelect == "-Select-") || (quantity == "-Select-") ) {     
+   	    		alert("You have left some fields blank");
+   		        return false;
+       }
+    else {
+    	concatIngred();
+    }
+}
+
+
 
 // Used for Parsing
 String.prototype.escapeSpecialChars = function() {

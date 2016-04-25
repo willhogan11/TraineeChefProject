@@ -116,7 +116,7 @@
 			    		        id="prepTimeMins" 
 			    		        name="prepTimeMins">
 			    			<option selected="selected">-Select-</option>
-			    			<c:forEach var="i" begin="1" end="60">
+			    			<c:forEach var="i" begin="0" end="60">
 			    				<option>${i}</option>
 			    			</c:forEach>
 			    		</select>
