@@ -3,12 +3,15 @@ package dataAccessObjects;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * This DataAccessObject Class contains data that's stored and returned in a List Collection
+ * The returned list object can then be accessed in the JSP page using JSTL(Java Server Pages Tag Library) & EL(Expression language)
+*/
 public class PrepTimeDAO {	
 	
 	public static List<Double> prepTime() throws Exception {
-		
 		List<Double> prepTime = new ArrayList<Double>();
-		
+
 		prepTime.add(new Double (0.15));
 	    prepTime.add(new Double (0.30));
 	    prepTime.add(new Double (0.45));

@@ -1,5 +1,6 @@
 package beans;
 
+//Bean class that contains getters and setters used throughout the project
 public class Person {
 	
 	private String name;

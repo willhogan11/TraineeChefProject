@@ -5,6 +5,10 @@ import java.util.List;
 
 import beans.MeasureType;
 
+/*
+ * This DataAccessObject Class contains data that's stored and returned in a List Collection
+ * The returned list object can then be accessed in the JSP page using JSTL(Java Server Pages Tag Library) & EL(Expression language)
+*/
 public class MeasurementDAO {
 
 	public static List<MeasureType> measureType() throws Exception{

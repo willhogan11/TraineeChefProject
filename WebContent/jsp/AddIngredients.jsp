@@ -103,9 +103,10 @@
 			<h3>Ingredient not in Database? <br> No problem, Add below...</h3>
 			<table>
 				<tr>
-					<td>Ingredient Name:&nbsp;&nbsp;</td>
+					<td id="textItself">Ingredient Name:&nbsp;&nbsp;</td>
 					<td>
-						<input class="form-control" type="text" 
+						<input id="addIngredientTextBox"
+							   class="form-control" type="text" 
 							   name="ingredientName" required
 							   data-toggle="tooltip" title="Enter an Item to the database that's not in the above list...">
 					</td>

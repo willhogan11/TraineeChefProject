@@ -1,8 +1,8 @@
 package beans;
-
 import java.io.InputStream;
 
-// Recipe Bean Class
+
+//Bean class that contains getters and setters used throughout the project
 public class Recipe {
 	
 	private int recipeId;
@@ -18,7 +18,6 @@ public class Recipe {
 	private int chefId;
 	private int foodTypeId;
 	private int foodOriginId;
-	
 	
 	public int getRecipeId() {
 		return recipeId;

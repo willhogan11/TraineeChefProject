@@ -14,6 +14,9 @@ import com.mysql.jdbc.Connection;
 import beans.*;
 import dataAccessObjects.*;
 
+/*
+ * This class is rensible for 
+ */
 
 /**
  * Servlet implementation class AddIngredients
@@ -70,14 +73,9 @@ public class AddIngredients extends HttpServlet {
             e.printStackTrace();
 	    }
 	    
-	    // System.out.println("value from 'getName()' " + ingredient.getName()); // Console Test
-	    
 	    request.setAttribute("ingredientName", ingredientName +  " Added to Database");
 	    getServletContext().getRequestDispatcher("/jsp/AddIngredients.jsp").forward(request, response);
         getServletContext().getAttribute(ingredientName);
-        
-	    // response.getWriter().print("Ingredient " + ingredient.getName() + " successfully added to Database");
-	    //response.sendRedirect("/jsp/AddIngredients.jsp");
 	    
 	} // End doPost
 }
